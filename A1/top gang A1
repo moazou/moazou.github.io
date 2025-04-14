@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A1 Gang Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      max-width: 900px;
+      width: 95%;
+      margin-top: 40px;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    }
+    h1, h2, h3 {
+      text-align: center;
+      color: #00ffff;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 6px;
+      font-size: 18px;
+    }
+    input {
+      background: #f0f0f0;
+      color: black;
+    }
+    button {
+      background: #00ffff;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #00cccc;
+    }
+    .hidden { display: none; }
+    .decoration {
+      margin-top: 30px;
+      font-size: 24px;
+      text-align: center;
+    }
+    .link-section, .enemy-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .link-section a {
+      color: #00ffff;
+      display: block;
+      margin: 8px 0;
+      font-size: 18px;
+      text-decoration: none;
+    }
+    .board, .enemy-section {
+      margin-top: 30px;
+      background-color: #111;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .buttons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="loginContainer">
+    <h1>Login to A1 Gang</h1>
+    <input type="text" id="username" placeholder="Username">
+    <input type="text" id="name" placeholder="Name (must include A1)">
+    <button onclick="login()">Login</button>
+    <p id="error" style="color:red; text-align:center;"></p>
+  </div>  <div class="container hidden" id="mainPage">
+    <h2>Welcome <span id="displayName"></span></h2>
+    <p style="text-align:center;">Logged in users: <span id="loginCount">1</span></p>
+    <div class="buttons-grid">
+      <button onclick="showCompetitions()">Competitions</button>
+      <button onclick="scrollToSection('gangBoard')">Gang Board</button>
+      <button onclick="scrollToSection('enemyList')">Enemies</button>
+      <button onclick="scrollToSection('links')">TikTok / WhatsApp</button>
+    </div><div class="decoration">『A1』<span id="shortName"></span>『??』</div>
+
+<div class="link-section" id="links">
+  <a href="https://www.tiktok.com/@0___75c?_t=ZS-8vXSAZit4Bk&_r=1" target="_blank">VENOM TikTok</a>
+  <a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">Join WhatsApp Group</a>
+</div>
+
+<div class="board" id="gangBoard">
+  <h3>اللوحة العسكرية</h3>
+  <p>1- القائد KING 👑<br>@⁨Ahmed M⁩</p>
+  <p>2- مشير FM1 🎗️<br>@⁨ahmedadel⁩</p>
+  <p>3- اللواء BDE 🚀<br>@⁨Mo3az⁩, @omar, @Aboud</p>
+  <p>4- قادة الحرب WL 🛡️<br>@moaaz, @⁨frank⁩, @⁨manar⁩</p>
+  <p>5- مقاتل اسطوري LM ☠️<br>@⁨عبدالروؤف⁩, @⁨~bensohaib⁩, @⁨~🤍🤍⁩, @⁨Kareem Fares⁩</p>
+  <p>6- فرقة ال 999 ⚔️<br>@⁨~الشيخ عبدالرحمن⁩</p>
+  <p>7- القائد العام GC 👨🏻‍✈️<br>@VENOM</p>
+  <p>13- مجند 🪖 RCT<br>@⁨Omar⁩, @⁨كـئـيـب⁩, ...والمزيد</p>
+  <p>الفرق 👾<br>1- القناصين: 50 الف<br>2- الجواسيس: 70 الف</p>
+</div>
+
+<div class="enemy-section" id="enemyList">
+  <h3>قائمة الأعداء</h3>
+  <p>❌ BS<br>❌ JO<br>❌ WKR<br>❌ HR<br>❌ IRQ<br>❌ MTK<br>❌ V1<br>❌ GNG<br>❌ VGN<br>❌ M7<br>❌ MF</p>
+</div>
+
+  </div>  <script>
+    let loginCount = 0;
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const name = document.getElementById('name').value.trim();
+      if (!name.includes("A1")) {
+        document.getElementById('error').textContent = "Name must include 'A1'";
+        return;
+      }
+      loginCount++;
+      document.getElementById('loginCount').textContent = loginCount;
+      document.getElementById('displayName').textContent = username;
+      document.getElementById('shortName').textContent = name;
+      document.getElementById('loginContainer').classList.add('hidden');
+      document.getElementById('mainPage').classList.remove('hidden');
+    }
+
+    function showCompetitions() {
+      alert("Competitions:\n- Sniping\n- Racing\n- Bikes\n- Battles\n- Stealth Missions\n- Capture the Base\n- Deathmatch\n- Teamwork Wars\n- Speed Runs\n- Tactical Challenges\n+ 2 Big Championships Coming Soon!");
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script></body>
+</html>
