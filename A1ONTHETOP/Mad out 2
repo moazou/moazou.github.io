@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عصابة A1 - لوحة القيادة</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom right, #0f0f0f, #1c1c1c);
+      color: #fff;
+    }
+    header {
+      background-color: #000;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid #00ff99;
+    }
+    header h1 {
+      font-size: 36px;
+      color: #00ff99;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px;
+    }
+    section {
+      background-color: #181818;
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 150, 0.2);
+    }
+    h2 {
+      font-size: 28px;
+      border-bottom: 2px solid #00ff99;
+      padding-bottom: 10px;
+      color: #00ff99;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 8px 0;
+      font-size: 18px;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #000;
+      border-top: 2px solid #00ff99;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>لوحة القيادة - عصابة A1</h1>
+  </header>
+  <div class="container">
+    <section>
+      <h2>القيادة العليا</h2>
+      <ul>
+        <li><strong>KING 👑:</strong> @Ahmed M</li>
+        <li><strong>FM1 🎗️:</strong> @ahmedadel</li>
+        <li><strong>BDE 🚀:</strong> @Mo3az, @omar, @Aboud</li>
+      </ul>
+    </section>
+    <section>
+      <h2>قادة الحرب WL 🛡️</h2>
+      <ul>
+        <li>@moaaz</li>
+        <li>@frank</li>
+        <li>@manar</li>
+      </ul>
+    </section>
+    <section>
+      <h2>مقاتل أسطوري LM ☠️</h2>
+      <ul>
+        <li>@عبدالروؤف</li>
+        <li>@~bensohaib</li>
+        <li>@~🤍🤍</li>
+        <li>@Kareem Fares</li>
+      </ul>
+      <p>أسلحتهم: 10, 11</p>
+    </section>
+    <section>
+      <h2>فرقة ال999 ⚔️</h2>
+      <ul>
+        <li>@~الشيخ عبدالرحمن</li>
+        <li>---</li>
+      </ul>
+    </section>
+    <section>
+      <h2>مراتب إضافية</h2>
+      <ul>
+        <li><strong>GC:</strong> @VENOM</li>
+        <li><strong>SFC:</strong> فارغ</li>
+        <li><strong>TL:</strong> فارغ</li>
+        <li><strong>SGT:</strong> فارغ</li>
+        <li><strong>CPL:</strong> فارغ</li>
+        <li><strong>PFC:</strong> @~الحمد لله</li>
+        <li><strong>RCT:</strong> @⁨Omar⁩، @⁨كـئـيـب⁩، @⁨~7oda⁩، @⁨~M10❤️💙⁩، @⁨~BASEL CH7⁩، وغيرهم...</li>
+      </ul>
+    </section>
+    <section>
+      <h2>الفرق 👾</h2>
+      <ul>
+        <li>القناصين: 50 ألف</li>
+        <li>الجواسيس: 70 ألف</li>
+      </ul>
+    </section>
+  </div>
+  <div class="footer">
+    تصميم وبرمجة فريق A1 - جميع الحقوق محفوظة 2025
+  </div>
+</body>
+</html>
