@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A1 Gang Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      max-width: 600px;
+      width: 100%;
+      margin-top: 40px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+    h1, h2 {
+      text-align: center;
+      color: #00ffff;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    input {
+      background: #f0f0f0;
+      color: black;
+    }
+    button {
+      background: #00ffff;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .hidden { display: none; }
+    .decoration {
+      margin-top: 30px;
+      font-size: 20px;
+      text-align: center;
+    }
+    .link-section {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .link-section a {
+      color: #00ffff;
+      display: block;
+      margin: 5px 0;
+    }
+    .board {
+      margin-top: 20px;
+      background-color: #111;
+      padding: 15px;
+      border-radius: 10px;
+      max-height: 400px;
+      overflow-y: scroll;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="loginContainer">
+    <h1>Login to A1 Gang</h1>
+    <input type="text" id="username" placeholder="Username">
+    <input type="text" id="name" placeholder="Name (must include A1)">
+    <button onclick="login()">Login</button>
+    <p id="error" style="color:red; text-align:center;"></p>
+  </div>  <div class="container hidden" id="mainPage">
+    <h2>Welcome <span id="displayName"></span></h2>
+    <p>Logged in users: <span id="loginCount">1</span></p>
+    <button onclick="showCompetitions()">Go to Competitions</button>
+    <div class="decoration">『A1』<span id="shortName"></span>『??』</div>
+    <div class="link-section">
+      <a href="https://www.tiktok.com/@0___75c?_t=ZS-8vXSAZit4Bk&_r=1" target="_blank">VENOM TikTok</a>
+      <a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">Join WhatsApp Group</a>
+    </div>
+    <div class="board" id="gangBoard">
+      <h3>اللوحة العسكرية</h3>
+      <p>1- القائد KING 👑<br>@⁨Ahmed M⁩</p>
+      <p>2- مشير FM1 🎗️<br>@⁨ahmedadel⁩</p>
+      <p>3- اللواء BDE 🚀<br>@⁨Mo3az⁩, @omar, @Aboud</p>
+      <p>4- قادة الحرب WL 🛡️<br>@moaaz, @⁨frank⁩, @⁨manar⁩</p>
+      <p>5- مقاتل اسطوري LM ☠️<br>@⁨عبدالروؤف⁩, @⁨~bensohaib⁩, @⁨~🤍🤍⁩, @⁨Kareem Fares⁩</p>
+      <p>6- فرقة ال 999 ⚔️<br>@⁨~الشيخ عبدالرحمن⁩</p>
+      <p>7- القائد العام GC 👨🏻‍✈️<br>@VENOM</p>
+      <p>13- مجند 🪖 RCT<br>@⁨Omar⁩, @⁨كـئـيـب⁩, ...والمزيد</p>
+      <p>الفرق 👾<br>1- القناصين: 50 الف<br>2- الجواسيس: 70 الف</p>
+    </div>
+  </div>  <script>
+    let loginCount = 0;
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const name = document.getElementById('name').value.trim();
+      if (!name.includes("A1")) {
+        document.getElementById('error').textContent = "Name must include 'A1'";
+        return;
+      }
+      loginCount++;
+      document.getElementById('loginCount').textContent = loginCount;
+      document.getElementById('displayName').textContent = username;
+      document.getElementById('shortName').textContent = name;
+      document.getElementById('loginContainer').classList.add('hidden');
+      document.getElementById('mainPage').classList.remove('hidden');
+    }
+
+    function showCompetitions() {
+      alert("Competitions: Sniping, Racing, Bikes, Battles, and more coming soon!");
+    }
+  </script></body>
+</html>
