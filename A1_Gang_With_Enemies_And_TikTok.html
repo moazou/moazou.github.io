@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل الدخول - عصابة A1</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    .card {
+      width: 85%;
+      max-width: 350px;
+      padding: 20px;
+
+      background-color: #18181b;
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      border: 2px solid #7e22ce;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(128, 0, 128, 0.5);
+    }
+    .card img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+    .input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: none;
+      background-color: #27272a;
+      color: white;
+      font-size: 16px;
+    }
+    .button {
+      width: 100%;
+      padding: 10px;
+      background-color: #7e22ce;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .tasks, .registry, .decoration {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 15px;
+      white-space: pre-wrap;
+    }
+    .soldier-img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    #competitionCard {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="loginCard">
+    <img src="https://i.imgur.com/AXVX6Mi.png" alt="A1 Gang Logo" />
+    <h1 style="color: #c084fc;">تسجيل الدخول - عصابة A1</h1>
+    <p style="color: #a1a1aa;">ادخل الاسم و الـ ID للدخول</p>
+    <input id="username" type="text" placeholder="الاسم" class="input" />
+    <input id="id" type="text" placeholder="ID" class="input" />
+    <button class="button" onclick="login()">دخول</button>
+    <div class="registry" id="registryList" style="margin-top:20px;">
+      <h3 style="color:#a78bfa;">قائمة المسجلين:</h3>
+      <ul id="registeredUsers" style="color:#d4d4d8;"></ul>
+    </div>
+  </div>
+
+  <div class="card" id="dashboardCard" style="display: none;">
+    <h1 style="color: #c084fc;">لوحة الجندي</h1>
+    <p id="welcomeText" style="color: #a1a1aa;"></p>
+    <p style="color:#f472b6; margin-bottom: 20px;">اهلا بك في عصابة A1، الآن أنت في عصابة من أقوى العصابات في لعبة Mad Out 2</p>
+    <button class="button" onclick="showCompetition()">اذهب إلى المسابقات</button>
+    <img src="https://i.imgur.com/AXVX6Mi.png" alt="جندي" class="soldier-img" />
+    
+<div class="tasks">
+<pre>
+1- القائد KING 👑 
+1 @⁨Ahmed M⁩ 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+2- مشير FM1 🎗️
+@⁨ahmedadel⁩   
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+3- اللواء BDE 🚀
+1- @⁨Mo3az⁩ 
+2-@omar
+3-@Aboud 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+4- قادة الحرب WL 🛡️
+1-@moaaz 
+2-@⁨frank⁩     
+3-@⁨manar⁩ 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+5-مقاتل اسطوري LM ☠️
+1-@⁨عبدالروؤف⁩   
+2-@⁨~bensohaib⁩    
+3-@⁨~🤍🤍⁩ 
+4-@⁨Kareem Fares⁩  
+أسلحتهم 10, 11  
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+6- فرقة ال 999 الحربية المقاتلة ⚔️
+1-@⁨~الشيخ عبدالرحمن⁩ 
+2- 
+3-
+4-
+5-
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+7- القائد العام للجيش 👨🏻‍✈️ GC
+1-@VENOM
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+8- قائد القوات الخاصه ☠️ SFC
+1 
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+9- قائد فريق ⚙️ TL
+1 
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+10- رقيب 🥇 SGT 
+1
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+11- عريف 🪖 CPL
+1
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+12- جندي اول 🪖 PFC
+@~الحمد لله
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+
+13- مجند 🪖 RCT
+@⁨Omar⁩
+@⁨كـئـيـب⁩
+@⁨~󠅤󠅤󠅤󠅤⁩
+@⁨~•_•⁩
+@⁨~7oda⁩
+@⁨~M10❤️💙⁩
+@⁨~Mohammed Mahmoud 🌶️⁩
+@⁨~آيَـَـــِآدٍ⁩
+@⁨~أوس⁩
+@⁨~‏أوســ亗ــڪارR‿ˣ ✌︎⁩
+@⁨~𓆩 ᗰᖇ. SᑭEEᗪ 𓆪🖤⁩
+@⁨~𓆩𝓐𝓱𝓶𝓮𝓭᭓𓆪⁩
+@⁨~想 ﾑ1〙写䒙「M E D O」ン⁩
+@⁨~BASEL CH7⁩
+@⁨+966 57 037 6049⁩
+@⁨~SALEH⁩
+@⁨~𝐒𝐄𝐈𝐅 💥⁩
+@BasEl
+@Deepu
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+الفرق 👾 
+1- القناصين         50الف 
+2- الجواسيس     70 آلف
+</pre>
+</div>
+
+    <div class="decoration">
+      <h3 style="color:#f9a8d4;">زخرفة الاسم:</h3>
+      <p>『A1』اسمك『اختصار الرتبه』العصابه</p>
+    </div>
+<button class="button" onclick="toggleEnemies()">عرض الأعداء</button>
+<div id="enemiesList" style="display:none; margin-top:20px; text-align:right; color:#f87171;">
+  <h3 style="color:#f87171;">قائمة الأعداء ❌</h3>
+  <ul>
+    <li>❌ M7</li>
+    <li>❌ WKR</li>
+    <li>❌ HR</li>
+    <li>❌ Jo</li>
+    <li>❌ VGN</li>
+    <li>❌ MF</li>
+    <li>❌ ictc</li>
+  </ul>
+  <p>هؤلاء الأعداء تحت المراقبة، ممنوع التعاون معهم! ⚠️</p>
+</div>
+
+<div style="margin-top: 30px;">
+  <h3 style="color:#facc15;">قناة VENOM الرسمية</h3>
+  <p style="color:#fef3c7;">تابعنا على TikTok لأحدث المقاطع</p>
+  <a href="https://www.tiktok.com/@_9___00?_t=ZS-8vX2WuN1Psm&_r=1" target="_blank">
+    <button class="button" style="background-color:#ec4899;">قناتي على TikTok</button>
+  </a>
+</div>
+
+  </div>
+
+  <div class="card" id="competitionCard">
+    <h1 style="color: #a78bfa;">قسم المسابقات</h1>
+    <p style="color:#d4d4d8;">كل شهر هناك 10 مسابقات متنوعة، بالإضافة إلى 2 مسابقة كبيرة يمكنك من خلالها الفوز بجواهر ونقود!</p>
+    <ul style="text-align:right; color:#e9d5ff;">
+      <li>مسابقة الشهر السريعة</li>
+      <li>سباق السيارات</li>
+      <li>تحدي القنص</li>
+      <li>تحدي البقاء</li>
+      <li>تحدي التهريب</li>
+      <li>قتال الشوارع</li>
+      <li>تجميع الغنائم</li>
+      <li>سباق الدراجات</li>
+      <li>تحدي البناء</li>
+      <li>أقوى عصابة</li>
+      <li>المسابقة الكبرى الأولى</li>
+      <li>المسابقة الكبرى الثانية</li>
+    </ul>
+  </div>
+
+  <script>
+    
+    let registered = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+    window.onload = () => {
+      updateRegistry();
+      localStorage.setItem("registeredUsers", JSON.stringify(registered));
+
+    };
+
+
+    function login() {
+      const username = document.getElementById("username").value;
+      const id = document.getElementById("id").value;
+
+      if (username && id) {
+        registered.push({ name: username, id: id });
+        updateRegistry();
+      localStorage.setItem("registeredUsers", JSON.stringify(registered));
+
+      }
+
+      document.getElementById("loginCard").style.display = "none";
+      document.getElementById("dashboardCard").style.display = "block";
+      document.getElementById("welcomeText").innerText = `أهلاً بك ${username}، تم تسجيل دخولك بنجاح.`;
+    }
+
+    function updateRegistry() {
+      const list = document.getElementById("registeredUsers");
+      list.innerHTML = "";
+      registered.forEach(user => {
+        const li = document.createElement("li");
+        li.innerText = `الاسم: ${user.name} - ID: ${user.id}`;
+        list.appendChild(li);
+      });
+    }
+
+    function showCompetition() {
+      document.getElementById("dashboardCard").style.display = "none";
+      document.getElementById("competitionCard").style.display = "block";
+    }
+  
+function toggleEnemies() {
+  const list = document.getElementById("enemiesList");
+  list.style.display = list.style.display === "none" ? "block" : "none";
+}
+
+</script>
+
+</body>
+</html>
