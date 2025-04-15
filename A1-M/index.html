@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A1 Gang Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+    #main {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-btn {
+      background-color: #4e54c8;
+      color: white;
+      width: 200px;
+    }
+    .section {
+      display: none;
+      margin-top: 20px;
+      width: 80%;
+    }
+    .enemy { color: red; }
+    .rank-title {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 10px;
+      color: #00ffe7;
+    }
+  </style>
+</head>
+<body>
+  <div id="login">
+    <h1>تسجيل دخول عصابة A1</h1>
+    <input type="text" id="name" placeholder="اسمك (يجب أن يحتوي على A1)"><br>
+    <input type="text" id="id" placeholder="ID الخاص بك"><br>
+    <button onclick="login()">دخول</button>
+  </div>  <div id="main">
+    <h1 id="welcome"></h1>
+    <button class="nav-btn" onclick="showSection('comps')">المسابقات الشهرية</button>
+    <button class="nav-btn" onclick="showSection('links')">روابط العصابة</button>
+    <button class="nav-btn" onclick="showSection('enemies')">أعداء العصابة</button>
+    <button class="nav-btn" onclick="showSection('ranks')">الرتب والأعضاء</button><div id="comps" class="section">
+  <h2>المسابقات الشهرية</h2>
+  <ul>
+    <li>سباق السيارات</li>
+    <li>تحدي القنص</li>
+    <li>مطاردة ليلية</li>
+    <li>سباق الدراجات</li>
+    <li>معركة شارع</li>
+    <li>تحدي الهروب</li>
+    <li>قتال حر</li>
+    <li>سرقة بنوك</li>
+    <li>مهمة استخبارات</li>
+    <li>التهريب البحري</li>
+    <li><b>المسابقة الكبرى:</b> بطولة القتال الكبرى</li>
+    <li><b>المسابقة الكبرى:</b> تحدي جميع العصابات</li>
+  </ul>
+</div>
+
+<div id="links" class="section">
+  <h2>روابط العصابة</h2>
+  <p><a href="https://www.tiktok.com/@_9___00?_t=ZS-8vX2WuN1Psm&_r=1" target="_blank">قناة Venom على تيك توك</a></p>
+  <p><a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب WhatsApp الرسمي</a></p>
+</div>
+
+<div id="enemies" class="section">
+  <h2>أعداء العصابة</h2>
+  <p class="enemy">BS ❌ JO ❌ WKR ❌ HR ❌ IRQ ❌ MTK ❌ V1 ❌ GNG ❌ VGN ❌ M7 ❌ MF ❌</p>
+</div>
+
+<div id="ranks" class="section">
+  <h2>رتب وأعضاء العصابة</h2>
+  <div class="rank-title">KING 👑</div>
+  <p>@Ahmed M</p>
+  <div class="rank-title">FM1 🎗️</div>
+  <p>@ahmedadel</p>
+  <div class="rank-title">BDE 🚀</div>
+  <p>@Mo3az, @omar, @Aboud</p>
+  <div class="rank-title">WL 🛡️</div>
+  <p>@moaaz, @frank, @manar</p>
+  <div class="rank-title">LM ☠️</div>
+  <p>@عبدالروؤف, @🤍🤍, @Kareem Fares</p>
+  <div class="rank-title">999 ⚔️</div>
+  <p>@~الشيخ عبدالرحمن</p>
+  <div class="rank-title">GC 👨🏻‍✈️</div>
+  <p>@VENOM</p>
+  <div class="rank-title">SFC ☠️</div>
+  <div class="rank-title">TL ⚙️</div>
+  <div class="rank-title">SGT 🥇</div>
+  <div class="rank-title">CPL 🪖</div>
+  <div class="rank-title">PFC 🪖</div>
+  <p>@M10❤️💙, @آيَـَـــِآدٍ, @أوســ亗ــڪارR‿ˣ ✌︎, @想 ﾑ1〙写䒙「M E D O」ン, @SALEH</p>
+  <div class="rank-title">الفرق 👾</div>
+  <p>القناصين: 50 ألف | الجواسيس: 70 ألف</p>
+</div>
+
+  </div>  <script>
+    function login() {
+      const name = document.getElementById('name').value;
+      const id = document.getElementById('id').value;
+      if (!name.includes('A1') || name === '' || id === '') {
+        alert('الاسم يجب أن يحتوي على A1 وكل الحقول مطلوبة.');
+        return;
+      }
+      // هذا الجزء خاص بالإيميل: تحتاج لخدمة خارجية مثل EmailJS أو backend
+      alert('تم تسجيل الدخول، سيتم إرسال إشعار إلى مسؤول العصابة.');
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('main').style.display = 'flex';
+      document.getElementById('welcome').innerText = `أهلاً بك في عصابة A1 يا ${name}`;
+    }
+
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+  </script></body>
+  </html>
