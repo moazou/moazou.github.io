@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عصابة A1 - تسجيل الدخول</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+    body {
+      background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
+      color: white;
+      padding: 20px;
+    }
+    .login-container {
+      background: #222;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 400px;
+      margin: 50px auto;
+      box-shadow: 0 0 30px red;
+      animation: glow 2s infinite alternate;
+    }
+    h1 {
+      color: red;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label, input {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    input {
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+    }
+    button {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: darkred;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 10px red; }
+      to { box-shadow: 0 0 20px white; }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>تسجيل الدخول</h1>
+    <form id="loginForm">
+      <label for="name">الاسم:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="id">الأيدي:</label>
+      <input type="text" id="id" name="id" required>
+      <button type="submit">دخول</button>
+    </form>
+  </div>  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const id = document.getElementById("id").value;
+
+      fetch("https://formsubmit.co/ajax/moazxx50@gmail.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          id: id
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert("تم تسجيل الدخول بنجاح!");
+        window.location.href = "home.html";
+      })
+      .catch(error => {
+        alert("حدث خطأ أثناء إرسال البيانات!");
+        console.error(error);
+      });
+    });
+  </script></body>
+</html>
