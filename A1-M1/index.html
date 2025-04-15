@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A1 Gang Platform</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #1a0033, #32004d);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+  animation: fadeIn 1.2s ease-out;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #d58dff;
+}
+
+.btn-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  background: #7700cc;
+  padding: 15px 30px;
+  border-radius: 15px;
+  border: none;
+  font-size: 1.1em;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #a64dff;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.page {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>A1 Gang Control Panel</h1>
+    <div class="btn-box">
+      <button class="btn" onclick="showPage('members')">Members</button>
+      <button class="btn" onclick="showPage('ranks')">Ranks</button>
+      <button class="btn" onclick="showPage('competitions')">Competitions</button>
+      <button class="btn" onclick="showPage('enemies')">Enemies</button>
+      <button class="btn" onclick="showPage('links')">Links</button>
+    </div><div id="members" class="page">
+  <h2>Members</h2>
+  <p>A1-Ace, A1-XFire, A1-Doom, A1-King...</p>
+</div>
+
+<div id="ranks" class="page">
+  <h2>Ranks</h2>
+  <p>Leader: A1-Ace<br>Co-Leader: A1-XFire<br>Members: ...</p>
+</div>
+
+<div id="competitions" class="page">
+  <h2>Competitions</h2>
+  <ul>
+    <li>Sniping Contest</li>
+    <li>Car Racing</li>
+    <li>Bike Race</li>
+    <li>1v1 Battles</li>
+    <li>Team Wars</li>
+    <li>Zone Control</li>
+    <li>Heist Mode</li>
+    <li>Ghost Run</li>
+    <li>Speed Test</li>
+    <li>Maze Challenge</li>
+    <li><strong>Big Event 1:</strong> Tournament of Death</li>
+    <li><strong>Big Event 2:</strong> Final Survival</li>
+  </ul>
+</div>
+
+<div id="enemies" class="page">
+  <h2>Enemies</h2>
+  <p>BS ❌ JO ❌ WKR ❌ HR ❌ IRQ ❌ MTK ❌ V1 ❌ GNG ❌ VGN ❌ M7 ❌ MF ❌</p>
+</div>
+
+<div id="links" class="page">
+  <h2>Important Links</h2>
+  <p><a href="https://www.tiktok.com/@venomgang" target="_blank">TikTok - Venom</a></p>
+  <p><a href="https://chat.whatsapp.com/YOURGROUP" target="_blank">WhatsApp Group</a></p>
+</div>
+
+  </div>  <script>
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script></body>
+</html>
