@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A1 Gang Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #0f0f0f, #1a1a1a);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    header {
+      background-color: #111;
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      color: #f00;
+      text-shadow: 0 0 5px #f00;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      background-color: #222;
+      padding: 10px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-radius: 10px;
+      background: #444;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      background: #f00;
+      color: #fff;
+    }
+    section {
+      padding: 20px;
+    }
+    .rank, .competition, .enemy, .member, .smart-feature {
+      background: #1e1e1e;
+      margin: 10px 0;
+      padding: 15px;
+      border-left: 5px solid #f00;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00000060;
+    }
+    .smart-feature {
+      border-color: #0f0;
+    }
+  </style>
+</head>
+<body>
+  <header>عصابة A1 - القوة والسيطرة</header>
+  <nav>
+    <a href="#login">تسجيل الدخول</a>
+    <a href="#competitions">المسابقات</a>
+    <a href="#links">روابط مهمة</a>
+    <a href="#enemies">الأعداء</a>
+    <a href="#ranks">الرتب</a>
+    <a href="#members">الأعضاء</a>
+    <a href="#smart">نظام ذكي</a>
+  </nav>  <section id="login">
+    <h2>تسجيل الدخول</h2>
+    <form onsubmit="sendEmail(); return false;">
+      الاسم: <input type="text" id="name" required /><br>
+      الأيدي: <input type="text" id="id" required /><br>
+      <button type="submit">دخول</button>
+    </form>
+    <script>
+      function sendEmail() {
+        const name = document.getElementById("name").value;
+        const id = document.getElementById("id").value;
+        alert(`مرحبًا ${name} في عصابة A1`);
+        // هنا تقدر تستخدم API خارجي مثل EmailJS أو Zapier لإرسال إيميل فعلي إلى moazxx50@gmail.com
+        console.log(`Send login alert: ${name}, ${id}`);
+      }
+    </script>
+  </section>  <section id="competitions">
+    <h2>المسابقات الشهرية</h2>
+    <div class="competition">سباق دراجات نارية</div>
+    <div class="competition">قتال جماعي</div>
+    <div class="competition">قنص من مسافات بعيدة</div>
+    <div class="competition">تجميع أسلحة</div>
+    <div class="competition">قتال بالأيدي</div>
+    <div class="competition">مسابقة هجومية تكتيكية</div>
+    <div class="competition">تسلق جبل</div>
+    <div class="competition">سرقة سيارات</div>
+    <div class="competition">احتلال مباني</div>
+    <div class="competition">تخفي وتجسس</div>
+    <h3>المسابقات الكبرى</h3>
+    <div class="competition">معركة الملوك</div>
+    <div class="competition">تحدي السيطرة الشاملة</div>
+  </section>  <section id="links">
+    <h2>روابط العصابة</h2>
+    <a href="https://www.tiktok.com/@_9___00" target="_blank">TikTok Venom</a><br>
+    <a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب العصابة على واتساب</a>
+  </section>  <section id="enemies">
+    <h2>أعداء العصابة</h2>
+    <div class="enemy">BS ❌</div>
+    <div class="enemy">JO ❌</div>
+    <div class="enemy">WKR ❌</div>
+    <div class="enemy">HR ❌</div>
+    <div class="enemy">IRQ ❌</div>
+    <div class="enemy">MTK ❌</div>
+    <div class="enemy">V1 ❌</div>
+    <div class="enemy">GNG ❌</div>
+    <div class="enemy">VGN ❌</div>
+    <div class="enemy">M7 ❌</div>
+    <div class="enemy">MF ❌</div>
+  </section>  <section id="ranks">
+    <h2>الرتب</h2>
+    <div class="rank">القائد KING 👑 - @Ahmed M</div>
+    <div class="rank">مشير FM1 🎗️ - @ahmedadel</div>
+    <div class="rank">اللواء BDE 🚀 - @Mo3az, @omar, @Aboud</div>
+    <div class="rank">قادة الحرب WL 🛡️ - @moaaz, @frank, @manar</div>
+    <div class="rank">مقاتل اسطوري LM ☠️ - @عبدالروؤف, @🤍🤍, @Kareem Fares</div>
+    <div class="rank">999 الحربية ⚔️ - @~الشيخ عبدالرحمن</div>
+    <div class="rank">القائد العام للجيش GC 👨🏻‍✈️ - @VENOM</div>
+    <div class="rank">قائد القوات الخاصة SFC ☠️</div>
+    <div class="rank">قائد الفريق TL ⚙️</div>
+    <div class="rank">رقيب SGT 🥇</div>
+    <div class="rank">عريف CPL 🪖</div>
+    <div class="rank">جندي أول PFC 🪖 - @M10, @آياد, @أوس, @SALEH</div>
+  </section>  <section id="members">
+    <h2>أعضاء العصابة</h2>
+    <div class="member">القناصين - 50 ألف</div>
+    <div class="member">الجواسيس - 70 ألف</div>
+  </section>  <section id="smart">
+    <h2>الذكاء والتطور</h2>
+    <div class="smart-feature">نظام نقاط: كل نشاط يعطي نقاطًا ترتفع بها رتبتك.</div>
+    <div class="smart-feature">ملف شخصي تفاعلي يظهر لكل عضو مع صورته ورتبته ونشاطاته.</div>
+    <div class="smart-feature">نظام رسائل داخلية بين الأعضاء.</div>
+    <div class="smart-feature">لوحة إدارة خاصة بالقائد لمراقبة كل شيء.</div>
+    <div class="smart-feature">إشعارات تلقائية عبر البريد للقائد عند دخول أي عضو.</div>
+  </section>
+</body>
+    </html>
