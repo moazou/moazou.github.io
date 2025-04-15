@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A1 Gang</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      background: #111;
+      border: 2px solid #0ff;
+      box-shadow: 0 0 20px #0ff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    input, button {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin: 10px;
+    }
+    button {
+      background-color: #0ff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .section {
+      margin-top: 30px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li::before {
+      content: "• ";
+      color: #0ff;
+    }
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="login">
+    <h2>تسجيل الدخول</h2>
+    <input type="text" id="username" placeholder="الاسم (يجب أن يحتوي على A1)">
+    <input type="text" id="userid" placeholder="الرقم التعريفي">
+    <button onclick="login()">دخول</button>
+  </div>  <div class="container" id="home" style="display:none">
+    <h2>مرحباً <span id="displayName"></span>!</h2>
+    <p>عدد الزوار اليوم: <span id="visitorCount">0</span></p>
+    <div>
+      <button onclick="showSection('competitions')">المسابقات</button>
+      <button onclick="showSection('enemies')">الأعداء</button>
+      <button onclick="showSection('ranks')">الرتب</button>
+      <button onclick="showSection('links')">الروابط</button>
+      <button onclick="showSection('members')">الأعضاء</button>
+    </div>
+  </div>  <div class="container section" id="competitions" style="display:none">
+    <h3>المسابقات</h3>
+    <ul>
+      <li>مسابقة 1 - Sniping</li>
+      <li>مسابقة 2 - Racing</li>
+      <li>مسابقة 3 - Bikes</li>
+      <li>مسابقة 4 - Battles</li>
+      <li>مسابقة 5 - Tactical</li>
+      <li>مسابقة 6 - Stealth</li>
+      <li>مسابقة 7 - Cars</li>
+      <li>مسابقة 8 - Boats</li>
+      <li>مسابقة 9 - King of Hill</li>
+      <li>مسابقة 10 - Gangs War</li>
+      <li>Big 1 - Monthly Championship</li>
+      <li>Big 2 - A1 vs World</li>
+    </ul>
+  </div>  <div class="container section" id="enemies" style="display:none">
+    <h3>الأعداء</h3>
+    <ul>
+      <li>X BS</li>
+      <li>X JO</li>
+      <li>X WKR</li>
+      <li>X HR</li>
+      <li>X IRQ</li>
+      <li>X MTK</li>
+      <li>X V1</li>
+      <li>X GNG</li>
+      <li>X VGN</li>
+      <li>X M7</li>
+      <li>X MF</li>
+    </ul>
+  </div>  <div class="container section" id="ranks" style="display:none">
+    <h3>الرتب</h3>
+    <ul>
+      <li>A1 | Leader - Moaz</li>
+      <li>A1 | Co-Leader - Ahmed</li>
+      <li>A1 | Sniper Team - 4 Members</li>
+      <li>A1 | Drivers - 3 Members</li>
+      <li>A1 | Tactical Unit - 2 Members</li>
+      <li>A1 | Recruits - Open</li>
+    </ul>
+  </div>  <div class="container section" id="links" style="display:none">
+    <h3>روابط A1</h3>
+    <p><a href="https://www.tiktok.com/@_9___00" target="_blank">TikTok الرسمي</a></p>
+    <p><a href="https://wa.me/201234567890" target="_blank">جروب الواتساب</a></p>
+  </div>  <div class="container section" id="members" style="display:none">
+    <h3>الأعضاء المسجلين</h3>
+    <ul id="memberList"></ul>
+  </div>  <script>
+    let visitors = 0;
+    const members = [];
+
+    function login() {
+      const name = document.getElementById("username").value;
+      const id = document.getElementById("userid").value;
+
+      if (!name.includes("A1")) {
+        alert("يجب أن يحتوي الاسم على A1");
+        return;
+      }
+
+      document.getElementById("login").style.display = "none";
+      document.getElementById("home").style.display = "block";
+      document.getElementById("displayName").innerText = name;
+      visitors++;
+      document.getElementById("visitorCount").innerText = visitors;
+      members.push(`${name} - ${id}`);
+      updateMemberList();
+    }
+
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll(".section");
+      sections.forEach(s => s.style.display = "none");
+      document.getElementById(sectionId).style.display = "block";
+    }
+
+    function updateMemberList() {
+      const ul = document.getElementById("memberList");
+      ul.innerHTML = "";
+      members.forEach(m => {
+        const li = document.createElement("li");
+        li.textContent = m;
+        ul.appendChild(li);
+      });
+    }
+  </script></body>
+  </html>
