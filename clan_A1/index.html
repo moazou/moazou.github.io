@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A1 Gang | Official Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }body {
+  background: linear-gradient(to bottom, #000000, #1c1c1c);
+  color: #00ffcc;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+h1, h2 {
+  text-align: center;
+  margin: 20px 0;
+  text-transform: uppercase;
+}
+
+.section {
+  background: #111;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #00ffcc66;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.section ul {
+  list-style: none;
+}
+
+.section ul li {
+  margin: 5px 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.login-box {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 80%;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background: #00ffcc;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00ffaa;
+}
+
+.link-box a {
+  display: inline-block;
+  padding: 10px;
+  background: #333;
+  margin: 10px;
+  color: #00ffcc;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.link-box a:hover {
+  background: #00ffcc;
+  color: black;
+}
+
+.badge {
+  background: #00ffaa33;
+  border: 1px solid #00ffaa;
+  border-radius: 8px;
+  padding: 5px 10px;
+  display: inline-block;
+  margin: 5px;
+}
+
+  </style>
+</head><body>
+  <div class="container">
+    <div class="login-box section">
+      <h1>Login</h1>
+      <input type="text" id="username" placeholder="Enter Name (must include A1)" />
+      <input type="text" id="id" placeholder="Enter ID" />
+      <button onclick="loginUser()">Login</button>
+    </div><div class="section">
+  <h2>Gang Members</h2>
+  <ul id="members-list">
+    <!-- JavaScript will populate -->
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Ranks</h2>
+  <ul>
+    <li><strong>KING 👑:</strong> @Ahmed M</li>
+    <li><strong>ME1 🎗️:</strong> @ahmedadel</li>
+    <li><strong>BDE 🚀:</strong> @Mo3az, @Aboud, @Omar</li>
+    <li><strong>WL 🛡️:</strong> @moaaz, @frank, @manar</li>
+    <li><strong>LM ☠️:</strong> @عبدالروؤف, @~bensohaib, @~🤍🤍, @Kareem Fares</li>
+    <li><strong>999 ⚔️:</strong> @~الشيخ عبدالرحمن</li>
+    <li><strong>GC 👨🏻‍✈️:</strong> @VENOM</li>
+    <li><strong>SFC ☠️:</strong> Pending</li>
+    <li><strong>TL ⚙️:</strong> Pending</li>
+    <li><strong>SGT 🥇:</strong> Pending</li>
+    <li><strong>CPL 🪖:</strong> Pending</li>
+    <li><strong>PFC 🪖:</strong> Pending</li>
+    <li><strong>RCT 🪖:</strong> All recruits listed</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Competitions</h2>
+  <ul>
+    <li>Sniping Challenge</li>
+    <li>Drift Race</li>
+    <li>Bike Mania</li>
+    <li>War Simulation</li>
+    <li>Speed Shooting</li>
+    <li>Helicopter Chase</li>
+    <li>Base Defense</li>
+    <li>Capture the Flag</li>
+    <li>Stealth Mission</li>
+    <li>Final Battle</li>
+    <li><strong>Big 1:</strong> Grand War</li>
+    <li><strong>Big 2:</strong> Supreme Challenge</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Links</h2>
+  <div class="link-box">
+    <a href="https://www.tiktok.com/@_9___00" target="_blank">TikTok Channel</a>
+    <a href="https://chat.whatsapp.com/YourGroupLink" target="_blank">WhatsApp Group</a>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Enemies</h2>
+  <p class="badge">BS ❌</p>
+  <p class="badge">JO ❌</p>
+  <p class="badge">WKR ❌</p>
+  <p class="badge">HR ❌</p>
+  <p class="badge">IRQ ❌</p>
+  <p class="badge">MTK ❌</p>
+  <p class="badge">V1 ❌</p>
+  <p class="badge">GNG ❌</p>
+  <p class="badge">VGN ❌</p>
+  <p class="badge">M7 ❌</p>
+  <p class="badge">MF ❌</p>
+</div>
+
+  </div>  <script>
+    function loginUser() {
+      const username = document.getElementById("username").value;
+      const id = document.getElementById("id").value;
+      if (!username.includes("A1") || !id) {
+        alert("Name must include A1 and ID must be filled");
+        return;
+      }
+      const list = document.getElementById("members-list");
+      const item = document.createElement("li");
+      item.textContent = `${username} (ID: ${id})`;
+      list.appendChild(item);
+    }
+  </script></body></html>
