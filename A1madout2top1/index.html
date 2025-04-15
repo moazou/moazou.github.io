@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>A1 Gang Login</title>
+  <style>
+    body {
+      background-color: #0e0e0e;
+      color: white;
+      font-family: 'Cairo', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .login-page, .main-page {
+      padding: 30px;
+      display: none;
+    }
+    .login-page {
+      display: block;
+    }
+    input {
+      padding: 10px;
+      margin: 10px;
+      width: 250px;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #00f0ff;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .section {
+      display: none;
+      padding: 20px;
+      text-align: right;
+    }
+    .btn-box {
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    .btn-box button {
+      margin: 5px;
+    }
+    .welcome {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #0ff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-page" id="loginPage">
+    <h2>تسجيل دخول A1</h2>
+    <input type="text" id="name" placeholder="اكتب اسمك مثل A1-Moaz">
+    <button onclick="login()">دخول</button>
+  </div>
+
+  <div class="main-page" id="mainPage">
+    <div class="welcome" id="welcomeText"></div>
+
+    <div class="btn-box">
+      <button onclick="showSection('ranks')">الرتب</button>
+      <button onclick="showSection('members')">الأعضاء</button>
+      <button onclick="showSection('competitions')">المسابقات</button>
+      <button onclick="window.open('https://www.tiktok.com/@_9___00')">TikTok</button>
+      <button onclick="window.open('https://chat.whatsapp.com/YOUR_GROUP_LINK')">WhatsApp</button>
+    </div>
+
+    <div class="section" id="ranks">
+      <h3>الرتب</h3>
+      <p>1. القائد KING<br>2. مشير ME1<br>3. اللواء BDE<br>4. قادة الحرب WL<br>... (أكمل باقي الرتب)</p>
+    </div>
+
+    <div class="section" id="members">
+      <h3>الأعضاء</h3>
+      <p>@⁨Ahmed M⁩<br>@⁨ahmedadel⁩<br>@⁨Mo3az⁩<br>@⁨Aboud⁩<br>... (باقي الأعضاء)</p>
+    </div>
+
+    <div class="section" id="competitions">
+      <h3>المسابقات</h3>
+      <ul>
+        <li>مسابقة القنص</li>
+        <li>سباق سيارات</li>
+        <li>مهام خاصة</li>
+        <li>... (أضف المزيد)</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const name = document.getElementById('name').value;
+      if (!name.includes('A1')) {
+        alert('يجب أن يحتوي الاسم على A1');
+        return;
+      }
+      document.getElementById('loginPage').style.display = 'none';
+      document.getElementById('mainPage').style.display = 'block';
+      document.getElementById('welcomeText').textContent = `『A1』${name}『』`;
+    }
+
+    function showSection(id) {
+      ['ranks', 'members', 'competitions'].forEach(sec => {
+        document.getElementById(sec).style.display = 'none';
+      });
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
