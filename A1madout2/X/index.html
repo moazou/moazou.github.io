@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A1 Gang Website</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #1f1c2c, #928dab);
+      margin: 0;
+      color: white;
+      overflow-x: hidden;
+    }
+    .container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .login-box {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    .members, .ranks, .competitions, .links, .enemies {
+      background-color: rgba(0, 0, 0, 0.6);
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .title {
+      font-size: 24px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid white;
+    }
+    .link-button {
+      background-color: #333;
+      padding: 10px;
+      border-radius: 5px;
+      display: inline-block;
+      color: white;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+    .member-name {
+      display: inline-block;
+      margin: 3px 5px;
+      font-size: 14px;
+      background-color: #555;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+      <h2>تسجيل الدخول</h2>
+      <input type="text" id="username" placeholder="الاسم (يجب أن يحتوي على A1)">
+      <input type="text" id="userId" placeholder="الرقم التعريفي (ID)">
+      <button onclick="loginUser()">دخول</button>
+    </div><div class="members">
+  <div class="title">قائمة الأعضاء</div>
+  <div id="memberList">
+    @⁨Omar⁩ @⁨『عبد الهادي 』⁩ @⁨Ahmed M⁩ @⁨ahmedadel⁩ @⁨Kareem Fares⁩ @⁨Moaaz⁩ @⁨Omar⁩ @⁨عبدالروؤف⁩ @⁨كـئـيـب⁩ @⁨~•_•⁩ @⁨~🤍🤍⁩ @⁨~Mohammed Mahmoud🌶️⁩ @⁨~SALEH⁩ @⁨~𝐒𝐄𝐈𝐅 💥⁩ @⁨+966 57 037 6049⁩ @⁨~Brr brr⁩ @⁨~آيَـَـــِآدٍ⁩ @⁨~أوس⁩ @⁨~‏أوســ亗ــڪارR‿ˣ ✌︎⁩ @⁨~الحمد لله⁩ @⁨~الشيخ عبدالرحمن⁩ @⁨~فادي⁩ @⁨+20 11 45894639⁩ @⁨~𓆩𝓐𝓱𝓶𝓮𝓭᭓𓆪⁩ @⁨~Deepu⁩ @⁨~Yaranka_Poi⁩ @⁨+966 50 716 7709⁩ @⁨~سبعاوي خال711⁩ @⁨~علي⁩ @Dyana
+  </div>
+</div>
+
+<div class="ranks">
+  <div class="title">الرتب</div>
+  <p>1- القائد KING 👑: @⁨Ahmed M⁩</p>
+  <p>2- مشير ME1 🎗️: @⁨ahmedadel⁩</p>
+  <p>3- اللواء BDE 🚀: @⁨Mo3az⁩, @Aboud, @omar</p>
+  <p>4- قادة الحرب WL 🛡️: @moaaz, @⁨frank⁩, @⁨manar⁩</p>
+  <p>5- مقاتل اسطوري LM ☠️: @⁨عبدالروؤف⁩, @⁨~bensohaib⁩, @⁨~🤍🤍⁩, @⁨Kareem Fares⁩</p>
+  <p>6- فرقة ال 999: @⁨~الشيخ عبدالرحمن⁩</p>
+  <p>7- القائد العام GC: @VENOM</p>
+  <p>13- مجند RCT: @⁨Omar⁩, @⁨كـئـيـب⁩, ...</p>
+</div>
+
+<div class="competitions">
+  <div class="title">المسابقات</div>
+  <ul>
+    <li>مسابقة القنص</li>
+    <li>مسابقة الدراجات</li>
+    <li>مسابقة القتال</li>
+    <li>مسابقة الهروب</li>
+    <li>مسابقة السيارات</li>
+    <li>مسابقة التهريب</li>
+    <li>مسابقة الإغتيال</li>
+    <li>مسابقة التخفي</li>
+    <li>مسابقة الزعامة</li>
+    <li>مسابقة الذكاء</li>
+  </ul>
+</div>
+
+<div class="links">
+  <div class="title">روابط هامة</div>
+  <a class="link-button" href="https://www.tiktok.com/@_9___00" target="_blank">قناة TikTok</a>
+  <a class="link-button" href="https://wa.me/your-number" target="_blank">جروب WhatsApp</a>
+</div>
+
+<div class="enemies">
+  <div class="title">الأعداء</div>
+  <p>BS ❌ JO ❌ WKR ❌ HR ❌ IRQ ❌ MTK ❌ V1 ❌ GNG ❌ VGN ❌ M7 ❌ MF ❌</p>
+</div>
+
+  </div>  <script>
+    function loginUser() {
+      const name = document.getElementById('username').value;
+      const id = document.getElementById('userId').value;
+      if (!name.includes('A1')) {
+        alert('الاسم يجب أن يحتوي على A1');
+        return;
+      }
+      alert(`مرحباً ${name}! تم تسجيل الدخول.`);
+    }
+  </script></body>
+</html>
