@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A1 Gang Login</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+    }
+    input {
+      width: 200px;
+    }
+    button {
+      background-color: #0f0;
+      color: black;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>تسجيل الدخول لعصابة A1</h1>
+  <input type="text" id="name" placeholder="اكتب اسمك" required>
+  <input type="text" id="id" placeholder="اكتب ID الخاص بيك" required>
+  <button onclick="login()">دخول</button>  <script>
+    function login() {
+      const name = document.getElementById('name').value;
+      const id = document.getElementById('id').value;
+      if (!name || !id) {
+        alert("من فضلك اكتب اسمك و ID");
+        return;
+      }
+      localStorage.setItem('username', name);
+      localStorage.setItem('userid', id);
+      window.location.href = 'home.html';
+    }
+  </script></body>
+</html><!-- الصفحة الثانية: home.html --><!-- احفظها كملف منفصل --><!-- محتوى home.html --><!DOCTYPE html><html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>الرئيسية - A1 Gang</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .box {
+      border: 2px solid #0f0;
+      padding: 15px;
+      border-radius: 15px;
+      width: fit-content;
+      margin: 0 auto 30px;
+    }
+    button {
+      display: block;
+      width: 200px;
+      margin: 10px auto;
+      padding: 10px;
+      font-size: 18px;
+      background-color: #0f0;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .tag {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="tag">『A1』<span id="username">name</span>『؟』</div>
+  <div class="box">
+    <button onclick="goTo('competitions.html')">المسابقات</button>
+    <button onclick="goTo('members.html')">الأعضاء</button>
+    <button onclick="goTo('ranks.html')">الرتب</button>
+    <button onclick="goTo('links.html')">روابط العصابة</button>
+  </div>  <script>
+    const name = localStorage.getItem('username') || 'name';
+    document.getElementById('username').innerText = name;
+
+    function goTo(page) {
+      window.location.href = page;
+    }
+  </script></body>
+</html>
