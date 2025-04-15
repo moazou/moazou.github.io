@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>A1 Gang</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: url('https://moazou.github.io/A1madout2/bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .login-screen, .main-screen {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 400px;
+      background: rgba(0,0,0,0.8);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 0 20px #00ffcc;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 30px;
+      background-color: #00ffcc;
+      border: none;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .main-screen {
+      display: none;
+      width: 95%;
+      max-width: 700px;
+      padding: 30px;
+    }
+
+    .section {
+      background: rgba(255,255,255,0.1);
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 15px;
+      text-align: right;
+    }
+
+    .section h3 {
+      color: #00ffcc;
+      margin-bottom: 5px;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    .decoration-box {
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 10px;
+      text-align: center;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-screen" id="loginScreen">
+  <h2>تسجيل دخول A1</h2>
+  <input type="text" id="nameInput" placeholder="الاسم">
+  <input type="text" id="idInput" placeholder="الـ ID">
+  <button onclick="enterSite()">دخول</button>
+</div>
+
+<div class="main-screen" id="mainScreen">
+  <div class="section">
+    <h3>القائمة:</h3>
+    <ul>
+      <li>المسابقات</li>
+      <li>الأعداء</li>
+      <li>الأعضاء</li>
+      <li>الزخرفة</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>الأعضاء:</h3>
+    <p>أعضاء العصابة سيتم عرضهم هنا لاحقًا.</p>
+  </div>
+
+  <div class="section">
+    <h3>المسابقات:</h3>
+    <ul>
+      <li>قنص</li>
+      <li>سباق سيارات</li>
+      <li>دراجات</li>
+      <li>باتل</li>
+      <li>تخفي</li>
+      <li>قوة الفريق</li>
+      <li>ذكاء</li>
+      <li>معلومات</li>
+      <li>سيطرة</li>
+      <li>الزعيم</li>
+      <li>كأس الشهر</li>
+      <li>بطولة السنة</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>الزخرفة:</h3>
+    <div class="decoration-box" id="decorationBox">
+      『A1』name『رتبتك』
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>تواصل معنا:</h3>
+    <p> moazxx50@gmail.com </p>
+    <p><a href="https://www.tiktok.com/@venom">رابط TikTok</a></p>
+    <p><a href="https://wa.me/">رابط WhatsApp</a></p>
+  </div>
+</div>
+
+<script>
+  function enterSite() {
+    const name = document.getElementById("nameInput").value.trim();
+    const id = document.getElementById("idInput").value.trim();
+
+    if (name !== "" && id !== "") {
+      document.getElementById("loginScreen").style.display = "none";
+      document.getElementById("mainScreen").style.display = "block";
+      document.getElementById("decorationBox").innerText = `『A1』${name}『رتبتك』`;
+    } else {
+      alert("من فضلك اكتب الاسم والـ ID");
+    }
+  }
+</script>
+
+</body>
+</html>
