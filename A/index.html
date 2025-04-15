@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عصابة A1 - تسجيل الدخول</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom right, #1a001f, #3d0066);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .login-box {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #6a0dad;
+      text-align: center;
+    }
+    h1 {
+      color: #bf94e4;
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      background: #6a0dad;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #8a2be2;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h1>تسجيل دخول عصابة A1</h1>
+    <input type="text" id="username" placeholder="اكتب اسمك (يجب أن يحتوي على A1)" />
+    <input type="text" id="userid" placeholder="اكتب الأيدي الخاص بك" />
+    <button onclick="login()">دخول</button>
+    <div class="error" id="errorMsg"></div>
+  </div>  <script>
+    function login() {
+      const name = document.getElementById('username').value.trim();
+      const id = document.getElementById('userid').value.trim();
+      const errorMsg = document.getElementById('errorMsg');
+      
+      if (!name.includes("A1")) {
+        errorMsg.textContent = "يجب أن يحتوي الاسم على A1";
+        return;
+      }
+      if (name === '' || id === '') {
+        errorMsg.textContent = "الرجاء تعبئة جميع الحقول";
+        return;
+      }
+
+      // حفظ البيانات في LocalStorage
+      localStorage.setItem("A1_user", JSON.stringify({ name, id }));
+
+      // إرسال إشعار عبر Zapier أو خدمة بريدية (المطلوب تنفيذ خارجي)
+      fetch("https://maker.ifttt.com/trigger/a1_login/with/key/YOUR_IFTTT_KEY", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ value1: name, value2: id })
+      });
+
+      // الانتقال للواجهة الرئيسية
+      window.location.href = "dashboard.html";
+    }
+  </script></body>
+</html>
