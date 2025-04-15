@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A1 Gang Login</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #111, #222);
+      color: white;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.7);
+    }
+    input[type="text"], input[type="password"] {
+      padding: 10px;
+      width: 80%;
+      margin: 10px auto;
+      display: block;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #ff0055;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ff3366;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>تسجيل دخول A1</h2>
+    <input type="text" id="username" placeholder="اسمك (يجب أن يحتوي على A1)">
+    <input type="password" id="password" placeholder="كلمة السر">
+    <button onclick="login()">دخول</button>
+  </div>  <script>
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (!username.includes("A1")) {
+        alert("يجب أن يحتوي الاسم على A1");
+        return;
+      }
+
+      if (password !== "TOP1") {
+        alert("كلمة السر غير صحيحة");
+        return;
+      }
+
+      localStorage.setItem("username", username);
+      window.location.href = "home.html";
+    }
+  </script></body>
+</html>
