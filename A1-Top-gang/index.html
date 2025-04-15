@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عصابة A1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(#111, #222);
+      color: white;
+      text-align: center;
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .login-box, .page-box {
+      max-width: 400px;
+      margin: 100px auto;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #00ffcc33;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #00bfa5;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="login-box" id="loginBox">
+    <h2>تسجيل الدخول إلى عصابة A1</h2>
+    <input type="text" id="name" placeholder="الاسم" required>
+    <input type="text" id="id" placeholder="الأيدي" required>
+    <button onclick="login()">دخول</button>
+  </div>  <div class="page-box hidden" id="welcomeBox">
+    <h2>مرحباً بك في عصابة A1!</h2>
+    <p id="welcomeMsg"></p>
+    <button onclick="showCompetitions()">المسابقات الشهرية</button>
+    <button onclick="showLinks()">روابط العصابة</button>
+    <button onclick="showEnemies()">أعداء العصابة</button>
+    <button onclick="showRanks()">قائمة الرتب والأعضاء</button>
+  </div>  <div class="page-box hidden" id="competitionsBox">
+    <h2>المسابقات</h2>
+    <p>10 مسابقات صغيرة: قنص، سباق، دراجات، دفاع، ذكاء، اختراق، قتال شوارع، تحليل، مشي طويل، مناورة</p>
+    <p>2 مسابقة كبيرة: معركة كبرى - خطة اختراق</p>
+    <button onclick="goBack()">رجوع</button>
+  </div>  <div class="page-box hidden" id="linksBox">
+    <h2>روابط العصابة</h2>
+    <a href="https://www.tiktok.com/@_9___00?_t=ZS-8vX2WuN1Psm&_r=1" target="_blank">قناة TikTok</a><br><br>
+    <a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب WhatsApp</a><br><br>
+    <button onclick="goBack()">رجوع</button>
+  </div>  <div class="page-box hidden" id="enemiesBox">
+    <h2>أعداء العصابة</h2>
+    <p>BS ❌ JO ❌ WKR ❌ HR ❌ IRQ ❌ MTK ❌ V1 ❌ GNG ❌ VGN ❌ M7 ❌ MF ❌</p>
+    <button onclick="goBack()">رجوع</button>
+  </div>  <div class="page-box hidden" id="ranksBox">
+    <h2>الرتب والأعضاء</h2>
+    <p><strong>1- القائد KING 👑</strong><br>@Ahmed M</p>
+    <p><strong>2- مشير FM1 🎗️</strong><br>@ahmedadel</p>
+    <p><strong>3- اللواء BDE 🚀</strong><br>@Mo3az @omar @Aboud</p>
+    <p><strong>4- قادة الحرب WL 🛡️</strong><br>@moaaz @frank @manar</p>
+    <p><strong>5- مقاتل اسطوري LM ☠️</strong><br>@عبدالروؤف @🤍🤍 @Kareem Fares</p>
+    <p><strong>6- فرقة 999 ⚔️</strong><br>@~الشيخ عبدالرحمن</p>
+    <p><strong>7- القائد العام GC 👨🏻‍✈️</strong><br>@VENOM</p>
+    <p><strong>8- قائد القوات الخاصة SFC ☠️</strong></p>
+    <p><strong>9- قائد فريق TL ⚙️</strong></p>
+    <p><strong>10- رقيب SGT 🥇</strong></p>
+    <p><strong>11- عريف CPL 🪖</strong></p>
+    <p><strong>12- جندي أول PFC 🪖</strong><br>@~•_• @M10❤️💙 @آيَـَـــِآدٍ @أوســ亗ــڪارR‿ˣ ✌︎ @~ 𓆪🖤 @想 ﾑ1〙写䒙「M E D O」ン @SALEH</p>
+    <p><strong>الفرق:</strong><br>القناصين: 50 ألف<br>الجواسيس: 70 ألف</p>
+    <button onclick="goBack()">رجوع</button>
+  </div>  <script>
+    function login() {
+      const name = document.getElementById("name").value;
+      const id = document.getElementById("id").value;
+      if (name && id) {
+        document.getElementById("loginBox").classList.add("hidden");
+        document.getElementById("welcomeBox").classList.remove("hidden");
+        document.getElementById("welcomeMsg").innerText = `مرحباً ${name} - تم تسجيل دخولك بنجاح!`;
+        // لإرسال بريد إلكتروني، يجب استخدام سيرفر خارجي مثل EmailJS أو Firebase
+      }
+    }
+
+    function showCompetitions() {
+      switchView("competitionsBox");
+    }
+    function showLinks() {
+      switchView("linksBox");
+    }
+    function showEnemies() {
+      switchView("enemiesBox");
+    }
+    function showRanks() {
+      switchView("ranksBox");
+    }
+    function goBack() {
+      document.querySelectorAll('.page-box').forEach(box => box.classList.add('hidden'));
+      document.getElementById("welcomeBox").classList.remove("hidden");
+    }
+    function switchView(id) {
+      document.querySelectorAll('.page-box').forEach(box => box.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+  </script></body>
+</html>
