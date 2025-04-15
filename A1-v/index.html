@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A1 Gang Platform</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Login Page -->
+  <div id="login-page" class="page active">
+    <h1 class="logo">A1 GANG LOGIN</h1>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Enter A1 Name" required />
+      <input type="text" id="userid" placeholder="Enter ID" required />
+      <button type="submit">Login</button>
+    </form>
+  </div>  <!-- Dashboard -->  <div id="dashboard" class="page hidden">
+    <header>
+      <h2>Welcome, <span id="user-name"></span></h2>
+      <nav>
+        <button onclick="switchPage('members')">Members</button>
+        <button onclick="switchPage('points')">Points</button>
+        <button onclick="switchPage('missions')">Missions</button>
+        <button onclick="switchPage('media')">Media</button>
+        <button onclick="switchPage('notifications')">Notifications</button>
+      </nav>
+    </header><!-- Members Page -->
+<section id="members" class="inner-page">
+  <h3>Members & Ranks</h3>
+  <ul>
+    <li>@⁨Omar⁩ - Leader</li>
+    <li>@⁨Ahmed M⁩ - Co-Leader</li>
+    <li>@⁨Kareem Fares⁩ - Commander</li>
+    <li>@⁨Moaaz⁩ - Elite</li>
+    <li>@⁨عبدالروؤف⁩ - Sniper</li>
+    <!-- Add all other names here... -->
+  </ul>
+</section>
+
+<!-- Points Page -->
+<section id="points" class="inner-page hidden">
+  <h3>Points & Achievements</h3>
+  <p>You have <strong>1240</strong> points</p>
+  <p>Rank: <strong>Elite Warrior</strong></p>
+  <ul>
+    <li>Completed 5 Missions</li>
+    <li>Top 3 in Race Battle</li>
+  </ul>
+</section>
+
+<!-- Missions Page -->
+<section id="missions" class="inner-page hidden">
+  <h3>Active Missions</h3>
+  <ul>
+    <li>Sniper Duel - 200 Points</li>
+    <li>Bike Race - 150 Points</li>
+    <li>Capture The Base - 500 Points</li>
+  </ul>
+</section>
+
+<!-- Media Page -->
+<section id="media" class="inner-page hidden">
+  <h3>Gallery</h3>
+  <img src="img1.jpg" alt="event1" />
+  <img src="img2.jpg" alt="event2" />
+</section>
+
+<!-- Notifications Page -->
+<section id="notifications" class="inner-page hidden">
+  <h3>Admin Messages</h3>
+  <p>New mission added! Complete before Friday to earn 1000 points!</p>
+</section>
+
+  </div>
+</body>
+    </html>
