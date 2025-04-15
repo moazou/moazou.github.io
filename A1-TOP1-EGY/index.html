@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تسجيل الدخول - A1 Gang</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .box {
+      background-color: #111;
+      border: 2px solid #0f0;
+      padding: 20px;
+      width: 300px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #0f0;
+      border-radius: 5px;
+      background-color: #000;
+      color: #0f0;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #0f0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>تسجيل الدخول إلى A1 Gang</h2>
+    <input type="text" id="username" placeholder="أدخل اسمك (يجب أن يحتوي A1)">
+    <input type="text" id="userid" placeholder="أدخل الأيدي">
+    <button onclick="login()">دخول</button>
+    <div class="error" id="error"></div>
+  </div>
+
+  <script>
+    function login() {
+      const name = document.getElementById("username").value.trim();
+      const id = document.getElementById("userid").value.trim();
+      const errorBox = document.getElementById("error");
+
+      if (!name || !id) {
+        errorBox.textContent = "الرجاء إدخال الاسم والأيدي.";
+        return;
+      }
+
+      if (!name.includes("A1")) {
+        errorBox.textContent = "يجب أن يحتوي الاسم على 'A1'.";
+        return;
+      }
+
+      // حفظ البيانات محليًا
+      localStorage.setItem("username", name);
+      localStorage.setItem("userid", id);
+
+      // إرسال إلى الإيميل (FormSubmit)
+      fetch("https://formsubmit.co/ajax/moazxx50@gmail.com", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          id: id
+        })
+      });
+
+      // حفظ في القائمة العامة
+      let users = JSON.parse(localStorage.getItem("a1users") || "[]");
+      users.push({ name, id });
+      localStorage.setItem("a1users", JSON.stringify(users));
+
+      // الانتقال
+      window.location.href = "home.html";
+    }
+  </script>
+</body>
+  </html>
