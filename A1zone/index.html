@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A1 Gang Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      background-attachment: fixed;
+    }.container {
+  max-width: 900px;
+  width: 90%;
+  margin: 40px 0;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: #00ffff;
+}
+
+input, button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+}
+
+input {
+  background: #eee;
+  color: black;
+}
+
+button {
+  background: #00ffff;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #00cccc;
+}
+
+.hidden { display: none; }
+
+.decoration {
+  margin: 20px 0;
+  font-size: 22px;
+  text-align: center;
+  border-top: 1px solid #00ffff;
+  padding-top: 15px;
+}
+
+.link-section details {
+  background-color: #111;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.section {
+  margin-top: 30px;
+  background-color: #111;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.members-list p {
+  margin: 4px 0;
+  font-size: 14px;
+  overflow-wrap: break-word;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container" id="loginContainer">
+    <h1>تسجيل الدخول إلى عصابة A1</h1>
+    <input type="text" id="username" placeholder="اسم المستخدم">
+    <input type="text" id="name" placeholder="الاسم (يجب أن يحتوي على A1)">
+    <input type="text" id="idNumber" placeholder="رقم ID الخاص بك">
+    <button onclick="login()">تسجيل الدخول</button>
+    <p id="error" style="color:red; text-align:center;"></p>
+  </div>  <div class="container hidden" id="mainPage">
+    <h2>مرحباً <span id="displayName"></span></h2>
+    <p style="text-align:center;">عدد الأعضاء الحاليين: <span id="loginCount">1</span></p>
+    <div class="decoration">『A1』<span id="shortName"></span>『رتبتك』</div><div class="section">
+  <h3>المسابقات</h3>
+  <div class="flex-buttons">
+    <button onclick="alert('Sniping')">القنص</button>
+    <button onclick="alert('Racing')">السباق</button>
+    <button onclick="alert('Bikes')">الدراجات</button>
+    <button onclick="alert('Battles')">المعارك</button>
+    <button onclick="alert('Stealth')">التخفي</button>
+    <button onclick="alert('المزيد قريباً')">المزيد قريبًا</button>
+  </div>
+</div>
+
+<div class="section">
+  <h3>الأعداء</h3>
+  <p>BS, JO, WKR, HR, IRQ, MTK, V1, GNG, VGN, M7, MF ...</p>
+</div>
+
+<div class="section">
+  <h3>اللوحة العسكرية</h3>
+  <p>1- القائد KING 👑 @Ahmed M</p>
+  <p>2- مشير FM1 🎗️ @ahmedadel</p>
+  <p>3- اللواء BDE 🚀 @Mo3az, @omar, @Aboud</p>
+  <p>4- قادة الحرب WL 🛡️ @moaaz, @frank, @manar</p>
+  <p>... والمزيد</p>
+</div>
+
+<div class="section">
+  <h3>أعضاء العصابة</h3>
+  <div class="members-list" id="membersList">
+    <p>@Omar @⁨『عبد الهادي 』 @Ahmed M @ahmedadel @Kareem Fares @Moaaz @عبدالروؤف @كـئـيـب @~•_• @~🤍🤍 @~Mohammed Mahmoud 🌶️ @~SALEH @~𝐒𝐄𝐈𝐅 💥 @+966 57 037 6049 @~Brr brr @~آيَـَـــِآدٍ @~أوس @~‏أوســ亗ــڪارR‿ˣ ✌︎ @~الحمد لله @~الشيخ عبدالرحمن @~فادي @+20 11 45894639 @~𓆩𝓐𝓱𝓶𝓮𝓭᭓𓆪 @~Deepu @~Yaranka_Poi @+966 50 716 7709 @~سبعاوي خال711 @~علي @Dyana</p>
+  </div>
+</div>
+
+<div class="section link-section">
+  <details>
+    <summary>روابط مهمة</summary>
+    <a href="https://www.tiktok.com/@0___75c" target="_blank">رابط TikTok الرسمي</a><br>
+    <a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب WhatsApp</a>
+  </details>
+</div>
+
+<div class="footer">
+  تم الإنشاء بواسطة A1 Team - يحتوي على نظام ذكي لتسجيل الأعضاء، إشعارات، لوحة شرف، وتعليقات قادمة قريباً.
+</div>
+
+  </div>  <script>
+    let loginCount = 1;
+
+    async function login() {
+      const username = document.getElementById('username').value.trim();
+      const name = document.getElementById('name').value.trim();
+      const idNumber = document.getElementById('idNumber').value.trim();
+
+      if (!name.includes("A1")) {
+        document.getElementById('error').textContent = "الاسم يجب أن يحتوي على A1";
+        return;
+      }
+
+      loginCount++;
+      document.getElementById('loginCount').textContent = loginCount;
+      document.getElementById('displayName').textContent = username;
+      document.getElementById('shortName').textContent = name;
+
+      document.getElementById('loginContainer').classList.add('hidden');
+      document.getElementById('mainPage').classList.remove('hidden');
+
+      const ip = await getIP();
+      const memberEntry = `• الاسم: ${name} | ID: ${idNumber} | IP: ${ip}`;
+      const entryElement = document.createElement('p');
+      entryElement.style.fontSize = "13px";
+      entryElement.textContent = memberEntry;
+      document.getElementById('membersList').appendChild(entryElement);
+
+      sendEmail(username, name, idNumber, ip);
+    }
+
+    async function getIP() {
+      try {
+        const res = await fetch("https://api.ipify.org?format=json");
+        const data = await res.json();
+        return data.ip;
+      } catch (err) {
+        return "غير معروف";
+      }
+    }
+
+    function sendEmail(username, name, id, ip) {
+      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+        username: username,
+        name: name,
+        id: id,
+        ip: ip,
+      }, "YOUR_USER_ID").then(
+        () => console.log("Email sent successfully."),
+        (err) => console.error("Failed to send email:", err)
+      );
+    }
+  </script>  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>  <script>
+    emailjs.init("YOUR_USER_ID");
+  </script></body>
+</html>
