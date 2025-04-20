@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>موقع عصابة A1</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2a2a2a;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #6c63ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    button:hover {
+      background-color: #5a50e0;
+    }
+
+    .page {
+      display: none;
+      padding: 20px;
+    }
+
+    #loginPage {
+      display: block;
+      text-align: center;
+    }
+
+    input {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 80%;
+      max-width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    a {
+      color: #6c63ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- صفحة تسجيل الدخول -->
+  <div class="login-container" id="loginPage">
+    <h2>تسجيل الدخول</h2>
+    <form id="loginForm">
+      <label for="username">الاسم:</label>
+      <input type="text" id="username" name="username" required placeholder="أدخل اسمك">
+      
+      <label for="id">الأيدي (رقم فقط):</label>
+      <input type="number" id="id" name="id" required placeholder="أدخل الأيدي">
+
+      <button type="submit">دخول</button>
+    </form>
+  </div>
+
+  <!-- صفحة المسابقات -->
+  <div class="page" id="competitionsPage">
+    <h2>المسابقات</h2>
+    <ul>
+      <li><a href="#">مسابقة صغيرة 1</a></li>
+      <li><a href="#">مسابقة صغيرة 2</a></li>
+      <li><a href="#">مسابقة كبيرة 1</a></li>
+      <li><a href="#">مسابقة كبيرة 2</a></li>
+    </ul>
+    <button onclick="goToHome()">العودة إلى الصفحة الرئيسية</button>
+  </div>
+
+  <!-- صفحة الأعداء -->
+  <div class="page" id="enemiesPage">
+    <h2>الأعداء</h2>
+    <ul>
+      <li>عدو 1</li>
+      <li>عدو 2</li>
+      <li>عدو 3</li>
+    </ul>
+    <button onclick="goToHome()">العودة إلى الصفحة الرئيسية</button>
+  </div>
+
+  <!-- صفحة الروابط -->
+  <div class="page" id="linksPage">
+    <h2>الروابط</h2>
+    <ul>
+      <li><a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">قناة الواتس آب</a></li>
+      <li><a href="https://www.tiktok.com/@_9___00?_t=ZS-8vgyTaSCEmO&_r=1" target="_blank">قناة تيك توك</a></li>
+    </ul>
+    <button onclick="goToHome()">العودة إلى الصفحة الرئيسية</button>
+  </div>
+
+  <!-- الصفحة الرئيسية بعد تسجيل الدخول -->
+  <div class="page" id="homePage">
+    <h2>مرحباً بك في الموقع</h2>
+    <button onclick="goToCompetitions()">المسابقات</button>
+    <button onclick="goToEnemies()">الأعداء</button>
+    <button onclick="goToLinks()">الروابط</button>
+  </div>
+
+  <script>
+    // الانتقال بين الصفحات
+    function goToHome() {
+      document.getElementById('homePage').style.display = 'block';
+      document.getElementById('competitionsPage').style.display = 'none';
+      document.getElementById('enemiesPage').style.display = 'none';
+      document.getElementById('linksPage').style.display = 'none';
+    }
+
+    function goToCompetitions() {
+      document.getElementById('homePage').style.display = 'none';
+      document.getElementById('competitionsPage').style.display = 'block';
+    }
+
+    function goToEnemies() {
+      document.getElementById('homePage').style.display = 'none';
+      document.getElementById('enemiesPage').style.display = 'block';
+    }
+
+    function goToLinks() {
+      document.getElementById('homePage').style.display = 'none';
+      document.getElementById('linksPage').style.display = 'block';
+    }
+
+    // وظيفة إرسال رسالة إلى Gmail عند التسجيل
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // لمنع التحديث التلقائي للصفحة
+      const username = document.getElementById('username').value;
+      const userId = document.getElementById('id').value;
+
+      // إرسال بريد إلكتروني عبر JavaScript (يجب استخدام خدمة مثل EmailJS أو API)
+      sendEmail(username, userId);
+
+      // الانتقال إلى الصفحة الرئيسية بعد التسجيل
+      goToHome();
+    });
+
+    function sendEmail(username, userId) {
+      const emailBody = `تم تسجيل الدخول من قبل: ${username} و الأيدي: ${userId}`;
+
+      // هنا يمكنك استبدال هذه الوظيفة باستخدام خدمة مثل EmailJS أو API آخر
+      alert("تم تسجيل الدخول بنجاح! رسالة الإيميل ستُرسل قريباً.");
+    }
+  </script>
+</body>
+</html>
