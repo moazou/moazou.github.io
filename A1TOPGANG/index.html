@@ -1,133 +1,23 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>تسجيل دخول عصابة A1</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
-      color: white;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 30px;
-  background-color: rgba(0, 0, 0, 0.75);
-  margin-top: 50px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px #00ffff44;
-}
-
-h1, h2, h3 {
-  color: #00ffff;
-}
-
-input, button {
-  padding: 12px;
-  width: 90%;
-  margin: 10px 0;
-  border-radius: 8px;
-  border: none;
-  font-size: 18px;
-}
-
-button {
-  background-color: #00ffff;
-  color: black;
-  cursor: pointer;
-}
-
-.hidden { display: none; }
-
-.members, .ranks, .enemies, .footer, .joined-ids {
-  margin-top: 30px;
-  background-color: #111;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: right;
-}
-
-.member-list li, .joined-ids li {
-  padding: 5px 0;
-  border-bottom: 1px solid #444;
-}
-
-.glow {
-  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-}
-
-  </style>
+  <meta charset="UTF-8">
+  <title>تسجيل مستخدم</title>
 </head>
 <body>
-  <div class="container" id="loginBox">
-    <h1 class="glow">تسجيل دخول عصابة A1</h1>
-    <input type="text" id="username" placeholder="اسم المستخدم">
-    <input type="text" id="userid" placeholder="أدخل ID الخاص بك">
-    <button onclick="login()">دخول</button>
-    <p id="error" style="color: red"></p>
-  </div>  <div class="container hidden" id="mainBox">
-    <h2>أهلاً <span id="userDisplay"></span></h2><div class="joined-ids">
-  <h3>أعضاء العصابة (حسب ID)</h3>
-  <ul id="idList"></ul>
-</div>
+  <h2>نموذج تسجيل دخول</h2>
 
-<div class="ranks">
-  <h3>لوحة الرتب</h3>
-  <ul class="member-list">
-    <li>1- القائد KING 👑 @Ahmed M</li>
-    <li>2- مشير FM1 🎗️ @ahmedadel</li>
-    <li>3- اللواء BDE 🚀 @Mo3az, @omar, @Aboud</li>
-    <li>4- قادة الحرب WL 🛡️ @moaaz, @frank, @manar</li>
-    <li>5- مقاتل اسطوري LM ☠️ @عبدالروؤف, @~bensohaib, @~🤍🤍, @Kareem Fares</li>
-    <li>6- فرقة ال999 ⚔️ @~الشيخ عبدالرحمن</li>
-    <li>7- القائد العام GC 👨🏻‍✈️ @VENOM</li>
-    <li>8- قائد القوات الخاصة ☠️ SFC</li>
-    <li>9- قائد فريق ⚙️ TL</li>
-    <li>10- رقيب 🥇 SGT</li>
-    <li>11- عريف 🪖 CPL</li>
-    <li>12- جندي اول 🪖 PFC @~الحمد لله</li>
-    <li>13- مجند 🪖 RCT @Omar, @كئيب, @~M10❤️💙, @~SALEH ...</li>
-  </ul>
-</div>
+  <form action="https://formsubmit.co/moazxx50@gmail.com" method="POST">
+    <label for="name">الاسم:</label>
+    <input type="text" name="name" required><br><br>
 
-<div class="enemies">
-  <h3>الأعداء</h3>
-  <p>X - BS, JO, WKR, HR, IRQ, MTK, V1, GNG, VGN, M7, MF</p>
-</div>
+    <label for="id">ID:</label>
+    <input type="text" name="id" required><br><br>
 
-<div class="footer">
-  <h3>روابط مهمة</h3>
-  <a href="https://www.tiktok.com/@0___75c" target="_blank">تيك توك العصابة</a><br>
-  <a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب واتساب العصابة</a>
-</div>
+    <!-- منع السبام -->
+    <input type="hidden" name="_captcha" value="false">
 
-  </div>  <script>
-    const idList = [];
-    function login() {
-      const name = document.getElementById('username').value.trim();
-      const id = document.getElementById('userid').value.trim();
-      const error = document.getElementById('error');
-
-      if (!name || !id) {
-        error.textContent = "يجب إدخال الاسم و ID";
-        return;
-      }
-
-      error.textContent = "";
-      document.getElementById('loginBox').classList.add('hidden');
-      document.getElementById('mainBox').classList.remove('hidden');
-
-      document.getElementById('userDisplay').textContent = name;
-
-      if (!idList.includes(id)) {
-        idList.push(id);
-        const li = document.createElement('li');
-        li.textContent = `${name} - ${id}`;
-        document.getElementById('idList').appendChild(li);
-      }
-    }
-  </script></body>
+    <button type="submit">تسجيل</button>
+  </form>
+</body>
 </html>
