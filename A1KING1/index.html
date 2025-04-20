@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع عصابة A1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #212121;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+        }
+
+        .section {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .form-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            background-color: #8E44AD;
+            color: white;
+        }
+
+        .nav-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .nav-buttons button {
+            background-color: #34495E;
+            color: white;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>مرحبا بك في موقع عصابة A1</h1>
+    </div>
+
+    <!-- صفحة تسجيل الدخول -->
+    <div id="login" class="section active">
+        <h2>تسجيل الدخول</h2>
+        <div class="form-container">
+            <input type="text" id="username" placeholder="اسم المستخدم" required>
+            <input type="number" id="userId" placeholder="الأيدي (رقم فقط)" required>
+            <button onclick="login()">تسجيل الدخول</button>
+        </div>
+    </div>
+
+    <!-- المسابقات -->
+    <div id="competitions" class="section">
+        <h2>المسابقات</h2>
+        <p>هنا ستكون المسابقات الصغيرة والكبيرة.</p>
+        <p>10 مسابقات صغيرة و2 مسابقات كبيرة.</p>
+    </div>
+
+    <!-- الأعضاء -->
+    <div id="members" class="section">
+        <h2>الأعضاء</h2>
+        <ul>
+            <li>القائد KING 👑 - @Ahmed M</li>
+            <li>مشير FM1 🎗️ - @ahmedadel</li>
+            <li>اللواء BDE 🚀 - @Mo3az, @omar, @Aboud</li>
+            <li>مقاتل اسطوري LM ☠️ - @عبدالروؤف, @bensohaib</li>
+        </ul>
+    </div>
+
+    <!-- الأعداء -->
+    <div id="enemies" class="section">
+        <h2>الأعداء</h2>
+        <ul>
+            <li>القناصين: 50 ألف</li>
+            <li>الجواسيس: 70 ألف</li>
+        </ul>
+    </div>
+
+    <div class="nav-buttons">
+        <button onclick="showSection('competitions')">المسابقات</button>
+        <button onclick="showSection('members')">الأعضاء</button>
+        <button onclick="showSection('enemies')">الأعداء</button>
+    </div>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        // تهيئة البريد الإلكتروني
+        emailjs.init("user_XXXXXXX");
+
+        // دالة لإرسال رسالة بريد إلكتروني
+        function sendEmail(username, userId) {
+            var templateParams = {
+                user_name: username,
+                user_id: userId
+            };
+
+            emailjs.send('service_XXXX', 'template_XXXX', templateParams)
+                .then(function(response) {
+                    console.log('تم إرسال البريد بنجاح', response);
+                }, function(error) {
+                    console.log('خطأ في إرسال البريد', error);
+                });
+        }
+
+        // التحقق من بيانات الدخول
+        function login() {
+            const username = document.getElementById('username').value;
+            const userId = document.getElementById('userId').value;
+
+            if (!username || !userId || !/^[0-9]+$/.test(userId) || !username.includes("『A1』")) {
+                alert("الرجاء إدخال اسم صحيح وأيدي رقم.");
+                return;
+            }
+
+            // إرسال البريد الإلكتروني عند النجاح
+            sendEmail(username, userId);
+
+            // إخفاء صفحة تسجيل الدخول وإظهار المحتوى
+            document.getElementById('login').classList.remove('active');
+            showSection('competitions');  // عرض صفحة المسابقات بعد الدخول الناجح
+        }
+
+        // تغيير الأقسام
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
