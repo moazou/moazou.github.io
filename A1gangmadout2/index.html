@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عصابة A1</title>
+    <style>
+        /* General Reset */
+        body, h1, h2, p, ul, li, input, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .login-container {
+            background-color: #34495e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 30px;
+        }
+
+        .login-container input, .login-container button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: #ecf0f1;
+        }
+
+        .login-container button {
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #2980b9;
+        }
+
+        .section {
+            display: none;
+            background-color: #34495e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+        }
+
+        .members-list, .enemies-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .members-list li, .enemies-list li {
+            margin-bottom: 10px;
+        }
+
+        .links-container a {
+            color: #3498db;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .links-container a:hover {
+            text-decoration: underline;
+        }
+
+        .task-list ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .task-list li {
+            margin-bottom: 10px;
+        }
+
+        .welcome-message {
+            font-size: 18px;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Login Section -->
+        <div class="login-container" id="login-container">
+            <h1>تسجيل الدخول</h1>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="الاسم" required>
+                <input type="text" id="id" placeholder="الأيدي" required>
+                <button type="submit">دخول</button>
+            </form>
+        </div>
+
+        <!-- Welcome Message -->
+        <div class="welcome-message" id="welcomeMessage"></div>
+
+        <!-- Members Section -->
+        <div class="section" id="members-container">
+            <h2>أعضاء العصابة</h2>
+            <ul class="members-list" id="members-list"></ul>
+        </div>
+
+        <!-- Enemies Section -->
+        <div class="section" id="enemies-container">
+            <h2>أعداء العصابة</h2>
+            <ul class="enemies-list" id="enemies-list"></ul>
+        </div>
+
+        <!-- Task Section -->
+        <div class="section task-list" id="task-list">
+            <h2>المهام اليومية</h2>
+            <ul>
+                <li>مهمة 1: هزم 5 أعداء</li>
+                <li>مهمة 2: شارك في مسابقة</li>
+                <li>مهمة 3: أكمل تحدي القيادة</li>
+            </ul>
+        </div>
+
+        <!-- Links Section -->
+        <div class="section" id="links-container">
+            <h2>روابط العصابة</h2>
+            <a href="https://www.tiktok.com/@_9___00?_t=ZS-8vh3SWZwcIz&_r=1" target="_blank">قناة تيك توك</a>
+            <a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب الواتساب</a>
+        </div>
+
+    </div>
+
+    <script>
+        // الكود الخاص بتسجيل الدخول وإظهار المحتوى بناءً على المراتب
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const id = document.getElementById("id").value;
+
+            if (username && id) {
+                // إرسال البريد الإلكتروني
+                sendEmail(username, id);
+
+                // إخفاء صفحة تسجيل الدخول
+                document.getElementById("login-container").style.display = "none";
+
+                // عرض رسالة الترحيب
+                displayWelcomeMessage(username);
+
+                // عرض صفحة الأعضاء
+                document.getElementById("members-container").style.display = "block";
+                displayMembers();
+
+                // عرض صفحة الأعداء
+                document.getElementById("enemies-container").style.display = "block";
+                displayEnemies();
+
+                // عرض روابط أخرى
+                document.getElementById("links-container").style.display = "block";
+
+                // عرض المهام اليومية
+                document.getElementById("task-list").style.display = "block";
+            }
+        });
+
+        // إرسال البريد الإلكتروني (تعديل الخدمة التي يتم استخدامها مثل EmailJS)
+        function sendEmail(username, id) {
+            const email = "moazxx50@gmail.com";
+            const subject = "تسجيل دخول جديد";
+            const body = `تم دخول شخص جديد: الاسم: ${username}, الأيدي: ${id}`;
+
+            console.log(`إرسال بريد إلى: ${email} | الموضوع: ${subject} | المحتوى: ${body}`);
+            // هنا يمكن تكامل خدمة لإرسال البريد الإلكتروني مثل EmailJS
+        }
+
+        // عرض رسالة الترحيب
+        function displayWelcomeMessage(username) {
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            welcomeMessage.innerHTML = `مرحبًا ${username}!`;
+        }
+
+        // عرض الأعضاء في صفحة الأعضاء
+        function displayMembers() {
+            const members = [
+                { rank: "مشير 👇🏻", task: "مساعدة القائد في أعماله وينوب عنه غيابه وله سلطه كبيره على كل الرتب" },
+                { rank: "اللواء 👇🏻", task: "الاشراف على الجيش وتنظيمه والمساعدة في تطوير الجيش (يمكنهم المحاربة أيضا وتوجيه الجنود)" },
+                { rank: "قادة الحرب 👇🏻", task: "أقوى أفراد العصابة ملازمين للقائد وقت الحرب" },
+                { rank: "مقاتل اسطوري 👇🏻", task: "فرقة خاصة بقيادة شخص لا يفارقون بعضهم أبدًا تنظيمهم خاص جدًا" },
+                { rank: "فرقة 999 👇🏻", task: "فرقة خاصة" },
+                { rank: "القائد العام للجيش 👨🏻‍✈️", task: "مسؤول عن كل شيء في الجيش" },
+                { rank: "قائد القوات الخاصة 👇🏻", task: "يعينه قائد الجيش لتكوين مجموعة صغيرة من أقوى الجنود" },
+                { rank: "قائد فريق ⚙️", task: "غير متاح حاليا" },
+                { rank: "رقيب 🥇", task: "الرقابة على السيارات والملابس والعتاد" },
+                { rank: "عريف 🪖", task: "يتلقى الأوامر من الرقيب" },
+                { rank: "جندي أول 🪖", task: "يمكنه الحرب مدرب ويمكنه القتال لفترة طويلة" },
+                { rank: "مجند 🪖", task: "تحت التدريب" }
+            ];
+
+            const membersList = document.getElementById("members-list");
+            members.forEach(member => {
+                const li = document.createElement("li");
+                li.innerHTML = `${member.rank}: ${member.task}`;
+                membersList.appendChild(li);
+            });
+        }
+
+        // عرض الأعداء في صفحة الأعداء
+        function displayEnemies() {
+            const enemies = ["BS", "JO", "WKR", "HR", "IRQ", "MTK", "V1", "GNG", "VGN", "M7", "MF"];
+            const enemiesList = document.getElementById("enemies-list");
+            enemies.forEach(enemy => {
+                const li = document.createElement("li");
+                li.innerHTML = enemy;
+                enemiesList.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html>
