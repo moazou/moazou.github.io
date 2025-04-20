@@ -9,6 +9,8 @@
             font-family: 'Arial', sans-serif;
             background-color: #f3f4f6;
             color: #333;
+            margin: 0;
+            padding: 0;
         }
         .container {
             max-width: 1200px;
@@ -17,45 +19,18 @@
         }
         h1, h2 {
             color: #2c3e50;
-        }
-        .form-container, .content-container {
-            background-color: #ecf0f1;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        input[type="text"], input[type="password"] {
-            padding: 12px;
-            margin: 10px 0;
-            width: 100%;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            color: #333;
-            font-size: 14px;
-        }
-        button {
-            padding: 12px 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #2980b9;
+            text-align: center;
         }
         table {
             width: 100%;
-            margin-top: 20px;
             border-collapse: collapse;
+            margin-top: 20px;
         }
         th, td {
             padding: 12px;
             text-align: left;
             border: 1px solid #ccc;
+            font-size: 14px;
         }
         th {
             background-color: #3498db;
@@ -64,182 +39,175 @@
         td {
             background-color: #ecf0f1;
         }
-        .alert {
-            background-color: #2ecc71;
-            padding: 12px;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: none;
+        .rank-section {
+            margin-bottom: 40px;
         }
-        .enemy-list {
+        .rank-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            background-color: #e74c3c;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .members-list {
             list-style-type: none;
             padding-left: 0;
         }
-        .enemy-list li {
+        .members-list li {
             background-color: #f4f4f4;
             padding: 10px;
             margin: 5px 0;
             border-radius: 5px;
-        }
-        .links a {
-            color: #3498db;
-            text-decoration: none;
-            font-size: 16px;
-            margin: 5px;
-        }
-        .links a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- صفحة تسجيل الدخول -->
-        <div class="form-container" id="login-form">
-            <h2>تسجيل الدخول</h2>
-            <input type="text" id="username" placeholder="الاسم" />
-            <input type="password" id="password" placeholder="كلمة المرور" />
-            <button onclick="login()">تسجيل الدخول</button>
-        </div>
+        <h1>إحصائيات الأعضاء</h1>
 
-        <!-- لوحة القيادة -->
-        <div class="content-container" id="dashboard" style="display: none;">
-            <h2>لوحة القيادة</h2>
-            <div id="alert" class="alert">تم إضافة النقاط!</div>
-
-            <h3>إحصائيات الأعضاء</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>الاسم</th>
-                        <th>الرتبة</th>
-                        <th>النقاط</th>
-                        <th>تعديل النقاط</th>
-                    </tr>
-                </thead>
-                <tbody id="members-list">
-                    <!-- سيتم إضافة الأعضاء هنا -->
-                </tbody>
-            </table>
-
-            <h3>قائمة الأعداء</h3>
-            <ul class="enemy-list">
-                <li>BS</li>
-                <li>JO</li>
-                <li>WKR</li>
-                <li>HR</li>
-                <li>IRQ</li>
-                <li>MTK</li>
-                <li>V1</li>
-                <li>GNG</li>
-                <li>VGN</li>
-                <li>M7</li>
-                <li>MF</li>
+        <!-- القائد -->
+        <div class="rank-section">
+            <div class="rank-title">1- القائد KING 👑</div>
+            <ul class="members-list">
+                <li>@Ahmed M</li>
             </ul>
-
-            <h3>الروابط</h3>
-            <div class="links">
-                <a href="https://www.tiktok.com/@_9___00?_t=ZS-8vh3SWZwcIz&_r=1" target="_blank">قناة TikTok</a>
-                <a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب WhatsApp</a>
-            </div>
         </div>
+
+        <!-- مشير -->
+        <div class="rank-section">
+            <div class="rank-title">2- مشير FM1 🎗️</div>
+            <ul class="members-list">
+                <li>@ahmedadel</li>
+            </ul>
+        </div>
+
+        <!-- اللواء -->
+        <div class="rank-section">
+            <div class="rank-title">3- اللواء BDE 🚀</div>
+            <ul class="members-list">
+                <li>@Mo3az</li>
+                <li>@omar</li>
+                <li>@Aboud</li>
+            </ul>
+        </div>
+
+        <!-- قادة الحرب -->
+        <div class="rank-section">
+            <div class="rank-title">4- قادة الحرب WL 🛡️</div>
+            <ul class="members-list">
+                <li>@moaaz</li>
+                <li>@frank</li>
+                <li>@manar</li>
+            </ul>
+        </div>
+
+        <!-- مقاتل اسطوري -->
+        <div class="rank-section">
+            <div class="rank-title">5- مقاتل اسطوري LM ☠️</div>
+            <ul class="members-list">
+                <li>@عبدالروؤف</li>
+                <li>@bensohaib</li>
+                <li>@🤍🤍</li>
+                <li>@Kareem Fares</li>
+            </ul>
+            <p>أسلحتهم: 10, 11</p>
+        </div>
+
+        <!-- فرقة ال 999 الحربية -->
+        <div class="rank-section">
+            <div class="rank-title">6- فرقة ال 999 الحربية المقاتلة ⚔️</div>
+            <ul class="members-list">
+                <li>@الشيخ عبدالرحمن</li>
+                <li>...</li> <!-- يمكن إضافة الأعضاء هنا -->
+            </ul>
+        </div>
+
+        <!-- القائد العام للجيش -->
+        <div class="rank-section">
+            <div class="rank-title">7- القائد العام للجيش GC 👨🏻‍✈️</div>
+            <ul class="members-list">
+                <li>@VENOM</li>
+            </ul>
+        </div>
+
+        <!-- قائد القوات الخاصة -->
+        <div class="rank-section">
+            <div class="rank-title">8- قائد القوات الخاصة SFC ☠️</div>
+            <ul class="members-list">
+                <li>...</li> <!-- يمكن إضافة الأعضاء هنا -->
+            </ul>
+        </div>
+
+        <!-- قائد فريق -->
+        <div class="rank-section">
+            <div class="rank-title">9- قائد فريق TL ⚙️</div>
+            <ul class="members-list">
+                <li>...</li> <!-- يمكن إضافة الأعضاء هنا -->
+            </ul>
+        </div>
+
+        <!-- رقيب -->
+        <div class="rank-section">
+            <div class="rank-title">10- رقيب SGT 🥇</div>
+            <ul class="members-list">
+                <li>...</li> <!-- يمكن إضافة الأعضاء هنا -->
+            </ul>
+        </div>
+
+        <!-- عريف -->
+        <div class="rank-section">
+            <div class="rank-title">11- عريف CPL 🪖</div>
+            <ul class="members-list">
+                <li>...</li> <!-- يمكن إضافة الأعضاء هنا -->
+            </ul>
+        </div>
+
+        <!-- جندي أول -->
+        <div class="rank-section">
+            <div class="rank-title">12- جندي أول PFC 🪖</div>
+            <ul class="members-list">
+                <li>@الحمد لله</li>
+            </ul>
+        </div>
+
+        <!-- مجند -->
+        <div class="rank-section">
+            <div class="rank-title">13- مجند RCT 🪖</div>
+            <ul class="members-list">
+                <li>@Omar</li>
+                <li>@كـئـيـب</li>
+                <li>@~󠅤󠅤󠅤󠅤</li>
+                <li>@~•_•</li>
+                <li>@~7oda</li>
+                <li>@~M10❤️💙</li>
+                <li>@~Mohammed Mahmoud 🌶️</li>
+                <li>@~آيَـَـــِآدٍ</li>
+                <li>@~أوس</li>
+                <li>@~‏أوســ亗ــڪارR‿ˣ ✌︎</li>
+                <li>@~𓆩 ᗰᖇ. SᑭEEᗪ 𓆪🖤</li>
+                <li>@~𓆩𝓐𝓱𝓶𝓮𝓭᭓𓆪</li>
+                <li>@~想 ﾑ1〙写䒙「M E D O」ン</li>
+                <li>@~BASEL CH7</li>
+                <li>@+966 57 037 6049</li>
+                <li>@~SALEH</li>
+                <li>@~𝐒𝐄𝐈𝐅 💥</li>
+                <li>@BasEl</li>
+                <li>@Deepu</li>
+            </ul>
+        </div>
+
+        <!-- الفرق -->
+        <div class="rank-section">
+            <div class="rank-title">الفرق 👾</div>
+            <ul class="members-list">
+                <li>القناصين: 50,000</li>
+                <li>الجواسيس: 70,000</li>
+            </ul>
+        </div>
+
     </div>
-
-    <script>
-        // بيانات الأعضاء مع الرتب والنقاط
-        const members = [
-            { username: "Ahmed M", rank: "KING 👑", points: 100 },
-            { username: "ahmedadel", rank: "FM1 🎗️", points: 50 },
-            { username: "Mo3az", rank: "BDE 🚀", points: 30 },
-            { username: "omar", rank: "BDE 🚀", points: 30 },
-            { username: "Aboud", rank: "BDE 🚀", points: 30 },
-            { username: "عبدالروؤف", rank: "LM ☠️", points: 20 },
-            { username: "bensohaib", rank: "LM ☠️", points: 20 },
-            { username: "frank", rank: "WL 🛡️", points: 40 },
-            { username: "manar", rank: "WL 🛡️", points: 40 },
-            { username: "Kareem Fares", rank: "LM ☠️", points: 20 },
-            { username: "الشيخ عبدالرحمن", rank: "999 ⚔️", points: 0 },
-            { username: "VENOM", rank: "GC 👨🏻‍✈️", points: 0 },
-            { username: "SFC User", rank: "SFC ☠️", points: 0 },
-            { username: "TL User", rank: "TL ⚙️", points: 0 },
-            { username: "SGT User", rank: "SGT 🥇", points: 0 },
-            { username: "CPL User", rank: "CPL 🪖", points: 0 },
-            { username: "PFC User", rank: "PFC 🪖", points: 0 },
-            { username: "RCT User", rank: "RCT 🪖", points: 0 }
-        ];
-
-        const adminID = 104851981;
-
-        // دالة تسجيل الدخول
-        function login() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            if (username && password) {
-                const loggedInUserID = Math.floor(Math.random() * 1000000000); // محاكاة ID عشوائي للمستخدم
-
-                if (loggedInUserID === adminID) {
-                    alert(`تم تسجيل دخول ${username}. لديك صلاحية تعديل النقاط.`);
-                }
-
-                // إرسال البريد الإلكتروني (ملاحظة: هذه مجرد دالة محاكاة ولن تعمل بدون خادم خلفي)
-                sendEmailNotification(username);
-
-                // إظهار لوحة القيادة
-                document.getElementById("login-form").style.display = "none";
-                document.getElementById("dashboard").style.display = "block";
-                
-                // تحديث قائمة الأعضاء
-                updateMembersList();
-            }
-        }
-
-        // دالة محاكاة إرسال بريد إلكتروني
-        function sendEmailNotification(username) {
-            // هنا يمكنك استخدام الخادم الخلفي (PHP أو Node.js) لإرسال البريد الإلكتروني
-            alert(`تم تسجيل دخول ${username}. سيتم إرسال إشعار إلى بريدك الإلكتروني.`);
-        }
-
-        // دالة لتحديث قائمة الأعضاء
-        function updateMembersList() {
-            const membersList = document.getElementById("members-list");
-            membersList.innerHTML = "";
-            members.forEach(member => {
-                const row = document.createElement("tr");
-
-                // الخلايا
-                row.innerHTML = `
-                    <td>${member.username}</td>
-                    <td>${member.rank}</td>
-                    <td>${member.points}</td>
-                    <td><button onclick="editPoints('${member.username}')">تعديل النقاط</button></td>
-                `;
-                membersList.appendChild(row);
-            });
-        }
-
-        // دالة لتعديل النقاط
-        function editPoints(username) {
-            const member = members.find(m => m.username === username);
-            if (member) {
-                const newPoints = prompt(`أدخل النقاط الجديدة لـ ${member.username}:`, member.points);
-                if (newPoints !== null) {
-                    member.points = parseInt(newPoints);
-                    updateMembersList();
-                    showAlert();
-                }
-            }
-        }
-
-        // دالة لعرض التنبيه عند تعديل النقاط
-        function showAlert() {
-            document.getElementById("alert").style.display = "block";
-            setTimeout(() => {
-                document.getElementById("alert").style.display = "none";
-            }, 2000);
-        }
-    </script>
 
 </body>
 </html>
