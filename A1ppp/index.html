@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة عصابة A1</title>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f1f1f;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #8e44ad;
+        }
+        label, input, button {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        input {
+            padding: 10px;
+            width: 250px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #2c3e50;
+            color: #fff;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #9b59b6;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            text-align: left;
+            color: #fff;
+        }
+        th, td {
+            padding: 8px;
+        }
+        th {
+            background-color: #8e44ad;
+        }
+        a {
+            color: #8e44ad;
+        }
+    </style>
+</head>
+<body>
+    <h1>مرحبا بك في منصة عصابة A1</h1>
+
+    <h2>تسجيل الدخول</h2>
+    <form id="loginForm">
+        <label for="username">اسم المستخدم:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="password">كلمة السر:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit">دخول</button>
+    </form>
+
+    <h2>الأعضاء</h2>
+    <table>
+        <tr>
+            <th>الرتبة</th>
+            <th>الاسم</th>
+        </tr>
+        <tr>
+            <td>القائد KING 👑</td>
+            <td>@Ahmed M</td>
+        </tr>
+        <tr>
+            <td>مشير FM1 🎗️</td>
+            <td>@ahmedadel</td>
+        </tr>
+        <tr>
+            <td>اللواء BDE 🚀</td>
+            <td>@Mo3az, @omar, @Aboud</td>
+        </tr>
+        <tr>
+            <td>قادة الحرب WL 🛡️</td>
+            <td>@moaaz, @frank, @manar</td>
+        </tr>
+        <tr>
+            <td>مقاتل اسطوري LM ☠️</td>
+            <td>@عبدالروؤف, @~bensohaib, @~🤍🤍, @Kareem Fares</td>
+        </tr>
+        <tr>
+            <td>فرقة ال 999 الحربية ⚔️</td>
+            <td>@~الشيخ عبدالرحمن</td>
+        </tr>
+        <tr>
+            <td>القائد العام GC 👨🏻‍✈️</td>
+            <td>@VENOM</td>
+        </tr>
+        <tr>
+            <td>قائد القوات الخاصة SFC ☠️</td>
+            <td>---</td>
+        </tr>
+        <tr>
+            <td>قائد فريق TL ⚙️</td>
+            <td>---</td>
+        </tr>
+        <tr>
+            <td>رقيب SGT 🥇</td>
+            <td>---</td>
+        </tr>
+        <tr>
+            <td>عريف CPL 🪖</td>
+            <td>---</td>
+        </tr>
+        <tr>
+            <td>جندي اول PFC 🪖</td>
+            <td>@~الحمد لله</td>
+        </tr>
+        <tr>
+            <td>مجند RCT 🪖</td>
+            <td>@Omar, @كـئـيـب, @~󠅤󠅤󠅤󠅤, @~•_•, @~7oda, @~M10❤️💙, @~Mohammed Mahmoud 🌶️, @~آيَـَـــِآدٍ, @~أوس</td>
+        </tr>
+    </table>
+
+    <h2>الروابط المهمة</h2>
+    <ul>
+        <li><a href="https://www.tiktok.com/@_9___00?_t=ZS-8vh3SWZwcIz&_r=1" target="_blank">قناة TikTok</a></li>
+        <li><a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب WhatsApp</a></li>
+    </ul>
+
+    <h2>إحصائيات العصابة</h2>
+    <table>
+        <tr>
+            <th>الاسم</th>
+            <th>النقاط</th>
+        </tr>
+        <tr>
+            <td>@Ahmed M</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>@ahmedadel</td>
+            <td>150</td>
+        </tr>
+        <tr>
+            <td>@Mo3az</td>
+            <td>200</td>
+        </tr>
+        <tr>
+            <td>@frank</td>
+            <td>250</td>
+        </tr>
+        <tr>
+            <td>@manar</td>
+            <td>300</td>
+        </tr>
+    </table>
+
+    <script>
+        // إضافة EmailJS الخاص بك
+        emailjs.init("your_user_id");  // استبدل بـ User ID الخاص بك من EmailJS
+
+        // محاكاة تسجيل الدخول
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // تحقق من بيانات الدخول (المثال هنا بسيط)
+            if(username === "admin" && password === "password123") {
+                alert("تم تسجيل الدخول بنجاح!");
+
+                // إرسال البريد الإلكتروني عند تسجيل الدخول
+                sendEmailNotification(username);
+            } else {
+                alert("خطأ في بيانات الدخول!");
+            }
+        });
+
+        // دالة لإرسال البريد الإلكتروني
+        function sendEmailNotification(username) {
+            var templateParams = {
+                to_email: "moazxx50@gmail.com",  // بريدك الإلكتروني
+                from_name: username,
+                message: "تم تسجيل دخول جديد بواسطة: " + username
+            };
+
+            emailjs.send("your_service_id", "your_template_id", templateParams)
+                .then(function(response) {
+                    console.log('تم إرسال الإشعار بنجاح', response);
+                }, function(error) {
+                    console.log('حدث خطأ في إرسال البريد الإلكتروني', error);
+                });
+        }
+    </script>
+</body>
+  </html>
