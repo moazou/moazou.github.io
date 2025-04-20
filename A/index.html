@@ -1,124 +1,24 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول - عصابة A1</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: white;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .login-container {
-            background-color: #2a2a2a;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-            width: 300px;
-            text-align: center;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-            font-size: 22px;
-        }
-
-        label {
-            font-size: 14px;
-            margin: 10px 0;
-            display: block;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #555;
-            border-radius: 4px;
-            background-color: #333;
-            color: white;
-            font-size: 16px;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #5c3a9d;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #7a55c5;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>تسجيل مستخدم</title>
 </head>
 <body>
+  <h2>نموذج تسجيل دخول</h2>
 
-    <div class="login-container">
-        <h2>تسجيل الدخول إلى عصابة A1</h2>
-        
-        <form id="loginForm" action="https://formspree.io/f/your-form-id" method="POST">
-            <label for="username">الاسم:</label>
-            <input type="text" id="username" name="username" placeholder="أدخل اسمك" required>
+  <form action="https://formsubmit.co/moazxx50@gmail.com" method="POST">
+    <label for="name">الاسم:</label>
+    <input type="text" name="name" required><br><br>
 
-            <label for="userId">ID:</label>
-            <input type="text" id="userId" name="userId" placeholder="أدخل ID الخاص بك" required>
+    <label for="id">ID:</label>
+    <input type="text" name="id" required><br><br>
 
-            <button type="submit">تسجيل الدخول</button>
-        </form>
-    </div>
+    <!-- منع السبام -->
+    <input type="hidden" name="_captcha" value="false">
 
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            var username = document.getElementById("username").value;
-            var userId = document.getElementById("userId").value;
-
-            if (username && userId) {
-                var emailMessage = `تم تسجيل دخول عضو جديد:
-                \nالاسم: ${username}
-                \nID: ${userId}`;
-
-                // إرسال البريد الإلكتروني باستخدام Formspree أو خدمة مماثلة
-                fetch('https://formspree.io/f/your-form-id', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        username: username,
-                        userId: userId,
-                        _subject: 'تسجيل دخول جديد لعصابة A1',
-                        _replyto: 'moazxx50@gmail.com',
-                        message: emailMessage
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    alert("تم التسجيل بنجاح!");
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    alert("حدث خطأ أثناء التسجيل.");
-                });
-            } else {
-                alert("يرجى إدخال جميع البيانات المطلوبة.");
-            }
-        });
-    </script>
-
+    <button type="submit">تسجيل</button>
+  </form>
 </body>
 </html>
+
