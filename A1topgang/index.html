@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع العصابة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2a2a2a;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #444;
+            padding: 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 30px;
+        }
+
+        .navbar {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .navbar button:hover {
+            background-color: #45a049;
+        }
+
+        .section {
+            display: none;
+            margin: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        form {
+            width: 300px;
+            margin: auto;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        #login {
+            padding: 20px;
+            background-color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>عصابة A1</h1>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <nav class="navbar">
+            <button onclick="showSection('members')">الأعضاء</button>
+            <button onclick="showSection('competitions')">المسابقات</button>
+            <button onclick="showSection('enemies')">الأعداء</button>
+            <button onclick="showSection('links')">الروابط</button>
+        </nav>
+
+        <!-- Sections -->
+        <section id="members" class="section">
+            <h2>الأعضاء والرتب</h2>
+            <div class="member-section">
+                <h3>1- القائد KING 👑</h3>
+                <p>@⁨Ahmed M⁩</p>
+            </div>
+            <!-- Add more member sections here -->
+        </section>
+
+        <section id="competitions" class="section">
+            <h2>المسابقات</h2>
+            <ul>
+                <li>مسابقة 1: التفاصيل هنا</li>
+                <!-- Add more competitions here -->
+            </ul>
+        </section>
+
+        <section id="enemies" class="section">
+            <h2>الأعداء</h2>
+            <ul>
+                <li>BS</li>
+                <!-- Add more enemies here -->
+            </ul>
+        </section>
+
+        <section id="links" class="section">
+            <h2>الروابط</h2>
+            <ul>
+                <li><a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">قناة الواتس</a></li>
+                <!-- Add more links here -->
+            </ul>
+        </section>
+    </main>
+
+    <!-- Login Form -->
+    <section id="login">
+        <h2>تسجيل الدخول</h2>
+        <form id="loginForm">
+            <label for="name">الاسم:</label>
+            <input type="text" id="name" name="name" required pattern="^[A-Za-z0-9\s]+$">
+
+            <label for="id">ID (رقم فقط):</label>
+            <input type="number" id="id" name="id" required>
+
+            <button type="submit">تسجيل الدخول</button>
+        </form>
+    </section>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("YOUR_USER_ID");  // Replace with your EmailJS user ID
+        })();
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Default to show the 'members' section
+        showSection('members');
+
+        // Form submission logic
+        document.getElementById("loginForm").onsubmit = function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const id = document.getElementById("id").value;
+
+            // Sending the registration details via EmailJS
+            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+                name: name,
+                id: id
+            })
+            .then(function(response) {
+                alert("تم التسجيل بنجاح");
+            }, function(error) {
+                console.error("Error:", error);
+                alert("حدث خطأ أثناء التسجيل");
+            });
+        };
+    </script>
+</body>
+</html>
