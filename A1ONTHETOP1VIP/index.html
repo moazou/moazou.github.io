@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>عصابة A1</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: 'Tajawal', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 450px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .login-box, .dashboard {
+      background-color: #1a1a2e;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      width: 100%;
+      margin: 20px 0;
+    }
+    .login-box input, .dashboard a {
+      width: 100%;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      font-size: 16px;
+      background-color: #2e2e4d;
+      color: white;
+    }
+    .login-box button {
+      background-color: #9333ea;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+    .login-box button:hover {
+      background-color: #7e22ce;
+    }
+    .dashboard {
+      display: none;
+    }
+    .dashboard ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .dashboard li {
+      margin: 12px 0;
+    }
+    .button {
+      background-color: #9333ea;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #7e22ce;
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .section {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- محتوى تسجيل الدخول -->
+  <div class="container">
+    <div class="login-box" id="loginBox">
+      <h2>تسجيل دخول عصابة A1</h2>
+      <form onsubmit="return handleLogin(event)">
+        <input type="text" id="username" placeholder="اكتب اسمك" required>
+        <input type="text" id="userID" placeholder="اكتب ID الخاص بك" required>
+        <button type="submit">دخول</button>
+      </form>
+    </div>
+
+    <!-- محتوى الصفحة الرئيسية (بعد تسجيل الدخول) -->
+    <div class="dashboard" id="dashboard">
+      <h2>أهلاً بك في عصابة A1</h2>
+
+      <div class="section">
+        <h3>قائمة الأعضاء</h3>
+        <ul>
+          <li>القائد: KING 👑</li>
+          <li>مشير: FM1 🎗️</li>
+          <li>اللواء: BDE 🚀</li>
+          <li>قادة الحرب: WL 🛡️</li>
+          <li>مقاتل أسطوري: LM ☠️</li>
+          <li>فرقة ال 999 الحربية المقاتلة: ⚔️</li>
+          <li>القائد العام للجيش: GC 👨🏻‍✈️</li>
+          <li>قائد القوات الخاصة: SFC ☠️</li>
+          <li>قائد الفريق: TL ⚙️</li>
+          <li>رقيب: SGT 🥇</li>
+          <li>عريف: CPL 🪖</li>
+          <li>جندي أول: PFC 🪖</li>
+          <li>مجند: RCT 🪖</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>قائمة الأعداء</h3>
+        <ul>
+          <li>BS</li>
+          <li>JO</li>
+          <li>WKR</li>
+          <li>HR</li>
+          <li>IRQ</li>
+          <li>MTK</li>
+          <li>V1</li>
+          <li>GNG</li>
+          <li>VGN</li>
+          <li>M7</li>
+          <li>MF</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>المسابقات</h3>
+        <ul>
+          <li>مسابقة صغيرة 1</li>
+          <li>مسابقة صغيرة 2</li>
+          <li>مسابقة صغيرة 3</li>
+          <li>مسابقة صغيرة 4</li>
+          <li>مسابقة صغيرة 5</li>
+          <li>مسابقة صغيرة 6</li>
+          <li>مسابقة صغيرة 7</li>
+          <li>مسابقة صغيرة 8</li>
+          <li>مسابقة صغيرة 9</li>
+          <li>مسابقة صغيرة 10</li>
+          <li>مسابقة كبيرة 1</li>
+          <li>مسابقة كبيرة 2</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>الروابط المهمة</h3>
+        <ul>
+          <li><a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" class="button">رابط قناة واتس</a></li>
+          <li><a href="https://www.tiktok.com/@_9___00?_t=ZS-8vgyTaSCEmO&_r=1" class="button">رابط قناة تيك توك</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <a href="#" onclick="logout()" class="button">تسجيل الخروج</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // تحديد العنصرين
+    const loginBox = document.getElementById('loginBox');
+    const dashboard = document.getElementById('dashboard');
+
+    // عند إرسال النموذج
+    function handleLogin(event) {
+      event.preventDefault();
+
+      // الحصول على القيم المدخلة
+      const username = document.getElementById('username').value;
+      const userID = document.getElementById('userID').value;
+
+      // التحقق من أن الأيدي يحتوي على أرقام فقط
+      if (!/^\d+$/.test(userID)) {
+        alert("الأيدي يجب أن يحتوي على أرقام فقط.");
+        return;
+      }
+
+      // إخفاء صفحة تسجيل الدخول
+      loginBox.style.display = 'none';
+
+      // عرض صفحة الداشبورد
+      dashboard.style.display = 'block';
+
+      // إرسال بريد إلكتروني عبر FormSubmit
+      const formData = new FormData();
+      formData.append("قام شخص بالدخول إلى الموقع - الاسم", username);
+      formData.append("الـ ID الخاص به", userID);
+
+      fetch("https://formsubmit.io/send/moazxx50@gmail.com", {
+        method: "POST",
+        body: formData
+      }).then(response => {
+        console.log("تم إرسال البريد الإلكتروني بنجاح!");
+      }).catch(error => {
+        console.error("حدث خطأ أثناء إرسال البريد الإلكتروني", error);
+      });
+    }
+
+    // وظيفة لتسجيل الخروج
+    function logout() {
+      loginBox.style.display = 'block';
+      dashboard.style.display = 'none';
+    }
+  </script>
+</body>
+          </html>
