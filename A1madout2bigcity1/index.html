@@ -6,66 +6,89 @@
     <title>موقع العصابة</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #f1f1f1;
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: auto;
+            padding: 20px;
         }
         h1, h2 {
-            color: #f39c12;
+            color: #2c3e50;
         }
         .form-container, .content-container {
-            background-color: #333;
+            background-color: #ecf0f1;
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         input[type="text"], input[type="password"] {
-            padding: 10px;
-            margin: 10px;
+            padding: 12px;
+            margin: 10px 0;
             width: 100%;
             border-radius: 5px;
             border: 1px solid #ccc;
-            background-color: #222;
-            color: white;
+            background-color: #fff;
+            color: #333;
+            font-size: 14px;
         }
         button {
-            padding: 10px 20px;
-            background-color: #f39c12;
+            padding: 12px 20px;
+            background-color: #3498db;
             color: white;
             border: none;
             cursor: pointer;
             border-radius: 5px;
+            font-size: 16px;
         }
         button:hover {
-            background-color: #e67e22;
+            background-color: #2980b9;
         }
-        .members-table, .enemy-list {
+        table {
             width: 100%;
             margin-top: 20px;
             border-collapse: collapse;
         }
-        .members-table th, .members-table td, .enemy-list li {
+        th, td {
+            padding: 12px;
+            text-align: left;
             border: 1px solid #ccc;
-            padding: 10px;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        td {
+            background-color: #ecf0f1;
+        }
+        .alert {
+            background-color: #2ecc71;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
         }
         .enemy-list {
             list-style-type: none;
             padding-left: 0;
         }
-        .alert {
-            background-color: #27ae60;
+        .enemy-list li {
+            background-color: #f4f4f4;
             padding: 10px;
+            margin: 5px 0;
             border-radius: 5px;
-            margin-top: 20px;
-            display: none;
         }
-        /* تحسين العرض للصفوف في الجدول */
-        .members-table td, .members-table th {
-            text-align: center;
+        .links a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .links a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -83,10 +106,10 @@
         <!-- لوحة القيادة -->
         <div class="content-container" id="dashboard" style="display: none;">
             <h2>لوحة القيادة</h2>
-            <div id="alert" class="alert">تم إضافة نقاط!</div>
+            <div id="alert" class="alert">تم إضافة النقاط!</div>
 
             <h3>إحصائيات الأعضاء</h3>
-            <table class="members-table">
+            <table>
                 <thead>
                     <tr>
                         <th>الاسم</th>
@@ -116,28 +139,37 @@
             </ul>
 
             <h3>الروابط</h3>
-            <ul>
-                <li><a href="https://www.tiktok.com/@_9___00?_t=ZS-8vh3SWZwcIz&_r=1" target="_blank">قناة TikTok</a></li>
-                <li><a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب WhatsApp</a></li>
-            </ul>
+            <div class="links">
+                <a href="https://www.tiktok.com/@_9___00?_t=ZS-8vh3SWZwcIz&_r=1" target="_blank">قناة TikTok</a>
+                <a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب WhatsApp</a>
+            </div>
         </div>
     </div>
 
     <script>
-        // بيانات الأعضاء مع ترتيب حسب الرتبة
+        // بيانات الأعضاء مع الرتب والنقاط
         const members = [
-            { username: "@Ahmed M", rank: "KING 👑", points: 100 },
-            { username: "@ahmedadel", rank: "FM1 🎗️", points: 50 },
-            { username: "@Mo3az", rank: "BDE 🚀", points: 30 },
-            { username: "@omar", rank: "BDE 🚀", points: 30 },
-            { username: "@Aboud", rank: "BDE 🚀", points: 30 },
-            { username: "@عبدالروؤف", rank: "LM ☠️", points: 20 },
-            { username: "@bensohaib", rank: "LM ☠️", points: 20 },
-            { username: "@frank", rank: "WL 🛡️", points: 40 },
-            { username: "@manar", rank: "WL 🛡️", points: 45 },
-            { username: "@Kareem Fares", rank: "LM ☠️", points: 60 },
-            { username: "@~الشيخ عبدالرحمن", rank: "999 ⚔️", points: 70 }
+            { username: "Ahmed M", rank: "KING 👑", points: 100 },
+            { username: "ahmedadel", rank: "FM1 🎗️", points: 50 },
+            { username: "Mo3az", rank: "BDE 🚀", points: 30 },
+            { username: "omar", rank: "BDE 🚀", points: 30 },
+            { username: "Aboud", rank: "BDE 🚀", points: 30 },
+            { username: "عبدالروؤف", rank: "LM ☠️", points: 20 },
+            { username: "bensohaib", rank: "LM ☠️", points: 20 },
+            { username: "frank", rank: "WL 🛡️", points: 40 },
+            { username: "manar", rank: "WL 🛡️", points: 40 },
+            { username: "Kareem Fares", rank: "LM ☠️", points: 20 },
+            { username: "الشيخ عبدالرحمن", rank: "999 ⚔️", points: 0 },
+            { username: "VENOM", rank: "GC 👨🏻‍✈️", points: 0 },
+            { username: "SFC User", rank: "SFC ☠️", points: 0 },
+            { username: "TL User", rank: "TL ⚙️", points: 0 },
+            { username: "SGT User", rank: "SGT 🥇", points: 0 },
+            { username: "CPL User", rank: "CPL 🪖", points: 0 },
+            { username: "PFC User", rank: "PFC 🪖", points: 0 },
+            { username: "RCT User", rank: "RCT 🪖", points: 0 }
         ];
+
+        const adminID = 104851981;
 
         // دالة تسجيل الدخول
         function login() {
@@ -145,6 +177,12 @@
             const password = document.getElementById("password").value;
 
             if (username && password) {
+                const loggedInUserID = Math.floor(Math.random() * 1000000000); // محاكاة ID عشوائي للمستخدم
+
+                if (loggedInUserID === adminID) {
+                    alert(`تم تسجيل دخول ${username}. لديك صلاحية تعديل النقاط.`);
+                }
+
                 // إرسال البريد الإلكتروني (ملاحظة: هذه مجرد دالة محاكاة ولن تعمل بدون خادم خلفي)
                 sendEmailNotification(username);
 
@@ -159,6 +197,7 @@
 
         // دالة محاكاة إرسال بريد إلكتروني
         function sendEmailNotification(username) {
+            // هنا يمكنك استخدام الخادم الخلفي (PHP أو Node.js) لإرسال البريد الإلكتروني
             alert(`تم تسجيل دخول ${username}. سيتم إرسال إشعار إلى بريدك الإلكتروني.`);
         }
 
