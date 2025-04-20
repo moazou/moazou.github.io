@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع العصابة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #f1f1f1;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+        h1, h2 {
+            color: #f39c12;
+        }
+        .form-container, .content-container {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            margin: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #222;
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #e67e22;
+        }
+        .members-table, .enemy-list {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        .members-table th, .members-table td, .enemy-list li {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .enemy-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .alert {
+            background-color: #27ae60;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+        }
+        /* تحسين العرض للصفوف في الجدول */
+        .members-table td, .members-table th {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- صفحة تسجيل الدخول -->
+        <div class="form-container" id="login-form">
+            <h2>تسجيل الدخول</h2>
+            <input type="text" id="username" placeholder="الاسم" />
+            <input type="password" id="password" placeholder="كلمة المرور" />
+            <button onclick="login()">تسجيل الدخول</button>
+        </div>
+
+        <!-- لوحة القيادة -->
+        <div class="content-container" id="dashboard" style="display: none;">
+            <h2>لوحة القيادة</h2>
+            <div id="alert" class="alert">تم إضافة نقاط!</div>
+
+            <h3>إحصائيات الأعضاء</h3>
+            <table class="members-table">
+                <thead>
+                    <tr>
+                        <th>الاسم</th>
+                        <th>الرتبة</th>
+                        <th>النقاط</th>
+                        <th>تعديل النقاط</th>
+                    </tr>
+                </thead>
+                <tbody id="members-list">
+                    <!-- سيتم إضافة الأعضاء هنا -->
+                </tbody>
+            </table>
+
+            <h3>قائمة الأعداء</h3>
+            <ul class="enemy-list">
+                <li>BS</li>
+                <li>JO</li>
+                <li>WKR</li>
+                <li>HR</li>
+                <li>IRQ</li>
+                <li>MTK</li>
+                <li>V1</li>
+                <li>GNG</li>
+                <li>VGN</li>
+                <li>M7</li>
+                <li>MF</li>
+            </ul>
+
+            <h3>الروابط</h3>
+            <ul>
+                <li><a href="https://www.tiktok.com/@_9___00?_t=ZS-8vh3SWZwcIz&_r=1" target="_blank">قناة TikTok</a></li>
+                <li><a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب WhatsApp</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // بيانات الأعضاء مع ترتيب حسب الرتبة
+        const members = [
+            { username: "@Ahmed M", rank: "KING 👑", points: 100 },
+            { username: "@ahmedadel", rank: "FM1 🎗️", points: 50 },
+            { username: "@Mo3az", rank: "BDE 🚀", points: 30 },
+            { username: "@omar", rank: "BDE 🚀", points: 30 },
+            { username: "@Aboud", rank: "BDE 🚀", points: 30 },
+            { username: "@عبدالروؤف", rank: "LM ☠️", points: 20 },
+            { username: "@bensohaib", rank: "LM ☠️", points: 20 },
+            { username: "@frank", rank: "WL 🛡️", points: 40 },
+            { username: "@manar", rank: "WL 🛡️", points: 45 },
+            { username: "@Kareem Fares", rank: "LM ☠️", points: 60 },
+            { username: "@~الشيخ عبدالرحمن", rank: "999 ⚔️", points: 70 }
+        ];
+
+        // دالة تسجيل الدخول
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username && password) {
+                // إرسال البريد الإلكتروني (ملاحظة: هذه مجرد دالة محاكاة ولن تعمل بدون خادم خلفي)
+                sendEmailNotification(username);
+
+                // إظهار لوحة القيادة
+                document.getElementById("login-form").style.display = "none";
+                document.getElementById("dashboard").style.display = "block";
+                
+                // تحديث قائمة الأعضاء
+                updateMembersList();
+            }
+        }
+
+        // دالة محاكاة إرسال بريد إلكتروني
+        function sendEmailNotification(username) {
+            alert(`تم تسجيل دخول ${username}. سيتم إرسال إشعار إلى بريدك الإلكتروني.`);
+        }
+
+        // دالة لتحديث قائمة الأعضاء
+        function updateMembersList() {
+            const membersList = document.getElementById("members-list");
+            membersList.innerHTML = "";
+            members.forEach(member => {
+                const row = document.createElement("tr");
+
+                // الخلايا
+                row.innerHTML = `
+                    <td>${member.username}</td>
+                    <td>${member.rank}</td>
+                    <td>${member.points}</td>
+                    <td><button onclick="editPoints('${member.username}')">تعديل النقاط</button></td>
+                `;
+                membersList.appendChild(row);
+            });
+        }
+
+        // دالة لتعديل النقاط
+        function editPoints(username) {
+            const member = members.find(m => m.username === username);
+            if (member) {
+                const newPoints = prompt(`أدخل النقاط الجديدة لـ ${member.username}:`, member.points);
+                if (newPoints !== null) {
+                    member.points = parseInt(newPoints);
+                    updateMembersList();
+                    showAlert();
+                }
+            }
+        }
+
+        // دالة لعرض التنبيه عند تعديل النقاط
+        function showAlert() {
+            document.getElementById("alert").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("alert").style.display = "none";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
