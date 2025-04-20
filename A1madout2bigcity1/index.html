@@ -3,211 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع العصابة</title>
+    <title>جدول الأعضاء</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f3f4f6;
-            color: #333;
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
+            background-color: #1a1a1a;
+            color: white;
             margin: 0;
             padding: 0;
         }
+
         .container {
-            max-width: 1200px;
-            margin: auto;
             padding: 20px;
+            width: 80%;
+            margin: 0 auto;
         }
-        h1, h2 {
-            color: #2c3e50;
+
+        h1 {
             text-align: center;
+            color: #ffcc00;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+
+        h2 {
+            color: #ffcc00;
         }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border: 1px solid #ccc;
-            font-size: 14px;
-        }
-        th {
-            background-color: #3498db;
-            color: white;
-        }
-        td {
-            background-color: #ecf0f1;
-        }
-        .rank-section {
-            margin-bottom: 40px;
-        }
-        .rank-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #2c3e50;
-            background-color: #e74c3c;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .members-list {
+
+        .rank ul {
             list-style-type: none;
-            padding-left: 0;
+            padding: 0;
         }
-        .members-list li {
-            background-color: #f4f4f4;
+
+        .rank li {
+            background-color: #333;
+            margin: 5px;
             padding: 10px;
-            margin: 5px 0;
             border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .rank li:hover {
+            background-color: #555;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <h1>إحصائيات الأعضاء</h1>
+        <h1>جدول الأعضاء</h1>
 
         <!-- القائد -->
-        <div class="rank-section">
-            <div class="rank-title">1- القائد KING 👑</div>
-            <ul class="members-list">
-                <li>@Ahmed M</li>
+        <section class="rank">
+            <h2>1- القائد KING 👑</h2>
+            <ul>
+                <li>1- @⁨Ahmed M⁩ <span class="points"> - النقاط: 0</span></li>
             </ul>
-        </div>
+        </section>
 
         <!-- مشير -->
-        <div class="rank-section">
-            <div class="rank-title">2- مشير FM1 🎗️</div>
-            <ul class="members-list">
-                <li>@ahmedadel</li>
+        <section class="rank">
+            <h2>2- مشير FM1 🎗️</h2>
+            <ul>
+                <li>@⁨ahmedadel⁩ <span class="points"> - النقاط: 0</span></li>
             </ul>
-        </div>
+        </section>
 
         <!-- اللواء -->
-        <div class="rank-section">
-            <div class="rank-title">3- اللواء BDE 🚀</div>
-            <ul class="members-list">
-                <li>@Mo3az</li>
-                <li>@omar</li>
-                <li>@Aboud</li>
+        <section class="rank">
+            <h2>3- اللواء BDE 🚀</h2>
+            <ul>
+                <li>1- @⁨Mo3az⁩ <span class="points"> - النقاط: 0</span></li>
+                <li>2- @omar <span class="points"> - النقاط: 0</span></li>
+                <li>3- @Aboud <span class="points"> - النقاط: 0</span></li>
             </ul>
-        </div>
+        </section>
 
         <!-- قادة الحرب -->
-        <div class="rank-section">
-            <div class="rank-title">4- قادة الحرب WL 🛡️</div>
-            <ul class="members-list">
-                <li>@moaaz</li>
-                <li>@frank</li>
-                <li>@manar</li>
+        <section class="rank">
+            <h2>4- قادة الحرب WL 🛡️</h2>
+            <ul>
+                <li>1- @moaaz <span class="points"> - النقاط: 0</span></li>
+                <li>2- @⁨frank⁩ <span class="points"> - النقاط: 0</span></li>
+                <li>3- @⁨manar⁩ <span class="points"> - النقاط: 0</span></li>
             </ul>
-        </div>
+        </section>
 
         <!-- مقاتل اسطوري -->
-        <div class="rank-section">
-            <div class="rank-title">5- مقاتل اسطوري LM ☠️</div>
-            <ul class="members-list">
-                <li>@عبدالروؤف</li>
-                <li>@bensohaib</li>
-                <li>@🤍🤍</li>
-                <li>@Kareem Fares</li>
+        <section class="rank">
+            <h2>5- مقاتل اسطوري LM ☠️</h2>
+            <ul>
+                <li>1- @⁨عبدالروؤف⁩ <span class="points"> - النقاط: 0</span></li>
+                <li>2- @⁨~bensohaib⁩ <span class="points"> - النقاط: 0</span></li>
+                <li>3- @⁨~🤍🤍⁩ <span class="points"> - النقاط: 0</span></li>
+                <li>4- @⁨Kareem Fares⁩ <span class="points"> - النقاط: 0</span></li>
             </ul>
-            <p>أسلحتهم: 10, 11</p>
-        </div>
+        </section>
 
-        <!-- فرقة ال 999 الحربية -->
-        <div class="rank-section">
-            <div class="rank-title">6- فرقة ال 999 الحربية المقاتلة ⚔️</div>
-            <ul class="members-list">
-                <li>@الشيخ عبدالرحمن</li>
-                <li>...</li> <!-- يمكن إضافة الأعضاء هنا -->
+        <!-- فرقة ال999 الحربية -->
+        <section class="rank">
+            <h2>6- فرقة ال 999 الحربية المقاتلة ⚔️</h2>
+            <ul>
+                <li>1- @⁨~الشيخ عبدالرحمن⁩ <span class="points"> - النقاط: 0</span></li>
             </ul>
-        </div>
+        </section>
 
-        <!-- القائد العام للجيش -->
-        <div class="rank-section">
-            <div class="rank-title">7- القائد العام للجيش GC 👨🏻‍✈️</div>
-            <ul class="members-list">
-                <li>@VENOM</li>
+        <!-- باقي الرتب -->
+        <section class="rank">
+            <h2>7- القائد العام للجيش 👨🏻‍✈️ GC</h2>
+            <ul>
+                <li>1- @VENOM <span class="points"> - النقاط: 0</span></li>
             </ul>
-        </div>
+        </section>
 
-        <!-- قائد القوات الخاصة -->
-        <div class="rank-section">
-            <div class="rank-title">8- قائد القوات الخاصة SFC ☠️</div>
-            <ul class="members-list">
-                <li>...</li> <!-- يمكن إضافة الأعضاء هنا -->
+        <section class="rank">
+            <h2>8- قائد القوات الخاصة ☠️ SFC</h2>
+            <ul>
+                <li>1- @اسم العضو <span class="points"> - النقاط: 0</span></li>
             </ul>
-        </div>
+        </section>
 
-        <!-- قائد فريق -->
-        <div class="rank-section">
-            <div class="rank-title">9- قائد فريق TL ⚙️</div>
-            <ul class="members-list">
-                <li>...</li> <!-- يمكن إضافة الأعضاء هنا -->
+        <section class="rank">
+            <h2>9- قائد فريق ⚙️ TL</h2>
+            <ul>
+                <li>1- @اسم العضو <span class="points"> - النقاط: 0</span></li>
             </ul>
-        </div>
+        </section>
 
-        <!-- رقيب -->
-        <div class="rank-section">
-            <div class="rank-title">10- رقيب SGT 🥇</div>
-            <ul class="members-list">
-                <li>...</li> <!-- يمكن إضافة الأعضاء هنا -->
+        <section class="rank">
+            <h2>10- رقيب 🥇 SGT</h2>
+            <ul>
+                <li>1- @اسم العضو <span class="points"> - النقاط: 0</span></li>
             </ul>
-        </div>
+        </section>
 
-        <!-- عريف -->
-        <div class="rank-section">
-            <div class="rank-title">11- عريف CPL 🪖</div>
-            <ul class="members-list">
-                <li>...</li> <!-- يمكن إضافة الأعضاء هنا -->
+        <section class="rank">
+            <h2>11- عريف 🪖 CPL</h2>
+            <ul>
+                <li>1- @اسم العضو <span class="points"> - النقاط: 0</span></li>
             </ul>
-        </div>
+        </section>
 
-        <!-- جندي أول -->
-        <div class="rank-section">
-            <div class="rank-title">12- جندي أول PFC 🪖</div>
-            <ul class="members-list">
-                <li>@الحمد لله</li>
+        <section class="rank">
+            <h2>12- جندي أول 🪖 PFC</h2>
+            <ul>
+                <li>1- @~الحمد لله <span class="points"> - النقاط: 0</span></li>
             </ul>
-        </div>
+        </section>
 
-        <!-- مجند -->
-        <div class="rank-section">
-            <div class="rank-title">13- مجند RCT 🪖</div>
-            <ul class="members-list">
-                <li>@Omar</li>
-                <li>@كـئـيـب</li>
-                <li>@~󠅤󠅤󠅤󠅤</li>
-                <li>@~•_•</li>
-                <li>@~7oda</li>
-                <li>@~M10❤️💙</li>
-                <li>@~Mohammed Mahmoud 🌶️</li>
-                <li>@~آيَـَـــِآدٍ</li>
-                <li>@~أوس</li>
-                <li>@~‏أوســ亗ــڪارR‿ˣ ✌︎</li>
-                <li>@~𓆩 ᗰᖇ. SᑭEEᗪ 𓆪🖤</li>
-                <li>@~𓆩𝓐𝓱𝓶𝓮𝓭᭓𓆪</li>
-                <li>@~想 ﾑ1〙写䒙「M E D O」ン</li>
-                <li>@~BASEL CH7</li>
-                <li>@+966 57 037 6049</li>
-                <li>@~SALEH</li>
-                <li>@~𝐒𝐄𝐈𝐅 💥</li>
-                <li>@BasEl</li>
-                <li>@Deepu</li>
+        <section class="rank">
+            <h2>13- مجند 🪖 RCT</h2>
+            <ul>
+                <li>1- @⁨Omar⁩ <span class="points"> - النقاط: 0</span></li>
+                <li>2- @⁨كـئـيـب⁩ <span class="points"> - النقاط: 0</span></li>
+                <li>3- @⁨~󠅤󠅤󠅤󠅤⁩ <span class="points"> - النقاط: 0</span></li>
+                <li>4- @⁨~•_•⁩ <span class="points"> - النقاط: 0</span></li>
+                <li>5- @⁨~7oda⁩ <span class="points"> - النقاط: 0</span></li>
+                <li>6- @⁨~M10❤️💙⁩ <span class="points"> - النقاط: 0</span></li>
+                <li>7- @⁨~Mohammed Mahmoud 🌶️⁩ <span class="points"> - النقاط: 0</span></li>
             </ul>
-        </div>
+        </section>
 
         <!-- الفرق -->
-        <div class="rank-section">
-            <div class="rank-title">الفرق 👾</div>
-            <ul class="members-list">
-                <li>القناصين: 50,000</li>
-                <li>الجواسيس: 70,000</li>
+        <section class="rank">
+            <h2>الفرق 👾</h2>
+            <ul>
+                <li>1- القناصين 50 ألف <span class="points"> - النقاط: 0</span></li>
+                <li>2- الجواسيس 70 ألف <span class="points"> - النقاط: 0</span></li>
             </ul>
-        </div>
+        </section>
 
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ranks = document.querySelectorAll('.rank');
+
+            ranks.forEach(rank => {
+                const listItems = rank.querySelectorAll('li');
+                listItems.forEach(item => {
+                    const points = item.querySelector('.points');
+                    
+                    item.addEventListener('click', () => {
+                        let newPoints = prompt('أدخل النقاط الجديدة:');
+                        if (newPoints !== null && !isNaN(newPoints)) {
+                            points.textContent = ' - النقاط: ' + newPoints;
+                        } else {
+                            alert("الرجاء إدخال قيمة صحيحة للنقاط.");
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
