@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع تسجيل الدخول</title>
+    <!-- تحميل مكتبة EmailJS -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* منع الـ scroll */
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #444;
+            color: #fff;
+        }
+
+        input::placeholder {
+            color: #bbb;
+        }
+
+        button {
+            background-color: #555;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 80%;
+        }
+
+        button:hover {
+            background-color: #777;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- نموذج تسجيل الدخول -->
+    <div class="container">
+        <h2>تسجيل الدخول</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="text" id="username" placeholder="أدخل اسمك" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="userId" placeholder="أدخل الأيدي الخاص بك" required>
+            </div>
+            <button type="submit">تسجيل الدخول</button>
+        </form>
+        <div id="errorMessages"></div>
+    </div>
+
+    <script>
+        // تهيئة EmailJS باستخدام معرف المستخدم الخاص بك
+        emailjs.init("YOUR_USER_ID");  // استبدل YOUR_USER_ID بالـ user_id الخاص بك من EmailJS
+
+        // دالة لإرسال البريد الإلكتروني
+        function sendEmail(username, userId) {
+            var templateParams = {
+                to_name: "moazxx50@gmail.com", // البريد الذي سيرسل إليه
+                message: `تم تسجيل الدخول من قبل: ${username} و الأيدي: ${userId}`
+            };
+
+            // إرسال البريد الإلكتروني باستخدام EmailJS
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    console.log('تم إرسال الرسالة بنجاح', response);
+                }, function(error) {
+                    console.error('حدث خطأ أثناء إرسال الرسالة:', error);
+                });
+        }
+
+        // معالجة عملية تسجيل الدخول
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // منع الإرسال الافتراضي للنموذج
+            
+            var username = document.getElementById('username').value;
+            var userId = document.getElementById('userId').value;
+            var errorMessages = [];
+
+            // تحقق من أن الأيدي يحتوي فقط على أرقام
+            if (!/^\d+$/.test(userId)) {
+                errorMessages.push("الأيدي يجب أن يكون رقماً.");
+            }
+
+            // تحقق من أن الاسم يحتوي على الزخرفة الصحيحة
+            if (!/『A1』.+『.+』/.test(username)) {
+                errorMessages.push("الاسم يجب أن يحتوي على زخرفة صحيحة مثل 『A1』VENOM『 BDE /1 』");
+            }
+
+            // عرض رسائل الخطأ إذا كانت هناك أخطاء
+            if (errorMessages.length > 0) {
+                var errorHtml = errorMessages.map(function(message) {
+                    return `<div class="error">${message}</div>`;
+                }).join('');
+                document.getElementById('errorMessages').innerHTML = errorHtml;
+                return;
+            }
+
+            // إرسال البريد الإلكتروني بعد التحقق بنجاح
+            sendEmail(username, userId);
+
+            // السماح بالدخول بعد التحقق
+            alert('تم تسجيل الدخول بنجاح!');
+        });
+    </script>
+
+</body>
+</html>
