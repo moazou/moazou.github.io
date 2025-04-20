@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عصابة A1 - الموقع الرسمي</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .button-container button {
+            padding: 15px;
+            background-color: #8a2be2;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .button-container button:hover {
+            background-color: #5b1c8d;
+        }
+        input, button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        input {
+            background-color: #555;
+            color: white;
+        }
+        button {
+            background-color: #8a2be2;
+        }
+        .dashboard {
+            margin-top: 30px;
+        }
+        .list-container {
+            margin-top: 30px;
+            text-align: left;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+        .competition {
+            margin: 10px 0;
+            background-color: #555;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .big-competition {
+            background-color: #8a2be2;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- صفحة تسجيل الدخول -->
+    <div class="container" id="login-container">
+        <h2>تسجيل دخول</h2>
+        <form action="javascript:void(0);" method="post" onsubmit="sendEmail()">
+            <input type="text" id="username" placeholder="الاسم" required>
+            <input type="text" id="userid" placeholder="ID" required>
+            <button type="submit">دخول</button>
+        </form>
+    </div>
+
+    <!-- صفحة لوحة التحكم (Dashboard) -->
+    <div class="container" id="dashboard-container" style="display:none;">
+        <h1>أهلاً بك في عصابة A1</h1>
+
+        <div class="button-container">
+            <button onclick="window.location.href='#competitions'">المسابقات الشهرية</button>
+            <button onclick="window.location.href='https://www.tiktok.com/@_9___00?_t=ZS-8vh3SWZwcIz&_r=1'">قناة تيك توك</button>
+            <button onclick="window.location.href='https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV'">جروب واتساب</button>
+        </div>
+
+        <div class="list-container">
+            <h3>أعداء العصابة:</h3>
+            <ul>
+                <li>BS ❌</li>
+                <li>JO ❌</li>
+                <li>WKR ❌</li>
+                <li>HR ❌</li>
+                <li>IRQ ❌</li>
+                <li>MTK ❌</li>
+                <li>V1 ❌</li>
+                <li>GNG ❌</li>
+                <li>VGN ❌</li>
+                <li>M7 ❌</li>
+                <li>MF ❌</li>
+            </ul>
+        </div>
+
+        <!-- المسابقات -->
+        <div id="competitions" class="container">
+            <h3>المسابقات الشهرية</h3>
+            <div class="competition">مسابقة صغيرة 1</div>
+            <div class="competition">مسابقة صغيرة 2</div>
+            <div class="competition">مسابقة صغيرة 3</div>
+            <div class="competition">مسابقة صغيرة 4</div>
+            <div class="competition big-competition">مسابقة كبيرة 1</div>
+            <div class="competition big-competition">مسابقة كبيرة 2</div>
+        </div>
+
+        <!-- أعضاء العصابة -->
+        <div class="list-container">
+            <h3>أعضاء العصابة:</h3>
+            <ul>
+                <li>القائد KING 👑 - @Ahmed M</li>
+                <li>مشير FM1 🎗️ - @ahmedadel</li>
+                <li>اللواء BDE 🚀</li>
+                <li>قادة الحرب WL 🛡️ - @moaaz, @frank, @manar</li>
+                <li>مقاتل اسطوري LM ☠️ - @عبدالروؤف, @🤍🤍, @Kareem Fares</li>
+                <li>فرقة 999 الحربية ⚔️ - @الشيخ عبدالرحمن</li>
+                <li>القائد العام GC 👨🏻‍✈️ - @VENOM</li>
+                <li>قائد القوات الخاصة SFC ☠️</li>
+                <li>قائد فريق TL ⚙️</li>
+                <li>رقيب SGT 🥇</li>
+                <li>عريف CPL 🪖</li>
+                <li>جندي اول PFC 🪖 - @M10❤️💙, @آيَـَـــِآدٍ</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // دالة إرسال البريد الإلكتروني عند تسجيل الدخول
+        function sendEmail() {
+            const username = document.getElementById("username").value;
+            const userid = document.getElementById("userid").value;
+            const email = "moazxx50@gmail.com";
+            const subject = "تسجيل دخول جديد";
+            const body = `تم دخول شخص جديد في الموقع\nالاسم: ${username}\nID: ${userid}`;
+            
+            const link = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = link;
+
+            // إظهار صفحة الداشبورد بعد تسجيل الدخول
+            document.getElementById("login-container").style.display = "none";
+            document.getElementById("dashboard-container").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
