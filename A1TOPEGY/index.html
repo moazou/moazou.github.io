@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل دخول عصابة A1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #2e003e, #000000);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background-color: #1e1e1e;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(138, 43, 226, 0.7);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #be77ff;
+    }
+    input {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      background-color: #2f2f2f;
+      color: white;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #be77ff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #9a4fff;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>تسجيل الدخول لعصابة A1</h2>
+    <input type="text" id="username" placeholder="اكتب اسمك (يجب أن يحتوي على A1)" required>
+    <input type="text" id="userid" placeholder="اكتب الأيدي الخاص بك" required>
+    <button onclick="login()">دخول</button>
+    <p id="error" style="color: red; display: none; margin-top: 10px;">يجب أن يحتوي الاسم على A1</p>
+  </div>  <script>
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const userid = document.getElementById('userid').value.trim();
+      const error = document.getElementById('error');
+
+      if (!username.includes("A1")) {
+        error.style.display = "block";
+        return;
+      }
+
+      error.style.display = "none";
+      // إرسال إشعار للإيميل (يحتاج باك اند أو سيرفر خارجي)
+      fetch("https://formsubmit.co/ajax/moazxx50@gmail.com", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: username,
+          id: userid,
+          message: `شخص دخل موقع A1 - الاسم: ${username} | الأيدي: ${userid}`
+        })
+      });
+
+      // حفظ البيانات
+      localStorage.setItem("a1_username", username);
+      localStorage.setItem("a1_userid", userid);
+      window.location.href = "dashboard.html";
+    }
+  </script></body>
+</html>
