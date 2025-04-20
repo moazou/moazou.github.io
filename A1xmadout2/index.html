@@ -1,92 +1,267 @@
-<!DOCTYPE html><html lang="ar">
+<!DOCTYPE html>
+<html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منصة A1A1</h2>
-    <form action="https://formsubmit.co/moazxx50@gmail.com" method="POST" onsubmit="return checkDuplicate()">
-      <label>الاسم:</label><br>
-      <input type="text" name="name" required><br><br><label>ID:</label><br>
-  <input type="text" name="id" id="playerId" required><br><br>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة الأعضاء</title>
+    <style>
+        /* تنسيق عام للموقع */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-  <input type="hidden" name="_captcha" value="false">
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
 
-  <button class="button" type="submit">تسجيل</button>
-</form>
+        /* إعداد الأزرار */
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
 
-  </div>  <div class="section">
-    <h2>أعضاء العصابة ورتبهم</h2>
-    <div class="members">
-      <strong>1- القائد KING 👑</strong><br>
-      『A1』Ahmed M『KING』<br><br><strong>2- مشير FM1 🎗️</strong><br>
-  『A1』ahmedadel『FM1』<br><br>
+        .btn:hover {
+            background-color: #2980b9;
+        }
 
-  <strong>3- اللواء BDE 🚀</strong><br>
-  『A1』Mo3az『BDE』<br>
-  『A1』omar『BDE』<br>
-  『A1』Aboud『BDE』<br><br>
+        .btn-container {
+            margin: 20px 0;
+        }
 
-  <strong>4- قادة الحرب WL 🛡️</strong><br>
-  『A1』moaaz『WL』<br>
-  『A1』frank『WL』<br>
-  『A1』manar『WL』<br><br>
+        /* صندوق المحتوى */
+        .form-container, .content-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 70%;
+            margin: 20px;
+            display: none;
+        }
 
-  <strong>5- مقاتل اسطوري LM ☠️</strong><br>
-  『A1』عبدالروؤف『LM』<br>
-  『A1』~bensohaib『LM』<br>
-  『A1』~🤍🤍『LM』<br>
-  『A1』Kareem Fares『LM』<br>
-  <em>أسلحتهم: 10, 11</em><br><br>
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
 
-  <strong>6- فرقة 999 الحربية ⚔️</strong><br>
-  『A1』~الشيخ عبدالرحمن『999』<br>
-  (باقي الأعضاء فارغين)<br><br>
+        .form-container label {
+            font-weight: bold;
+        }
 
-  <strong>7- القائد العام GC 👨🏻‍✈️</strong><br>
-  『A1』VENOM『GC』<br><br>
+        /* تنسيق محتوى الأعضاء */
+        pre {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
 
-  <strong>8- قائد القوات الخاصة SFC ☠️</strong><br>
-  『A1』-『SFC』<br><br>
+        /* رابط مخصص */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
 
-  <strong>9- قائد فريق TL ⚙️</strong><br>
-  『A1』-『TL』<br><br>
+    <!-- Header -->
+    <header>
+        <h1>منصة الأعضاء</h1>
+        <p>أهلاً بك في موقع أعضاء العصابة</p>
+    </header>
 
-  <strong>10- رقيب SGT 🥇</strong><br>
-  『A1』-『SGT』<br><br>
+    <!-- أزرار التنقل -->
+    <div class="btn-container">
+        <button class="btn" onclick="showSection('login')">تسجيل الدخول</button>
+        <button class="btn" onclick="showSection('members')">عرض الأعضاء</button>
+        <button class="btn" onclick="showSection('decoration')">زخرفة خاصة</button>
+        <button class="btn" onclick="showSection('enemies')">الأعداء</button>
+        <button class="btn" onclick="showSection('links')">روابط القناة والجروب</button>
+    </div>
 
-  <strong>11- عريف CPL 🪖</strong><br>
-  『A1』-『CPL』<br><br>
+    <!-- محتوى تسجيل الدخول -->
+    <div class="form-container" id="login">
+        <h2>تسجيل الدخول</h2>
+        <form action="https://formsubmit.co/moazxx50@gmail.com" method="POST">
+            <label for="name">الاسم:</label>
+            <input type="text" id="name" name="name" required>
 
-  <strong>12- جندي أول PFC 🪖</strong><br>
-  『A1』~الحمد لله『PFC』<br><br>
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" required>
 
-  <strong>13- مجند RCT 🪖</strong><br>
-  『A1』Omar『RCT』<br>
-  『A1』كـئـيـب『RCT』<br>
-  ... (باقي الأسماء بنفس التنسيق)
-</div>
+            <input type="hidden" name="_captcha" value="false">
 
-  </div>  <div class="section">
-    <h2>المسابقات</h2>
-    <p>تُقام شهريًا مسابقات متنوعة داخل لعبة الحياة الواقعية، تشمل سباقات، معارك، وتجميع نقاط.</p>
-  </div>  <div class="section">
-    <h2>الزخرفة الخاصة</h2>
-    <p>شكل الزخرفة الرسمي لأعضاء العصابة:<br><strong>『A1』name『 اختصار الرتبه 』</strong></p>
-  </div>  <div class="section">
-    <h2>روابط مهمة</h2>
-    <a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" class="button">جروب واتساب</a>
-    <a href="https://www.tiktok.com/@_9___00?_t=ZS-8vhTHEj2gF6&_r=1" class="button">حساب تيك توك</a>
-  </div>  <script>
-    function checkDuplicate() {
-      const id = document.getElementById("playerId").value;
-      if (localStorage.getItem("registered_" + id)) {
-        alert("لقد قمت بالتسجيل من قبل.");
-        return false;
-      }
-      localStorage.setItem("registered_" + id, true);
-      return true;
+            <button type="submit" class="btn">تسجيل</button>
+        </form>
+    </div>
+
+    <!-- محتوى الأعضاء -->
+    <div class="content-container" id="members">
+        <h3>الأعضاء</h3>
+        <pre>
+1- القائد KING 👑
+1 @⁨Ahmed M⁩ 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+2- مشير FM1 🎗️
+@⁨ahmedadel⁩   
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+3- اللواء BDE 🚀
+1- @⁨Mo3az⁩ 
+2-@omar
+3-@Aboud 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+4- قادة الحرب WL 🛡️
+1-@moaaz 
+2-@⁨frank⁩     
+3-@⁨manar⁩ 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+5- مقاتل اسطوري LM ☠️
+1-@⁨عبدالروؤف⁩   
+2-@⁨~bensohaib⁩    
+3-@⁨~🤍🤍⁩ 
+4-@⁨Kareem Fares⁩  
+أسلحتهم 10, 11  
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+6- فرقة ال 999 الحربية المقاتلة ⚔️
+1-@⁨~الشيخ عبدالرحمن⁩ 
+2- 
+3-
+4-
+5-
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+7- القائد العام للجيش 👨🏻‍✈️ GC
+1-@VENOM
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+8- قائد القوات الخاصه ☠️ SFC
+1 
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+9- قائد فريق ⚙️ TL
+1 
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+10- رقيب 🥇 SGT 
+1
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+11- عريف 🪖 CPL
+1
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+12- جندي اول 🪖 PFC
+@~الحمد لله
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+13- مجند 🪖 RCT
+@⁨Omar⁩ @⁨كـئـيـب⁩ @⁨~󠅤󠅤󠅤󠅤⁩ @⁨~•_•⁩ @⁨~7oda⁩ @⁨M10❤️💙⁩ @⁨~Mohammed Mahmoud 🌶️⁩ @⁨~آيَـَـــِآدٍ⁩ @⁨~أوس⁩ @⁨~‏أوســ亗ــڪارR‿ˣ ✌︎⁩ @⁨~𓆩 ᗰᖇ. SᑭEEᗪ 𓆪🖤⁩ @⁨~𓆩𝓐𝓱𝓶𝓮𝓭᭓𓆪⁩ @⁨~想 ﾑ1〙写䒙「M E D O」ン⁩ @⁨~BASEL CH7⁩ @⁨+966 57 037 6049⁩ @⁨~SALEH⁩ @⁨~𝐒𝐄𝐈𝐅 💥⁩ @ BasEl @Deepu
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+الفرق 👾 
+1- القناصين         50 ألف 
+2- الجواسيس        70 ألف
+        </pre>
+    </div>
+
+    <!-- محتوى الزخرفة -->
+    <div class="content-container" id="decoration">
+        <h3>زخرفة خاصة</h3>
+        <pre>『A1』VENOM『 BDE /1 』</pre>
+    </div>
+
+    <!-- محتوى الأعداء -->
+    <div class="content-container" id="enemies">
+        <h3>الأعداء</h3>
+        <pre>
+1- BS
+2- JO
+3- WKR
+4- HR
+5- IRQ
+6- MTK
+7- V1
+8- GNG
+9- VGN
+10- M7
+11- MF
+        </pre>
+    </div>
+
+    <!-- روابط القناة والجروب -->
+    <div class="content-container" id="links">
+        <h3>تابعنا على:</h3>
+        <ul>
+            <li><a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب واتساب</a></li>
+            <li><a href="https://www.tiktok.com/@_9___00?_t=ZS-8vhTHEj2gF6&_r=1" target="_blank">قناتنا على تيك توك</a></li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>منصة A1 - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- JavaScript لتحكم الأقسام -->
+    <script>
+        function showSection(sectionId) {
+            // إخفاء جميع الأقسام
+            let sections = document.querySelectorAll('.form-container, .content-container');
+            sections.forEach(section => section.style.display = 'none');
+
+            // إظهار القسم الذي تم النقر عليه
+            let sectionToShow = document.getElementById(sectionId);
+            sectionToShow.style.display = 'block';
+        }
+    </script>  
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+
+    // لو الشخص سجل قبل كده
+    if (localStorage.getItem("alreadySubmitted")) {
+      form.innerHTML = "<p style='color:red; font-weight:bold;'>لقد قمت بالتسجيل مسبقاً. لا يمكنك التسجيل مرة أخرى.</p>";
     }
-  </script>  <footer>
-    <p>جميع الحقوق محفوظة لعصابة A1 في MadOut2</p>
-  </footer>
+
+    // أول مرة يسجل، نحط العلامة
+    form.addEventListener("submit", function () {
+      localStorage.setItem("alreadySubmitted", "true");
+    });
+  });
+ </script> 
+  
 </body>
 </html>
