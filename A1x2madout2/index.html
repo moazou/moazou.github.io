@@ -105,6 +105,7 @@
         <button class="btn" onclick="showSection('decoration')">زخرفة خاصة</button>
         <button class="btn" onclick="showSection('enemies')">الأعداء</button>
         <button class="btn" onclick="showSection('links')">روابط القناة والجروب</button>
+        <button class="btn" onclick="showSection('competitions')">المسابقات</button> <!-- زر المسابقات الجديد -->
     </div>
 
     <!-- محتوى تسجيل الدخول -->
@@ -230,6 +231,19 @@
         </ul>
     </div>
 
+    <!-- محتوى المسابقات -->
+    <div class="content-container" id="competitions">
+        <h3>المسابقات</h3>
+        <pre>
+1- المسابقة الأولى: 300,000 ألف + 300 جوهرة
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+2- المسابقة الثانية: 150,000 ألف + 150 جوهرة
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+3- المسابقة الثالثة: 50,000 ألف + 50 جوهرة
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+        </pre>
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>منصة A1 - جميع الحقوق محفوظة</p>
@@ -247,21 +261,24 @@
             sectionToShow.style.display = 'block';
         }
     </script>  
- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
 
-    // لو الشخص سجل قبل كده
-    if (localStorage.getItem("alreadySubmitted")) {
-      form.innerHTML = "<p style='color:red; font-weight:bold;'>لقد قمت بالتسجيل مسبقاً. لا يمكنك التسجيل مرة أخرى.</p>";
-    }
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
 
-    // أول مرة يسجل، نحط العلامة
-    form.addEventListener("submit", function () {
-      localStorage.setItem("alreadySubmitted", "true");
-    });
-  });
- </script> 
+            // لو الشخص سجل قبل كده
+            if (localStorage.getItem("alreadySubmitted")) {
+                form.innerHTML = "<p style='color:red; font-weight:bold;'>لقد قمت بالتسجيل مسبقاً. لا يمكنك التسجيل مرة أخرى.</p>";
+            }
+
+            // أول مرة يسجل، نحط العلامة
+            form.addEventListener("submit", function () {
+                localStorage.setItem("alreadySubmitted", "true");
+            });
+        });
+    </script> 
   
 </body>
 </html>
+
+            
