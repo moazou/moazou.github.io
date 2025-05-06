@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عصابة A1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6a0dad;
+            --secondary-color: #000;
+            --accent-color: #ff5722;
+            --text-color: #fff;
+            --card-bg: rgba(30, 30, 30, 0.8);
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d0a4a 100%);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        /* صفحة تسجيل الدخول */
+        #loginPage {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(106, 13, 173, 0.5);
+            width: 90%;
+            max-width: 350px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .logo {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(106, 13, 173, 0.7);
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            font-size: 14px;
+        }
+        
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .error-message {
+            color: #ff3333;
+            margin-top: 10px;
+            font-size: 12px;
+            display: none;
+        }
+        
+        /* لوحة التحكم */
+        #dashboard {
+            display: none;
+            min-height: 100vh;
+            width: 100%;
+        }
+        
+        .header {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--primary-color);
+        }
+        
+        .welcome-message {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .nav-tab {
+            padding: 10px 15px;
+            margin: 0 5px;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .page-content {
+            padding: 15px;
+            display: none;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        .members-list, .enemies-list {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .member-item, .enemy-item {
+            padding: 10px;
+            border-bottom: 1px solid rgba(106, 13, 173, 0.3);
+        }
+        
+        .rank {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .competition-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .link-card {
+            display: flex;
+            align-items: center;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+        
+        .link-icon {
+            font-size: 1.5rem;
+            margin-left: 10px;
+            color: var(--accent-color);
+        }
+        
+        .x-mark {
+            color: red;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- صفحة تسجيل الدخول -->
+    <div id="loginPage">
+        <div class="login-container">
+            <div class="logo">عصابة <span>A1</span></div>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">اسم المستخدم</label>
+                    <input type="text" id="username" placeholder="أدخل اسمك في اللعبة" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="playerId">الأيدي (ID)</label>
+                    <input type="text" id="playerId" placeholder="أدخل الأيدي الخاص بك" required>
+                </div>
+                
+                <div class="error-message" id="errorMessage"></div>
+                
+                <button type="submit" class="btn">دخول إلى المنصة</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- لوحة التحكم -->
+    <div id="dashboard">
+        <div class="header">
+            <div class="welcome-message" id="welcomeMessage">مرحباً بك في عصابة A1</div>
+            <button class="btn" id="logoutBtn" style="width: auto; padding: 5px 10px;">تسجيل الخروج</button>
+        </div>
+        
+        <div class="nav-tabs">
+            <div class="nav-tab" data-page="home">الرئيسية</div>
+            <div class="nav-tab" data-page="members">الأعضاء</div>
+            <div class="nav-tab" data-page="competitions">المسابقات</div>
+            <div class="nav-tab" data-page="enemies">الأعداء</div>
+            <div class="nav-tab" data-page="links">الروابط</div>
+        </div>
+        
+        <!-- الصفحة الرئيسية -->
+        <div class="page-content active" id="homePage">
+            <h2>مرحباً بك في منصة عصابة A1</h2>
+            <p>هنا يمكنك متابعة كل ما يخص العصابة وأعضائها</p>
+        </div>
+        
+        <!-- صفحة الأعضاء -->
+        <div class="page-content" id="membersPage">
+            <div class="members-list">
+                <h3>قائمة أعضاء العصابة</h3>
+                
+                <div class="member-item">
+                    <div class="rank">القائد KING 👑</div>
+                    <div>@Ahmed M</div>
+                </div>
+                
+                <div class="member-item">
+                    <div class="rank">مشير FM1 🎗️</div>
+                    <div>@ahmedadel</div>
+                </div>
+                
+                <div class="member-item">
+                    <div class="rank">اللواء BDE 🚀</div>
+                    <div>@Mo3az, @omar, @Aboud</div>
+                </div>
+                
+                <!-- باقي الأعضاء -->
+                <div class="member-item">@عبدالروؤف</div>
+                <div class="member-item">@Kareem Fares</div>
+                <div class="member-item">@Omar</div>
+                <div class="member-item">@『عبد الهادي 』</div>
+                <div class="member
