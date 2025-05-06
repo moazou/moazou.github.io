@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عصابة A1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6a0dad;
+            --secondary-color: #000;
+            --accent-color: #ff5722;
+            --text-color: #fff;
+            --card-bg: rgba(30, 30, 30, 0.8);
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d0a4a 100%);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* صفحة تسجيل الدخول */
+        #loginPage {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(106, 13, 173, 0.5);
+            width: 350px;
+            text-align: center;
+            z-index: 1;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(106, 13, 173, 0.7);
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+        }
+        
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .error-message {
+            color: #ff3333;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        /* لوحة التحكم */
+        #dashboard {
+            display: none;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+            width: 100%;
+        }
+        
+        .sidebar {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-right: 1px solid var(--primary-color);
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .dashboard-logo {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(106, 13, 173, 0.3);
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 10px;
+            background-color: rgba(106, 13, 173, 0.2);
+            border-radius: 5px;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .user-info {
+            flex: 1;
+        }
+        
+        .user-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .user-id {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+        
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav-item {
+            margin-bottom: 10px;
+        }
+        
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(106, 13, 173, 0.5);
+            color: white;
+        }
+        
+        .nav-link i {
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* المحتوى الرئيسي */
+        .main-content {
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(106, 13, 173, 0.3);
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .logout-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background-color: #e64a19;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-left: 10px;
+        }
+        
+        .card-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .card-desc {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .section {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(106, 13, 173, 0.3);
+        }
+
+        /* للهواتف المحمولة */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .login-container {
+                width: 90%;
+                padding: 20px;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- تأثير الجسيمات الخلفية -->
+    <div class="particles" id="particles-js"></div>
+    
+    <!-- صفحة تسجيل الدخول -->
+    <div id="loginPage">
+        <div class="login-container">
+            <div class="logo">عصابة <span>A1</span></div>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">اسم المستخدم</label>
+                    <input type="text" id="username" placeholder="أدخل اسمك في اللعبة" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="playerId">الأيدي (ID)</label>
+                    <input type="text" id="playerId" placeholder="أدخل الأيدي الخاص بك" required>
+                </div>
+                
+                <div class="error-message" id="errorMessage"></div>
+                
+                <button type="submit" class="btn">دخول إلى المنصة</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- لوحة التحكم -->
+    <div class="container" id="dashboard">
+        <!-- الشريط الجانبي -->
+        <div class="sidebar">
+            <div class="dashboard-logo">عصابة <span>A1</span></div>
+            
+            <div class="user-profile">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-info">
+                    <div class="user-name" id="dashboardUsername">مستخدم</div>
+                    <div class="user-id" id="dashboardPlayerId">ID: 123456</div>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-home"></i>
+                        <span>الرئيسية</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>أعضاء العصابة</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-trophy"></i>
+                        <span>الإنجازات</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>الفعاليات</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>الإعدادات</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- المحتوى الرئيسي -->
+        <div class="main-content">
+            <div class="header">
+                <h1 class="page-title">لوحة التحكم</h1>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                </button>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-users"></i> عدد الأعضاء</h2>
+                    <div class="card-value">47</div>
+                    <p class="card-desc">إجمالي أعضاء العصابة</p>
+                </div>
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-star"></i> المستوى</h2>
+                    <div class="card-value">12</div>
+                    <p class="card-desc">مستوى العصابة الحالي</p>
+                </div>
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-coins"></i> النقاط</h2>
+                    <div class="card-value">8,450</div>
+                    <p class="card-desc">نقاط العصابة الإجمالية</p>
+                </div>
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-trophy"></i> الترتيب</h2>
+                    <div class="card-value">#3</div>
+                    <p class="card-desc">ترتيب العصابة عالمياً</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-bell"></i> الإشعارات</h2>
+                <p>لا توجد إشعارات جديدة</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-calendar-check"></i> الفعاليات القادمة</h2>
+                <p>اجتماع العصابة - الجمعة القادمة 8:00 مساءً</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // تهيئة تأثير الجسيمات
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.getElementById('particles-js')) {
+                particlesJS("particles-js", {
+                    particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        color: { value: "#6a0dad" },
+                        shape: { type: "circle" },
+                        opacity: { value: 0.5, random: true },
+                        size: { value: 3, random: true },
+                        line_linked: { enable: true, distance: 150, color: "#6a0dad", opacity: 0.4, width: 1 },
+                        move: { enable: true, speed: 3, direction: "none", random: true, straight: false, out_mode: "out" }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: { enable: true, mode: "repulse" },
+                            onclick: { enable: true, mode: "push" }
+                        }
+                    }
+                });
+            }
+
+            // التحقق من وجود بيانات تسجيل دخول مخزنة
+            checkLogin();
+        });
+
+        // التحقق من وجود بيانات تسجيل دخول مخزنة
+        function checkLogin() {
+            const username = localStorage.getItem('a1_username');
+            const playerId = localStorage.getItem('a1_playerId');
+            
+            if (username && playerId) {
+                showDashboard(username, playerId);
+            }
+        }
+        
+        // عرض لوحة التحكم
+        function showDashboard(username, playerId) {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'grid';
+            
+            // تحديث معلومات المستخدم في لوحة التحكم
+            document.getElementById('dashboardUsername').textContent = username;
+            document.getElementById('dashboardPlayerId').textContent = `ID: ${playerId}`;
+            document.getElementById('userAvatar').textContent = username.charAt(0).toUpperCase();
+        }
+        
+        // معالجة تسجيل الدخول
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const playerId = document.getElementById('playerId').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // التحقق من صحة البيانات
+            if (!username || !playerId) {
+                errorMessage.textContent = 'يجب إدخال اسم المستخدم والأيدي';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            if (!/^\d+$/.test(playerId)) {
+                errorMessage.textContent = 'يجب أن يتكون الأيدي من أرقام فقط';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            errorMessage.style.display = 'none';
+            
+            // إرسال البيانات إلى البريد الإلكتروني (هذا مثال، يحتاج إلى خادم حقيقي)
+            sendLoginNotification(username, playerId);
+            
+            // حفظ بيانات المستخدم في localStorage
+            localStorage.setItem('a1_username', username);
+            localStorage.setItem('a1_playerId', playerId);
+            
+            // عرض لوحة التحكم
+            showDashboard(username, playerId);
+        });
+        
+        // معالجة تسجيل الخروج
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('a1_username');
+            localStorage.removeItem('a1_playerId');
+            
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'flex';
+            
+            // إعادة تعيين نموذج تسجيل الدخول
+            document.getElementById('loginForm').reset();
+        });
+        
+        function sendLoginNotification(username, playerId) {
+            // في تطبيق حقيقي، هذا سيتصل بخادم لإرسال البريد الإلكتروني
+            console.log(`تم تسجيل دخول: ${username} (ID: ${playerId})`);
+            
+            // هذا مثال فقط - في الواقع تحتاج إلى استخدام خدمة مثل EmailJS أو خادم backend
+            const emailData = {
+                to: 'moazxx50@gmail.com',
+                subject: `تسجيل دخول جديد إلى موقع A1 - ${username}`,
+                body: `تم تسجيل دخول عضو جديد إلى موقع عصابة A1:\n\nالاسم: ${username}\nالأيدي: ${playerId}\n\nالتاريخ: ${new Date().toLocaleString()}`
+            };
+            
+            // هنا سيتم إرسال البيانات إلى خادمك الذي سيرسل البريد
+            // simulateEmailSend(emailData);
+        }
+    </script>
+</body>
+  </html>
