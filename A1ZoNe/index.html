@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 نظام A1 الذكي - MadOut2 BCO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* أنماط متقدمة للذكاء الاصطناعي */
+        .ai-assistant {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8a2be2, #9400d3);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.6);
+            transition: all 0.3s ease;
+        }
+        
+        .ai-assistant:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .ai-panel {
+            position: fixed;
+            bottom: 100px;
+            left: 30px;
+            width: 350px;
+            background: rgba(5, 4, 22, 0.95);
+            border-radius: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            transform: translateY(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .ai-panel.show {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .ai-header {
+            padding: 15px;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+            display: flex;
+            align-items: center;
+        }
+        
+        .ai-title {
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        .ai-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #2ecc71;
+            margin-right: auto;
+        }
+        
+        .ai-close {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .ai-conversation {
+            height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        
+        .ai-message {
+            margin-bottom: 15px;
+            animation: fadeInUp 0.3s ease;
+        }
+        
+        .ai-message.ai {
+            text-align: right;
+        }
+        
+        .ai-message.user {
+            text-align: left;
+        }
+        
+        .ai-bubble {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 80%;
+            line-height: 1.5;
+        }
+        
+        .ai-bubble.ai {
+            background: rgba(138, 43, 226, 0.2);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-bottom-right-radius: 0;
+        }
+        
+        .ai-bubble.user {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom-left-radius: 0;
+        }
+        
+        .ai-input-container {
+            padding: 15px;
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+            display: flex;
+        }
+        
+        .ai-input {
+            flex: 1;
+            padding: 12px 15px;
+            background: rgba(15, 12, 41, 0.5);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 20px;
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        .ai-send {
+            background: linear-gradient(135deg, #8a2be2, #9400d3);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .ai-send:hover {
+            transform: rotate(30deg);
+        }
+        
+        /* تأثيرات الذكاء الاصطناعي */
+        @keyframes aiPulse {
+            0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(138, 43, 226, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+        }
+        
+        .ai-listening .ai-assistant {
+            animation: aiPulse 1.5s infinite;
+        }
+        
+        /* نظام التوصيات الذكي */
+        .ai-recommendations {
+            background: rgba(138, 43, 226, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px dashed rgba(138, 43, 226, 0.3);
+        }
+        
+        .recommendation-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #8a2be2;
+            display: flex;
+            align-items: center;
+        }
+        
+        .recommendation-item {
+            background: rgba(15, 12, 41, 0.5);
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+        
+        .recommendation-item:hover {
+            border-left: 3px solid #8a2be2;
+            transform: translateX(-5px);
+        }
+        
+        .recommendation-icon {
+            width: 30px;
+            height: 30px;
+            background: rgba(138, 43, 226, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            color: #8a2be2;
+        }
+        
+        .recommendation-text {
+            flex: 1;
+            font-size: 0.9rem;
+        }
+        
+        .recommendation-arrow {
+            color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* تحليلات الذكاء الاصطناعي */
+        .ai-analytics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .ai-analytics-card {
+            background: rgba(5, 4, 22, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+        
+        .ai-analytics-title {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #8a2be2;
+            display: flex;
+            align-items: center;
+        }
+        
+        .ai-chart {
+            height: 200px;
+            width: 100%;
+            position: relative;
+        }
+        
+        .ai-chart-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(138, 43, 226, 0.2);
+        }
+        
+        .ai-chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(to top, #8a2be2, #9400d3);
+            border-radius: 3px 3px 0 0;
+            transition: height 0.5s ease;
+        }
+        
+        .ai-chart-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .ai-chart-label {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- مساعد الذكاء الاصطناعي -->
+    <div class="ai-assistant">
+        <i class="fas fa-robot"></i>
+    </div>
+    
+    <div class="ai-panel">
+        <div class="ai-header">
+            <div class="ai-title">مساعد A1 الذكي</div>
+            <div class="ai-status"></div>
+            <button class="ai-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="ai-conversation">
+            <div class="ai-message ai">
+                <div class="ai-bubble">مرحباً بك في نظام A1 الذكي! كيف يمكنني مساعدتك اليوم؟</div>
+            </div>
+        </div>
+        <div class="ai-input-container">
+            <input type="text" class="ai-input" placeholder="اكتب رسالتك...">
+            <button class="ai-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- قسم التوصيات الذكية -->
+    <div class="ai-recommendations">
+        <div class="recommendation-title">
+            <i class="fas fa-lightbulb" style="margin-left: 10px;"></i>
+            توصيات الذكاء الاصطناعي للعصابة
+        </div>
+        <div class="recommendation-item">
+            <div class="recommendation-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="recommendation-text">تعزيز الدفاعات في المنطقة الشمالية ضد هجمات BS المتوقعة</div>
+            <div class="recommendation-arrow">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+        </div>
+        <div class="recommendation-item">
+            <div class="recommendation-icon">
+                <i class="fas fa-coins"></i>
+            </div>
+            <div class="recommendation-text">استثمار 75% من الأموال في ترقية المركبات هذا الأسبوع</div>
+            <div class="recommendation-arrow">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+        </div>
+        <div class="recommendation-item">
+            <div class="recommendation-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="recommendation-text">ترقية 3 أعضاء إلى رتبة قادة فرق لتعزيز الكفاءة</div>
+            <div class="recommendation-arrow">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- تحليلات الذكاء الاصطناعي -->
+    <div class="ai-analytics">
+        <div class="ai-analytics-card">
+            <div class="ai-analytics-title">
+                <i class="fas fa-chart-line" style="margin-left: 10px;"></i>
+                تطور قوة العصابة
+            </div>
+            <div class="ai-chart">
+                <div class="ai-chart-line"></div>
+                <div class="ai-chart-bar" style="left: 10%; height: 70%;"></div>
+                <div class="ai-chart-bar" style="left: 20%; height: 50%;"></div>
+                <div class="ai-chart-bar" style="left: 30%; height: 65%;"></div>
+                <div class="ai-chart-bar" style="left: 40%; height: 80%;"></div>
+                <div class="ai-chart-bar" style="left: 50%; height: 90%;"></div>
+                <div class="ai-chart-bar" style="left: 60%; height: 95%;"></div>
+                <div class="ai-chart-bar" style="left: 70%; height: 100%;"></div>
+                <div class="ai-chart-labels">
+                    <div class="ai-chart-label">الأسبوع 1</div>
+                    <div class="ai-chart-label">الأسبوع 2</div>
+                    <div class="ai-chart-label">الأسبوع 3</div>
+                    <div class="ai-chart-label">الأسبوع 4</div>
+                </div>
+            </div>
+        </div>
+        <div class="ai-analytics-card">
+            <div class="ai-analytics-title">
+                <i class="fas fa-bullseye" style="margin-left: 10px;"></i>
+                تحليل نقاط القوة والضعف
+            </div>
+            <div class="ai-chart">
+                <div class="ai-chart-line"></div>
+                <div class="ai-chart-bar" style="left: 10%; height: 85%; background: linear-gradient(to top, #2ecc71, #27ae60);"></div>
+                <div class="ai-chart-bar" style="left: 30%; height: 70%; background: linear-gradient(to top, #e74c3c, #c0392b);"></div>
+                <div class="ai-chart-bar" style="left: 50%; height: 90%; background: linear-gradient(to top, #2ecc71, #27ae60);"></div>
+                <div class="ai-chart-bar" style="left: 70%; height: 60%; background: linear-gradient(to top, #e74c3c, #c0392b);"></div>
+                <div class="ai-chart-labels">
+                    <div class="ai-chart-label">هجوم</div>
+                    <div class="ai-chart-label">دفاع</div>
+                    <div class="ai-chart-label">موارد</div>
+                    <div class="ai-chart-label">تنسيق</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // نظام الذكاء الاصطناعي
+        const aiAssistant = document.querySelector('.ai-assistant');
+        const aiPanel = document.querySelector('.ai-panel');
+        const aiClose = document.querySelector('.ai-close');
+        const aiInput = document.querySelector('.ai-input');
+        const aiSend = document.querySelector('.ai-send');
+        const aiConversation = document.querySelector('.ai-conversation');
+        
+        // تفعيل مساعد الذكاء الاصطناعي
+        aiAssistant.addEventListener('click', () => {
+            aiPanel.classList.toggle('show');
+            aiAssistant.classList.toggle('listening');
+        });
+        
+        aiClose.addEventListener('click', () => {
+            aiPanel.classList.remove('show');
+            aiAssistant.classList.remove('listening');
+        });
+        
+        // إرسال رسالة إلى الذكاء الاصطناعي
+        function sendMessage() {
+            const message = aiInput.value.trim();
+            if (message === '') return;
+            
+            // إضافة رسالة المستخدم
+            addMessage(message, 'user');
+            aiInput.value = '';
+            
+            // محاكاة استجابة الذكاء الاصطناعي
+            setTimeout(() => {
+                const responses = [
+                    "لقد قمت بتحليل طلبك، سأقدم لك أفضل الحلول.",
+                    "بناءً على بيانات العصابة، أرى أن الخيار الأمثل هو...",
+                    "لدي توصية ممتازة لك!",
+                    "حسب تحليلاتي، أنصحك بالتالي...",
+                    "لقد لاحظت نمطاً مهماً في بياناتك، هل تريد التفاصيل؟"
+                ];
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                addMessage(randomResponse, 'ai');
+            }, 1000);
+        }
+        
+        // إضافة رسالة جديدة
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `ai-message ${sender}`;
+            
+            const bubbleDiv = document.createElement('div');
+            bubbleDiv.className = `ai-bubble`;
+            bubbleDiv.textContent = text;
+            
+            messageDiv.appendChild(bubbleDiv);
+            aiConversation.appendChild(messageDiv);
+            
+            // التمرير إلى الأسفل
+            aiConversation.scrollTop = aiConversation.scrollHeight;
+        }
+        
+        // إرسال بالضغط على Enter
+        aiInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        // إرسال بالضغط على الزر
+        aiSend.addEventListener('click', sendMessage);
+        
+        // محاكاة تحليل الذكاء الاصطناعي
+        function simulateAIAnalysis() {
+            const bars = document.querySelectorAll('.ai-chart-bar');
+            bars.forEach(bar => {
+                const randomHeight = Math.floor(Math.random() * 30) + 70;
+                bar.style.height = `${randomHeight}%`;
+            });
+        }
+        
+        // تحديث التحليلات كل 5 ثواني
+        setInterval(simulateAIAnalysis, 5000);
+        
+        // تحليل الأعداء تلقائياً
+        function analyzeEnemies() {
+            const enemies = ['BS', 'JO', 'WKR', 'HR', 'IRQ', 'MTK', 'V1', 'GNG', 'VGN', 'M7', 'MF'];
+            const randomEnemy = enemies[Math.floor(Math.random() * enemies.length)];
+            const threatLevel = Math.floor(Math.random() * 100);
+            
+            addMessage(`تحذير: العدو ${randomEnemy} يظهر نشاطاً غير عادي. مستوى التهديد: ${threatLevel}%`, 'ai');
+        }
+        
+        // تحليل الأعداء كل 30 ثانية
+        setInterval(analyzeEnemies, 30000);
+    </script>
+</body>
+      </html>
