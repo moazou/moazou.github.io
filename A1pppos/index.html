@@ -21,27 +21,27 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            overflow-x: hidden;
         }
         
         /* صفحة تسجيل الدخول */
         #loginPage {
-            position: relative;
+            position: fixed;
             width: 100%;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
         }
         
         .login-container {
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.9);
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(106, 13, 173, 0.5);
             width: 350px;
             text-align: center;
-            z-index: 1;
             animation: fadeIn 0.5s ease-in-out;
         }
         
@@ -120,15 +120,6 @@
             box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
         }
         
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        
         .error-message {
             color: #ff3333;
             margin-top: 10px;
@@ -144,7 +135,7 @@
         }
         
         .sidebar {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.9);
             padding: 20px;
             border-right: 1px solid var(--primary-color);
             box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
@@ -312,4 +303,307 @@
         .card-value {
             font-size: 2rem;
             font-weight: bold;
-            margin-bottom:
+            margin-bottom: 10px;
+        }
+        
+        .card-desc {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .section {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(106, 13, 173, 0.3);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-left: 10px;
+        }
+        
+        /* محتوى الصفحات */
+        .page-content {
+            display: none;
+        }
+        
+        .page-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        /* تأثير الجسيمات الخلفية */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        /* للهواتف المحمولة */
+        @media (max-width: 768px) {
+            #dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .login-container {
+                width: 90%;
+                padding: 20px;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- تأثير الجسيمات الخلفية -->
+    <div id="particles-js"></div>
+    
+    <!-- صفحة تسجيل الدخول -->
+    <div id="loginPage">
+        <div class="login-container">
+            <div class="logo">
+                <img src="https://i.imgur.com/JqYeZoL.png" alt="شعار عصابة A1">
+                عصابة <span>A1</span>
+            </div>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">اسم المستخدم</label>
+                    <input type="text" id="username" placeholder="أدخل اسمك في اللعبة" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="playerId">الأيدي (ID)</label>
+                    <input type="text" id="playerId" placeholder="أدخل الأيدي الخاص بك" required>
+                </div>
+                
+                <div class="error-message" id="errorMessage"></div>
+                
+                <button type="submit" class="btn">دخول إلى المنصة</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- لوحة التحكم -->
+    <div id="dashboard">
+        <!-- الشريط الجانبي -->
+        <div class="sidebar">
+            <div class="dashboard-logo">
+                <img src="https://i.imgur.com/JqYeZoL.png" alt="شعار عصابة A1">
+                عصابة <span>A1</span>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-info">
+                    <div class="user-name" id="dashboardUsername">مستخدم</div>
+                    <div class="user-id" id="dashboardPlayerId">ID: 123456</div>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-page="home">
+                        <i class="fas fa-home"></i>
+                        <span>الرئيسية</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="members">
+                        <i class="fas fa-users"></i>
+                        <span>أعضاء العصابة</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="achievements">
+                        <i class="fas fa-trophy"></i>
+                        <span>الإنجازات</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="events">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>الفعاليات</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- المحتوى الرئيسي -->
+        <div class="main-content">
+            <div class="header">
+                <h1 class="page-title" id="pageTitle">لوحة التحكم</h1>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                </button>
+            </div>
+            
+            <!-- صفحة الرئيسية -->
+            <div class="page-content active" id="homePage">
+                <div class="cards-container">
+                    <div class="card">
+                        <h2 class="card-title"><i class="fas fa-users"></i> عدد الأعضاء</h2>
+                        <div class="card-value">47</div>
+                        <p class="card-desc">إجمالي أعضاء العصابة</p>
+                    </div>
+                    <div class="card">
+                        <h2 class="card-title"><i class="fas fa-star"></i> المستوى</h2>
+                        <div class="card-value">12</div>
+                        <p class="card-desc">مستوى العصابة الحالي</p>
+                    </div>
+                    <div class="card">
+                        <h2 class="card-title"><i class="fas fa-coins"></i> النقاط</h2>
+                        <div class="card-value">8,450</div>
+                        <p class="card-desc">نقاط العصابة الإجمالية</p>
+                    </div>
+                    <div class="card">
+                        <h2 class="card-title"><i class="fas fa-trophy"></i> الترتيب</h2>
+                        <div class="card-value">#3</div>
+                        <p class="card-desc">ترتيب العصابة عالمياً</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-bell"></i> الإشعارات</h2>
+                    <p>اجتماع العصابة اليوم الساعة 8:00 مساءً - الرجاء الحضور</p>
+                    <p>تم تحقيق إنجاز "ملك المعارك" من قبل العضو محمد</p>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-calendar-check"></i> الفعاليات القادمة</h2>
+                    <p>اجتماع العصابة - الجمعة القادمة 8:00 مساءً</p>
+                    <p>بطولة العصابة الداخلية - الأسبوع القادم</p>
+                </div>
+            </div>
+            
+            <!-- صفحة الأعضاء -->
+            <div class="page-content" id="membersPage">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-users"></i> أعضاء العصابة</h2>
+                    <p>قائمة كاملة بأعضاء العصابة ورتبهم</p>
+                    <p>سيتم عرض الجدول هنا عند اكتمال البيانات</p>
+                </div>
+            </div>
+            
+            <!-- صفحة الإنجازات -->
+            <div class="page-content" id="achievementsPage">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-trophy"></i> إنجازات العصابة</h2>
+                    <p>قائمة بإنجازات العصابة التي تم تحقيقها</p>
+                    <p>سيتم عرض الإنجازات هنا عند اكتمال البيانات</p>
+                </div>
+            </div>
+            
+            <!-- صفحة الفعاليات -->
+            <div class="page-content" id="eventsPage">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-calendar-alt"></i> الفعاليات القادمة</h2>
+                    <p>جدول الفعاليات والأنشطة المستقبلية</p>
+                    <p>سيتم عرض الفعاليات هنا عند اكتمال البيانات</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // تهيئة تأثير الجسيمات
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.getElementById('particles-js')) {
+                particlesJS("particles-js", {
+                    particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        color: { value: "#6a0dad" },
+                        shape: { type: "circle" },
+                        opacity: { value: 0.5, random: true },
+                        size: { value: 3, random: true },
+                        line_linked: { enable: true, distance: 150, color: "#6a0dad", opacity: 0.4, width: 1 },
+                        move: { enable: true, speed: 3, direction: "none", random: true, straight: false, out_mode: "out" }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: { enable: true, mode: "repulse" },
+                            onclick: { enable: true, mode: "push" }
+                        }
+                    }
+                });
+            }
+
+            // التحقق من وجود بيانات تسجيل دخول مخزنة
+            checkLogin();
+            
+            // إعداد التنقل بين الصفحات
+            setupNavigation();
+        });
+
+        // إعداد التنقل بين الصفحات
+        function setupNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // إزالة النشاط من جميع الروابط
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    
+                    // إضافة النشاط للرابط الحالي
+                    this.classList.add('active');
+                    
+                    // إخفاء جميع صفحات المحتوى
+                    document.querySelectorAll('.page-content').forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // عرض الصفحة المحددة
+                    const pageId = this.getAttribute('data-page') + 'Page';
+                    document.getElementById(pageId).classList.add('active');
+                    
+                    // تحديث عنوان الصفحة
+                    document.getElementById('pageTitle').textContent = this.querySelector('span').textContent;
+                });
+            });
+        }
+        
+        // التحقق من وجود بيانات تسجيل دخول مخزنة
+        function checkLogin() {
+            const username = localStorage.getItem('a1_username');
+            const playerId = localStorage.getItem('a1_playerId');
+            
+            if (username && playerId) {
+                showDashboard(username, playerId);
+            }
+        }
+        
+        // عرض لوحة التحكم
+        function showDashboard(username, playerId) {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'grid';
+            
+            // تحديث معلومات المستخدم في لوحة التحكم
+            document.getElementById('dashboardUsername').textContent = username;
+            document.getElementById('dashboardPlayerId').textContent = `ID: ${playerId}`;
+            document.getElementById('userAvatar').textContent = username.charAt(0).toUpp
