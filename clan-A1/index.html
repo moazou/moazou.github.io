@@ -1,172 +1,293 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A1 Gang Panel</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0d0d0d;
-      color: #fff;
-      text-align: center;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-      background: #111;
-      box-shadow: 0 0 15px #00ffe5;
-      border-radius: 20px;
-      margin-top: 40px;
-    }
-    h1, h2, h3 {
-      color: #00ffe5;
-    }
-    button {
-      background: #00ffe5;
-      border: none;
-      color: black;
-      padding: 10px 20px;
-      margin: 10px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    input {
-      padding: 10px;
-      margin: 10px;
-      border-radius: 8px;
-      border: none;
-      text-align: center;
-    }
-    .section {
-      background: #1a1a1a;
-      margin: 20px 0;
-      padding: 15px;
-      border-radius: 15px;
-      text-align: right;
-    }
-    .rank-title {
-      color: #00ffcc;
-      margin: 10px 0;
-    }
-    .member-list {
-      margin: 5px 0 15px 0;
-      font-size: 0.9em;
-    }
-    .competition-list, .enemy-list {
-      list-style: none;
-      padding: 0;
-    }
-    .competition-list li, .enemy-list li {
-      margin: 5px 0;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>تسجيل الدخول</h1>
-    <input type="text" placeholder="اسمك" />
-    <input type="text" placeholder="الرقم التعريفي" />
-    <br />
-    <button>دخول</button><div class="section">
-  <h2>مرحباً بك!</h2>
-  <p>عدد الزوار اليوم: 2</p>
-  <button onclick="scrollToSection('ranks')">الرتب</button>
-  <button onclick="scrollToSection('competitions')">المسابقات</button>
-  <button onclick="scrollToSection('enemies')">الأعداء</button>
-  <button onclick="scrollToSection('links')">الروابط</button>
-</div>
-
-<div class="section" id="ranks">
-  <h2>الرتب</h2>
-  <div>
-    <h3 class="rank-title">1- القائد KING 👑</h3>
-    <div class="member-list">@Ahmed M</div>
-
-    <h3 class="rank-title">2- مشير ME1 🎗️</h3>
-    <div class="member-list">@ahmedadel</div>
-
-    <h3 class="rank-title">3- اللواء BDE 🚀</h3>
-    <div class="member-list">@Mo3az، @Aboud، @omar</div>
-
-    <h3 class="rank-title">4- قادة الحرب WL 🛡️</h3>
-    <div class="member-list">@moaaz، @frank، @manar</div>
-
-    <h3 class="rank-title">5- مقاتل اسطوري LM ☠️</h3>
-    <div class="member-list">@عبدالروؤف، @~bensohaib، @~🤍🤍، @Kareem Fares</div>
-
-    <h3 class="rank-title">6- فرقة 999 ⚔️</h3>
-    <div class="member-list">@~الشيخ عبدالرحمن، ....</div>
-
-    <h3 class="rank-title">7- القائد العام GC 👨🏻‍✈️</h3>
-    <div class="member-list">@VENOM</div>
-
-    <h3 class="rank-title">8- القوات الخاصة SFC ☠️</h3>
-    <div class="member-list">....</div>
-
-    <h3 class="rank-title">9- قائد فريق TL ⚙️</h3>
-    <div class="member-list">....</div>
-
-    <h3 class="rank-title">10- رقيب SGT 🥇</h3>
-    <div class="member-list">....</div>
-
-    <h3 class="rank-title">11- عريف CPL 🪖</h3>
-    <div class="member-list">....</div>
-
-    <h3 class="rank-title">12- جندي أول PFC 🪖</h3>
-    <div class="member-list">....</div>
-
-    <h3 class="rank-title">13- مجند RCT 🪖</h3>
-    <div class="member-list">قائمة الأعضاء الطويلة كما زودتني بها</div>
-  </div>
-</div>
-
-<div class="section" id="competitions">
-  <h2>المسابقات</h2>
-  <ul class="competition-list">
-    <li>مسابقة 1 - Sniping</li>
-    <li>مسابقة 2 - Racing</li>
-    <li>مسابقة 3 - Bikes</li>
-    <li>مسابقة 4 - Battles</li>
-    <li>مسابقة 5 - Tactical</li>
-    <li>مسابقة 6 - Stealth</li>
-    <li>مسابقة 7 - Cars</li>
-    <li>مسابقة 8 - Boats</li>
-    <li>مسابقة 9 - Skills</li>
-    <li>مسابقة 10 - Deathmatch</li>
-    <li>مسابقة ضخمة - KING War</li>
-    <li>مسابقة ضخمة - A1 Arena</li>
-  </ul>
-</div>
-
-<div class="section" id="enemies">
-  <h2>الأعداء</h2>
-  <ul class="enemy-list">
-    <li>X BS</li>
-    <li>X JO</li>
-    <li>X WKR</li>
-    <li>X HR</li>
-    <li>X IRQ</li>
-    <li>X MTK</li>
-    <li>X V1</li>
-    <li>X GNG</li>
-    <li>X VGN</li>
-    <li>X M7</li>
-    <li>X MF</li>
-  </ul>
-</div>
-
-<div class="section" id="links">
-  <h2>الروابط</h2>
-  <p><a href="https://www.tiktok.com/@_9___00" style="color:#00ffe5" target="_blank">قناة التيك توك</a></p>
-  <p><a href="https://chat.whatsapp.com/" style="color:#00ffe5" target="_blank">مجموعة الواتساب</a></p>
-</div>
-
-  </div>  <script>
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
-  </script></body>
-  </html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عصابة A1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6a0dad;
+            --secondary-color: #000;
+            --accent-color: #ff5722;
+            --text-color: #fff;
+            --card-bg: rgba(30, 30, 30, 0.8);
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d0a4a 100%);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* صفحة تسجيل الدخول */
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(106, 13, 173, 0.5);
+            width: 350px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -70px); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(106, 13, 173, 0.7);
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+        }
+        
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .error-message {
+            color: #ff3333;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        /* لوحة التحكم */
+        .container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+            display: none;
+        }
+        
+        .sidebar {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-right: 1px solid var(--primary-color);
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .dashboard-logo {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(106, 13, 173, 0.3);
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 10px;
+            background-color: rgba(106, 13, 173, 0.2);
+            border-radius: 5px;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .user-info {
+            flex: 1;
+        }
+        
+        .user-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .user-id {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+        
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav-item {
+            margin-bottom: 10px;
+        }
+        
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(106, 13, 173, 0.5);
+            color: white;
+        }
+        
+        .nav-link i {
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* المحتوى الرئيسي */
+        .main-content {
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(106, 13, 173, 0.3);
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .logout-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background-color: #e64a19;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-left: 10px;
+        }
+        
+        .card-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .card-desc {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .section {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30
