@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A1 عصابتك - قائمة الأعضاء</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+        }
+        
+        .panel {
+            background: #111;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ff0000;
+        }
+        
+        .panel-title {
+            color: #ff0000;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            font-size: 22px;
+        }
+        
+        .rank-section {
+            margin-bottom: 25px;
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #ffd700;
+        }
+        
+        .rank-title {
+            color: #ffd700;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .rank-title .emoji {
+            margin-left: 8px;
+        }
+        
+        .member-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .member {
+            background: rgba(255,255,255,0.05);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            transition: all 0.3s;
+        }
+        
+        .member:hover {
+            background: rgba(255,0,0,0.1);
+            transform: translateY(-3px);
+        }
+        
+        .member-name {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .member-weapon {
+            font-size: 12px;
+            color: #aaa;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            color: #ff0000;
+            letter-spacing: 5px;
+        }
+        
+        .teams-section {
+            margin-top: 30px;
+        }
+        
+        .country-badge {
+            display: inline-block;
+            background: #333;
+            padding: 3px 8px;
+            border-radius: 15px;
+            margin: 3px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <h1 class="panel-title">A1 عصابتك - هيكل القيادة</h1>
+        
+        <!-- القيادة العليا -->
+        <div class="rank-section">
+            <div class="rank-title">
+                <span class="emoji">👑</span>
+                <span>1- القائد KING</span>
+            </div>
+            <div class="member-list">
+                <div class="member">@Ahmed M</div>
+            </div>
+        </div>
+        
+        <div class="divider">ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ</div>
+        
+        <!-- القيادة -->
+        <div class="rank-section">
+            <div class="rank-title">
+                <span class="emoji">🎗️</span>
+                <span>2- مشير FM1</span>
+            </div>
+            <div class="member-list">
+                <div class="member">@ahmedadel</div>
+            </div>
+        </div>
+        
+        <div class="divider">ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ</div>
+        
+        <!-- اللواء -->
+        <div class="rank-section">
+            <div class="rank-title">
+                <span class="emoji">🚀</span>
+                <span>3- اللواء BDE</span>
+            </div>
+            <div class="member-list">
+                <div class="member">@Mo3az</div>
+                <div class="member">@omar</div>
+                <div class="member">@Aboud</div>
+            </div>
+        </div>
+        
+        <div class="divider">ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ</div>
+        
+        <!-- قادة الحرب -->
+        <div class="rank-section">
+            <div class="rank-title">
+                <span class="emoji">🛡️</span>
+                <span>4- قادة الحرب WL</span>
+            </div>
+            <div class="member-list">
+                <div class="member">@moaaz</div>
+                <div class="member">@frank</div>
+                <div class="member">@manar</div>
+            </div>
+        </div>
+        
+        <div class="divider">ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ</div>
+        
+        <!-- المقاتلون الأسطوريون -->
+        <div class="rank-section">
+            <div class="rank-title">
+                <span class="emoji">☠️</span>
+                <span>5- مقاتل اسطوري LM</span>
+            </div>
+            <div class="member-list">
+                <div class="member">@عبدالروؤف</div>
+                <div class="member">@~bensohaib</div>
+                <div class="member">@~🤍🤍</div>
+                <div class="member">@Kareem Fares <span class="member-weapon">أسلحتهم 10, 11</span></div>
+            </div>
+        </div>
+        
+        <div class="divider">ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ</div>
+        
+        <!-- فرقة ال 999 -->
+        <div class="rank-section">
+            <div class="rank-title">
+                <span class="emoji">⚔️</span>
+                <span>6- فرقة ال 999 الحربية المقاتلة</span>
+            </div>
+            <div class="member-list">
+                <div class="member">@~الشيخ عبدالرحمن</div>
+                <div class="member">(شاغر)</div>
+                <div class="member">(شاغر)</div>
+                <div class="member">(شاغر)</div>
+                <div class="member">(شاغر)</div>
+            </div>
+        </div>
+        
+        <div class="divider">ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ</div>
+        
+        <!-- باقي الرتب -->
+        <div class="rank-section">
+            <div class="rank-title">
+                <span class="emoji">👨🏻‍✈️</span>
+                <span>7- القائد العام للجيش GC</span>
+            </div>
+            <div class="member-list">
+                <div class="member">@VENOM</div>
+            </div>
+        </div>
+        
+        <!-- باقي الرتب (يمكن إضافتها بنفس النمط) -->
+        
+        <!-- المجندون -->
+        <div class="rank-section">
+            <div class="rank-title">
+                <span class="emoji">🪖</span>
+                <span>13- مجند RCT</span>
+            </div>
+            <div class="member-list">
+                <div class="member">@Omar</div>
+                <div class="member">@كـئـيـب</div>
+                <div class="member">@~󠅤󠅤󠅤󠅤</div>
+                <div class="member">@~•_•</div>
+                <div class="member">@~7oda</div>
+                <div class="member">@~M10❤️💙</div>
+                <div class="member">@~Mohammed Mahmoud 🌶️</div>
+                <div class="member">@~آيَـَـــِآدٍ</div>
+                <div class="member">@~أوس</div>
+                <div class="member">@~‏أوســ亗ــڪارR‿ˣ ✌︎</div>
+                <div class="member">@~𓆩 ᗰᖇ. SᑭEEᗪ 𓆪🖤</div>
+                <div class="member">@~𓆩𝓐𝓱𝓶𝓮𝓭᭓𓆪</div>
+                <div class="member">@~想 ﾑ1〙写䒙「M E D O」ン</div>
+                <div class="member">@~BASEL CH7</div>
+                <div class="member">@+966 57 037 6049</div>
+                <div class="member">@~SALEH</div>
+                <div class="member">@~𝐒𝐄𝐈𝐅 💥</div>
+                <div class="member">@BasEl</div>
+                <div class="member">@Deepu</div>
+            </div>
+        </div>
+        
+        <!-- الفرق الخاصة -->
+        <div class="teams-section">
+            <div class="panel">
+                <h3 class="panel-title">الفرق الخاصة 👾</h3>
+                <div>
+                    <div class="member">1- القناصين - 50الف</div>
+                    <div class="member">2- الجواسيس - 70 آلف</div>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <h3 class="panel-title">دول الأعضاء</h3>
+                <div>
+                    <span class="country-badge">BS</span>
+                    <span class="country-badge">JO</span>
+                    <span class="country-badge">WKR</span>
+                    <span class="country-badge">HR</span>
+                    <span class="country-badge">IRQ</span>
+                    <span class="country-badge">MTK</span>
+                    <span class="country-badge">V1</span>
+                    <span class="country-badge">GNG</span>
+                    <span class="country-badge">VGN</span>
+                    <span class="country-badge">M7</span>
+                    <span class="country-badge">MF</span>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <h3 class="panel-title">الأعداء</h3>
+                <div class="member-list">
+                    <div class="member">@『عبد الهادي 』</div>
+                    <div class="member">@Brr brr</div>
+                    <div class="member">@فادي</div>
+                    <div class="member">@+20 11 45894639</div>
+                    <div class="member">@••</div>
+                    <div class="member">@+966 50 716 7709</div>
+                    <div class="member">@علي</div>
+                    <div class="member">@Dyana</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+                  </html>
