@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عصابة A1 - المنصة الرسمية</title>
+    <style>
+        /* الأساسيات */
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+
+        /* صفحة تسجيل الدخول */
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+            text-align: center;
+        }
+
+        .login-container h1 {
+            color: #8A2BE2;
+            margin-bottom: 30px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background-color: #2d2d2d;
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #8A2BE2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .login-container button:hover {
+            background-color: #7B1FA2;
+        }
+
+        /* لوحة التحكم */
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #8A2BE2;
+            font-size: 2.5em;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+
+        .stat-box {
+            background-color: #1e1e1e;
+            padding: 15px;
+            border-radius: 8px;
+            width: 30%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .stat-box h3 {
+            margin-top: 0;
+            color: #aaa;
+        }
+
+        .stat-box p {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0 0;
+        }
+
+        /* التنقل الرئيسي */
+        .main-nav {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: #2d2d2d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: #8A2BE2;
+            transform: translateY(-3px);
+        }
+
+        /* أقسام المحتوى */
+        .members-section, .enemies-section, 
+        .competitions-section, .links-section {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .rank-group {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #444;
+        }
+
+        .rank-group h3 {
+            color: #8A2BE2;
+            margin-bottom: 10px;
+        }
+
+        .member {
+            padding: 8px 15px;
+            background-color: #2d2d2d;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        .enemy {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #2d2d2d;
+            margin: 0 10px 10px 0;
+            border-radius: 5px;
+            color: #ff5555;
+        }
+
+        .competition-category {
+            margin-bottom: 20px;
+        }
+
+        .competition {
+            padding: 8px 15px;
+            background-color: #2d2d2d;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #8A2BE2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 10px 10px 0;
+            transition: background-color 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: #7B1FA2;
+        }
+
+        /* التكيف مع الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .stats {
+                flex-direction: column;
+            }
+            
+            .stat-box {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            .main-nav {
+                flex-direction: column;
+            }
+            
+            .nav-btn {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" preload="auto"></audio>
+    <audio id="hoverSound" src="https://assets.mixkit.co/sfx/preview/mixkit-hover-click-notification-358.mp3" preload="auto"></audio>
+
+    <div class="login-container" id="loginPage">
+        <h1>تسجيل الدخول إلى A1</h1>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="اسم العضو" required>
+            <input type="text" id="userID" placeholder="الأيدي" required>
+            <button type="submit" class="clickable">دخول</button>
+        </form>
+    </div>
+
+    <div class="dashboard" id="dashboard" style="display:none;">
+        <header>
+            <h1>مرحباً بك في عصابة <span class="gang-name">A1</span></h1>
+            <div class="stats">
+                <div class="stat-box">
+                    <h3>عدد الأعضاء</h3>
+                    <p class="member-count">47</p>
+                </div>
+                <div class="stat-box">
+                    <h3>المستوى</h3>
+                    <p class="gang-level">12</p>
+                </div>
+                <div class="stat-box">
+                    <h3>النقاط</h3>
+                    <p class="gang-points">8,450</p>
+                </div>
+            </div>
+        </header>
+
+        <nav class="main-nav">
+            <button class="nav-btn clickable" data-section="members">الأعضاء</button>
+            <button class="nav-btn clickable" data-section="competitions">المسابقات</button>
+            <button class="nav-btn clickable" data-section="enemies">الأعداء</button>
+            <button class="nav-btn clickable" data-section="links">الروابط</button>
+        </nav>
+
+        <main id="contentArea">
+            <!-- المحتوى الديناميكي سيظهر هنا -->
+            <div class="competitions-section">
+                <h2>المسابقات الشهرية</h2>
+                
+                <div class="competition-category">
+                    <h3>المسابقات الصغيرة (10)</h3>
+                    <div class="competition">1. مسابقة القنص السريع</div>
+                    <div class="competition">2. تحدي السرعة القصوى</div>
+                    <div class="competition">3. تحدي القفز العالي</div>
+                    <div class="competition">4. مسابقة التخفي</div>
+                    <div class="competition">5. تحدي التحمل</div>
+                    <div class="competition">6. مسابقة الرماية</div>
+                    <div class="competition">7. تحدي القيادة الليلية</div>
+                    <div class="competition">8. مسابقة التكتيك</div>
+                    <div class="competition">9. تحدي العمل الجماعي</div>
+                    <div class="competition">10. مسابقة الذاكرة</div>
+                </div>
+                
+                <div class="competition-category">
+                    <h3>المسابقات الكبرى (2)</h3>
+                    <div class="competition">1. بطولة القيادة</div>
+                    <div class="competition">2. معركة العصابة الكبرى</div>
+                </div>
+            </div>
+            
+            <div class="links-section">
+                <h2>روابط العصابة</h2>
+                <a href="https://www.tiktok.com/@_9___00" class="social-link clickable">قناة تيك توك</a>
+                <a href="https://chat.w
