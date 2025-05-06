@@ -25,6 +25,15 @@
         }
         
         /* صفحة تسجيل الدخول */
+        #loginPage {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
         .login-container {
             background-color: rgba(0, 0, 0, 0.8);
             padding: 30px;
@@ -32,17 +41,13 @@
             box-shadow: 0 0 20px rgba(106, 13, 173, 0.5);
             width: 350px;
             text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             z-index: 1;
             animation: fadeIn 0.5s ease-in-out;
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translate(-50%, -70px); }
-            to { opacity: 1; transform: translate(-50%, -50%); }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .logo {
@@ -105,7 +110,7 @@
         }
         
         .particles {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -120,10 +125,11 @@
         }
         
         /* لوحة التحكم */
-        .container {
+        #dashboard {
             display: none;
             grid-template-columns: 250px 1fr;
             min-height: 100vh;
+            width: 100%;
         }
         
         .sidebar {
@@ -259,3 +265,41 @@
         }
         
         .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-left: 10px;
+        }
+        
+        .card-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .card-desc {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .section {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color
