@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عصابة A1 - Mad Out 2</title>
+    <style>
+        :root {
+            --primary-color: #6a0dad;
+            --secondary-color: #2c003e;
+            --accent-color: #9c27b0;
+            --text-color: #ffffff;
+            --enemy-color: #ff0000;
+            --member-color: #4caf50;
+        }
+        
+        body {
+            font-family: 'Tajawal', Arial, sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.imgur.com/JQlE0gD.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent-color);
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 50px auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .login-container h2 {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--accent-color);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+        }
+        
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background-color: #7b1fa2;
+            transform: translateY(-2px);
+        }
+        
+        .dashboard {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .welcome-message {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .quick-link {
+            background-color: rgba(106, 13, 173, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid var(--accent-color);
+        }
+        
+        .quick-link:hover {
+            background-color: rgba(106, 13, 173, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .quick-link i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--accent-color);
+        }
+        
+        .members-section, .competitions-section, .enemies-section, .links-section {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .member-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .member-rank {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .member-name {
+            font-size: 1.2rem;
+        }
+        
+        .enemy-item {
+            background-color: rgba(255, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid var(--enemy-color);
+        }
+        
+        .enemy-name {
+            font-weight: bold;
+        }
+        
+        .enemy-x {
+            color: var(--enemy-color);
+            font-size: 1.5rem;
+        }
+        
+        .competition-card {
+            background-color: rgba(106, 13, 173, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .competition-title {
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .competition-desc {
+            margin-bottom: 10px;
+        }
+        
+        .link-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+        
+        .link-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .link-icon {
+            margin-left: 10px;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .back-btn {
+            background-color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="notification" id="notification"></div>
+    
+    <div class="container">
+        <!-- صفحة تسجيل الدخول -->
+        <div id="login-page">
+            <header>
+                <div class="logo">👑</div>
+                <h1>عصابة A1 - Mad Out 2</h1>
+            </header>
+            
+            <div class="login-container">
+                <h2>تسجيل الدخول</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="user-id">الأيدي:</label>
+                        <input type="text" id="user-id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">اسم اللاعب:</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <button type="submit">دخول</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- لوحة التحكم بعد التسجيل -->
+        <div id="dashboard" class="dashboard">
+            <button class="back-btn" onclick="showSection('dashboard')"><i class="fas fa-home"></i> الرئيسية</button>
+            
+            <div class="welcome-message">
+                <h2 id="welcome-text">مرحباً بك في عصابة A1</h2>
+            </div>
+            
+            <div class="quick-links">
+                <div class="quick-link" onclick="showSection('members-section')">
+                    <i class="fas fa-users"></i>
+                    <span>أعضاء العصابة</span>
+                </div>
+                <div class="quick-link" onclick="showSection('competitions-section')">
+                    <i class="fas fa-trophy"></i>
+                    <span>المسابقات</span>
+                </div>
+                <div class="quick-link" onclick="showSection('enemies-section')">
+                    <i class="fas fa-skull"></i>
+                    <span>أعداء العصابة</span>
+                </div>
+                <div class="quick-link" onclick="showSection('links-section')">
+                    <i class="fas fa-link"></i>
+                    <span>روابط مهمة</span>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <h3 class="section-title">إحصائيات سريعة</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <span>عدد الأعضاء: <span id="members-count">36</span></span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-skull"></i>
+                        <span>عدد الأعداء: <span id="enemies-count">11</span></span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>المسابقات النشطة: <span id="competitions-count">12</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم الأعضاء -->
+        <div id="members-section" class="members-section">
+            <button class="back-btn" onclick="showSection('dashboard')"><i class="fas fa-arrow-left"></i> رجوع</button>
+            
+            <h2 class="section-title">أعضاء عصابة A1</h2>
+            
+            <div class="rank-group">
+                <h3>1- القائد KING 👑</h3>
+                <div class="member-card">
+                    <div class="member-rank">القائد</div>
+                    <div class="member-name">@Ahmed M</div>
+                </div>
+            </div>
+            
+            <div class="rank-group">
+                <h3>2- مشير FM1 🎗️</h3>
+                <div class="member-card">
+                    <div class="member-rank">مشير</div>
+                    <div class="member-name">@ahmedadel</div>
+                </div>
+            </div>
+            
+            <div class="rank-group">
+                <h3>3- اللواء BDE 🚀</h3>
+                <div class="member-card">
+                    <div class="member-rank">لواء</div>
+                    <div class="member-name">@Mo3az</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">لواء</div>
+                    <div class="member-name">@Omar</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">لواء</div>
+                    <div class="member-name">@Aboud</div>
+                </div>
+            </div>
+            
+            <div class="rank-group">
+                <h3>4- قادة الحرب WL 🛡️</h3>
+                <div class="member-card">
+                    <div class="member-rank">قائد حرب</div>
+                    <div class="member-name">@moaaz</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">قائد حرب</div>
+                    <div class="member-name">@frank</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">قائد حرب</div>
+                    <div class="member-name">@manar</div>
+                </div>
+            </div>
+            
+            <div class="rank-group">
+                <h3>5- مقاتل اسطوري LM ☠️</h3>
+                <div class="member-card">
+                    <div class="member-rank">مقاتل أسطوري</div>
+                    <div class="member-name">@عبدالروؤف</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">مقاتل أسطوري</div>
+                    <div class="member-name">@🤍🤍</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">مقاتل أسطوري</div>
+                    <div class="member-name">@Kareem Fares</div>
+                </div>
+                <div class="weapons-info">أسلحتهم: 10, 11</div>
+            </div>
+            
+            <div class="rank-group">
+                <h3>6- فرقة ال 999 الحربية المقاتلة ⚔️</h3>
+                <div class="member-card">
+                    <div class="member-rank">مقاتل 999</div>
+                    <div class="member-name">@~الشيخ عبدالرحمن</div>
+                </div>
+            </div>
+            
+            <div class="rank-group">
+                <h3>7- القائد العام للجيش 👨🏻‍✈️ GC</h3>
+                <div class="member-card">
+                    <div class="member-rank">قائد الجيش</div>
+                    <div class="member-name">@VENOM</div>
+                </div>
+            </div>
+            
+            <div class="rank-group">
+                <h3>12- جندي أول 🪖 PFC</h3>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@Omar</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@『عبد الهادي 』</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@كـئـيـب</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@••</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@SALEH</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@Brr brr</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@أوس</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@الحمد لله</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@فادي</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@+20 11 45894639</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@Deepu</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@آيَـَـــِآدٍ</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@+966 50 716 7709</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@علي</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@+966 57 037 6049</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">جندي أول</div>
+                    <div class="member-name">@Dyana</div>
+                </div>
+            </div>
+            
+            <div class="rank-group">
+                <h3>الفرق 👾</h3>
+                <div class="member-card">
+                    <div class="member-rank">1- القناصين</div>
+                    <div class="member-name">50 ألف</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-rank">2- الجواسيس</div>
+                    <div class="member-name">70 ألف</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم المسابقات -->
+        <div id="competitions-section" class="competitions-section">
+            <button class="back-btn" onclick="showSection('dashboard')"><i class="fas fa-arrow-left"></i> رجوع</button>
+            
+            <h2 class="section-title">مسابقات عصابة A1</h2>
+            
+            <h3>المسابقات الكبرى 🏆</h3>
+            <div class="competition-card">
+                <div class="competition-title">1- بطولة القائد الأعلى</div>
+                <div class="competition-desc">منافسة على لقب أفضل قائد في العصابة لمدة شهر كامل</div>
+                <div class="competition-prize">الجائزة: ترقية + وسام خاص</div>
+            </div>
+            
+            <div class="competition-card">
+                <div class="competition-title">2- معركة العصور</div>
+                <div class="competition-desc">منافسة جماعية بين فرق العصابة</div>
+                <div class="competition-prize">الجائزة: 100 ألف نقطة للفريق الفائز</div>
+            </div>
+            
+            <h3>المسابقات الشهرية ⚔️</h3>
+            <div class="competition-card">
+                <div class="competition-title">1- أفضل مقاتل</div>
+                <div class="competition-desc">من يسجل أكبر عدد من الإنجازات في المعارك</div>
+            </div>
+            
+            <div class="competition-card">
+                <div class="competition-title">2- أقوى تحالف</div>
+                <div class="competition-desc">أفضل تعاون بين أعضاء العصابة</div>
+            </div>
+            
+            <div class="competition-card">
+                <div class="competition-title">3- صائد الأعداء</div>
+                <div class="competition-desc">من يهزم أكبر عدد من أعداء العصابة</div>
+            </div>
+            
+            <div class="competition-card">
+                <div class="competition-title">4- مبتكر الاستراتيجيات</div>
+                <div class="competition-desc">أفضل خطة معركة مقدمة</div>
+            </div>
+            
+            <div class="competition-card">
+                <div class="competition-title">5- سفير العصابة</div>
+                <div class="competition-desc">من يجلب أكبر عدد من الأعضاء الجدد</div>
+            </div>
+            
+            <div class="competition-card">
+                <div class="competition-title">6- بطل التدريب</div>
+                <div class="competition-desc">أكثر عضو مشاركة في تدريبات العصابة</div>
+            </div>
+            
+            <div class="competition-card">
+                <div class="competition-title">7- حارس الحدود</div>
+ 
