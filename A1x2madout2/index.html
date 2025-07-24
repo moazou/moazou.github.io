@@ -1,235 +1,154 @@
 <!DOCTYPE html><html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة الأعضاء</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }@keyframes gradientBG {
-        0% {background-position: 0% 50%;}
-        50% {background-position: 100% 50%;}
-        100% {background-position: 0% 50%;}
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة الأعضاء - مسؤول</title>
+  <style>
+    :root {
+      --main-color: #1abc9c;
+      --dark-bg: #121212;
+      --light-bg: #1e1e1e;
+      --text-color: #ecf0f1;
+    }body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+  color: var(--text-color);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
 
-    header {
-        background-color: #2c3e50cc;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        width: 100%;
-    }
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
 
-    .btn {
-        background-color: #3498db;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        margin: 10px 5px;
-        transition: background-color 0.3s ease;
-        border-radius: 5px;
-    }
+header, footer {
+  background-color: #000000cc;
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
 
-    .btn:hover {
-        background-color: #2980b9;
-    }
+.btn {
+  background-color: var(--main-color);
+  color: white;
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
 
-    .btn-container {
-        margin: 20px 0;
-    }
+.btn:hover {
+  background-color: #16a085;
+}
 
-    .form-container, .content-container, .admin-panel {
-        background-color: rgba(255,255,255,0.1);
-        backdrop-filter: blur(10px);
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        width: 70%;
-        margin: 20px;
-        display: none;
-    }
+.btn-container {
+  text-align: center;
+  margin-top: 20px;
+}
 
-    .form-container input, .admin-panel textarea, .admin-panel input {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: var(--light-bg);
+  padding: 20px;
+  border-radius: 10px;
+}
 
-    .form-container label, .admin-panel label {
-        font-weight: bold;
-    }
+textarea, input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+}
 
-    pre {
-        background-color: #111827;
-        padding: 10px;
-        border-radius: 5px;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        color: #eee;
-    }
+.hidden {
+  display: none;
+}
 
-    footer {
-        background-color: #2c3e50cc;
-        color: white;
-        text-align: center;
-        padding: 10px;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-</style>
+.section {
+  margin-bottom: 30px;
+}
 
+  </style>
 </head>
-<body><header>
-    <h1>منصة الأعضاء</h1>
-    <p>أهلاً بك في موقع أعضاء العصابة</p>
-</header>
+<body>
+  <header>
+    <h1>لوحة تحكم المسؤول</h1>
+  </header>  <div class="btn-container">
+    <button class="btn" onclick="toggleSection('admin-login')">دخول المسؤول</button>
+    <button class="btn" onclick="toggleSection('edit-members')">تعديل الأعضاء</button>
+    <button class="btn" onclick="toggleSection('add-section')">إضافة قسم جديد</button>
+    <button class="btn" onclick="toggleSection('site-preview')">عرض الموقع</button>
+  </div>  <div id="admin-login" class="container section hidden">
+    <h3>أدخل كلمة السر</h3>
+    <input type="password" id="admin-pass" placeholder="كلمة السر">
+    <button class="btn" onclick="checkPassword()">دخول</button>
+    <p id="login-status" style="color:red"></p>
+  </div>  <div id="edit-members" class="container section hidden">
+    <h3>تعديل قائمة الأعضاء</h3>
+    <textarea id="members-content" rows="8"></textarea>
+    <button class="btn" onclick="saveContent('members')">حفظ</button>
+  </div>  <div id="add-section" class="container section hidden">
+    <h3>إضافة قسم جديد</h3>
+    <input type="text" id="new-section-title" placeholder="عنوان القسم">
+    <textarea id="new-section-content" rows="6" placeholder="محتوى القسم"></textarea>
+    <button class="btn" onclick="addSection()">إضافة</button>
+  </div>  <div id="site-preview" class="container section hidden">
+    <h3>عرض مباشر للموقع</h3>
+    <iframe src="./" style="width:100%; height:400px; border: none;"></iframe>
+  </div>  <footer>
+    <p>لوحة تحكم A1 - صلاحيات كاملة</p>
+  </footer><audio id="click-sound" src="https://cdn.pixabay.com/download/audio/2023/03/06/audio_7f87821965.mp3?filename=click-124467.mp3"></audio>
 
-<div class="btn-container">
-    <button class="btn" onclick="playClick();showSection('login')">تسجيل الدخول</button>
-    <button class="btn" onclick="playClick();showSection('members')">عرض الأعضاء</button>
-    <button class="btn" onclick="playClick();showSection('decoration')">زخرفة خاصة</button>
-    <button class="btn" onclick="playClick();showSection('enemies')">الأعداء</button>
-    <button class="btn" onclick="playClick();showSection('links')">روابط القناة والجروب</button>
-    <button class="btn" onclick="playClick();showSection('competitions')">المسابقات</button>
-    <button class="btn" onclick="playClick();showSection('adminLogin')">المسؤول فقط 🔒</button>
-</div>
-
-<div class="form-container" id="login">
-    <h2>تسجيل الدخول</h2>
-    <form onsubmit="checkSubmitted(event)" action="#">
-        <label for="name">الاسم:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id" required>
-        <button type="submit" class="btn">تسجيل</button>
-    </form>
-    <p id="submit-msg" style="color: yellow;"></p>
-</div>
-
-<div class="content-container" id="members">
-    <h3>الأعضاء</h3>
-    <pre id="membersList">
-
-• A1 | MOAZ • A1 | ALI • A1 | LEO </pre> </div>
-
-<div class="content-container" id="decoration">
-    <h3>زخرفة خاصة</h3>
-    <pre>『A1』name『 اختصار رتبتك 』</pre>
-</div>
-
-<div class="content-container" id="enemies">
-    <h3>الأعداء</h3>
-    <pre>
-
-NM,BS+KOD(HR,MJ,WKR,IRQ) </pre> </div>
-
-<div class="content-container" id="links">
-    <h3>تابعنا على:</h3>
-    <ul>
-        <li><a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب واتساب</a></li>
-        <li><a href="https://www.tiktok.com/@_9___00?_t=ZS-8vhTHEj2gF6&_r=1" target="_blank">قناتنا على تيك توك</a></li>
-    </ul>
-</div>
-
-<div class="content-container" id="competitions">
-    <h3>المسابقات</h3>
-    <pre>
-
-1- المسابقة الأولى: 300,000 ألف + 300 جوهرة 2- المسابقة الثانية: 150,000 ألف + 150 جوهرة 3- المسابقة الثالثة: 50,000 ألف + 50 جوهرة </pre> </div>
-
-<!-- لوحة تسجيل الدخول للمسؤول -->
-<div class="form-container" id="adminLogin">
-    <h3>دخول المسؤول</h3>
-    <input type="password" id="adminPass" placeholder="كلمة السر">
-    <button class="btn" onclick="checkAdmin()">دخول</button>
-    <p id="admin-msg"></p>
-</div>
-
-<!-- لوحة تحكم المسؤول -->
-<div class="admin-panel" id="adminPanel">
-    <h3>لوحة تحكم المسؤول</h3>
-
-    <label>تعديل الأعضاء:</label>
-    <textarea id="adminMembers" rows="6"></textarea>
-
-    <label>➕ إنشاء قائمة جديدة:</label>
-    <input type="text" id="newSectionTitle" placeholder="عنوان القائمة الجديدة">
-    <textarea id="newSectionContent" rows="4" placeholder="المحتوى"></textarea>
-    <button class="btn" onclick="addNewSection()">إنشاء القائمة</button>
-
-    <button class="btn" onclick="saveAdminEdits()">💾 حفظ التعديلات</button>
-</div>
-
-<footer>
-    <p>منصة A1 - جميع الحقوق محفوظة</p>
-</footer>
-
-<audio id="clickSound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
-
-<script>
-    function showSection(sectionId) {
-        document.querySelectorAll('.form-container, .content-container, .admin-panel').forEach(el => el.style.display = 'none');
-        document.getElementById(sectionId).style.display = 'block';
-    }
+  <script>
+    const password = "a1gang123";
 
     function playClick() {
-        document.getElementById('clickSound').play();
+      const click = document.getElementById("click-sound");
+      if (click) click.play();
     }
 
-    function checkSubmitted(event) {
-        event.preventDefault();
-        if (localStorage.getItem("alreadySubmitted")) {
-            document.getElementById("submit-msg").innerText = "✅ تم التسجيل مسبقاً";
-        } else {
-            localStorage.setItem("alreadySubmitted", "true");
-            document.getElementById("submit-msg").innerText = "✅ تم التسجيل بنجاح";
-        }
+    function toggleSection(id) {
+      playClick();
+      document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
     }
 
-    function checkAdmin() {
-        const pass = document.getElementById('adminPass').value;
-        if (pass === 'a1gang123') {
-            document.getElementById('adminLogin').style.display = 'none';
-            document.getElementById('adminPanel').style.display = 'block';
-            document.getElementById('adminMembers').value = document.getElementById('membersList').innerText.trim();
-        } else {
-            document.getElementById('admin-msg').innerText = '❌ كلمة المرور غير صحيحة';
-        }
+    function checkPassword() {
+      const input = document.getElementById("admin-pass").value;
+      const status = document.getElementById("login-status");
+      if (input === password) {
+        status.textContent = "تم الدخول بنجاح!";
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('hidden'));
+      } else {
+        status.textContent = "كلمة السر خاطئة!";
+      }
     }
 
-    function saveAdminEdits() {
-        const members = document.getElementById('adminMembers').value;
-        document.getElementById('membersList').innerText = members;
-        alert("✅ تم حفظ التعديلات");
+    function saveContent(type) {
+      const content = document.getElementById(`${type}-content`).value;
+      localStorage.setItem(`${type}-section`, content);
+      alert("تم الحفظ وسيظهر للجميع!");
     }
 
-    function addNewSection() {
-        const title = document.getElementById('newSectionTitle').value;
-        const content = document.getElementById('newSectionContent').value;
-        if (!title || !content) return alert("❗يرجى إدخال العنوان والمحتوى");
-        const container = document.createElement("div");
-        container.className = "content-container";
-        container.innerHTML = `<h3>${title}</h3><pre>${content}</pre>`;
-        document.body.insertBefore(container, document.querySelector("footer"));
-        container.style.display = 'block';
-        alert("✅ تم إنشاء القائمة بنجاح");
+    function addSection() {
+      const title = document.getElementById("new-section-title").value;
+      const content = document.getElementById("new-section-content").value;
+      if (title && content) {
+        localStorage.setItem(`section-${title}`, content);
+        alert("تمت الإضافة وسيظهر القسم للجميع!");
+      } else {
+        alert("يرجى ملء كل الحقول");
+      }
     }
-</script>
-
-</body>
+  </script></body>
 </html>
 
