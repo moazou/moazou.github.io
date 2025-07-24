@@ -1,142 +1,153 @@
-<!DOCTYPE html>
-<html lang="ar">
+<!DOCTYPE html><html lang="ar">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منصة الأعضاء</title>
+  <title>عصابة A1</title>
   <style>
-    :root {
-      --main-color: #1abc9c;
-      --dark-bg: #121212;
-      --light-bg: #1e1e1e;
-      --text-color: #ecf0f1;
-    }
-
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Arial', sans-serif;
-      color: var(--text-color);
-      background: linear-gradient(-45deg, #1e3c72, #2a5298, #1e3c72);
-      background-size: 400% 400%;
-      animation: gradientBG 20s ease infinite;
-    }
+      font-family: 'Tajawal', sans-serif;
+      background: linear-gradient(120deg, #000000, #1c1c3c);
+      color: #fff;
+      animation: backgroundShift 20s infinite;
+    }@keyframes backgroundShift {
+  0% { background-position: 0 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
 
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
+header, footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  border-bottom: 2px solid #333;
+}
 
-    header, footer {
-      background-color: #000000cc;
-      padding: 20px;
-      text-align: center;
-      color: white;
-    }
+.container {
+  max-width: 700px;
+  margin: 30px auto;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
 
-    .btn {
-      background-color: var(--main-color);
-      color: white;
-      padding: 10px 20px;
-      margin: 5px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s;
-    }
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
 
-    .btn:hover {
-      background-color: #16a085;
-    }
+button {
+  background-color: #8e44ad;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    .btn-container {
-      text-align: center;
-      margin-top: 20px;
-    }
+button:hover {
+  background-color: #732d91;
+}
 
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      background-color: var(--light-bg);
-      padding: 20px;
-      border-radius: 10px;
-    }
+.hidden {
+  display: none;
+}
 
-    textarea, input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: none;
-    }
+a {
+  color: #1abc9c;
+  text-decoration: none;
+}
 
-    .hidden {
-      display: none;
-    }
+a:hover {
+  text-decoration: underline;
+}
 
-    .section {
-      margin-bottom: 30px;
-    }
   </style>
 </head>
-<body>
-  <header>
-    <h1>منصة الأعضاء</h1>
-  </header>
+<body><header>
+  <h1>تسجيل الدخول إلى عصابة A1</h1>
+</header><div class="container" id="login-box">
+  <input type="text" id="user-name" placeholder="الاسم">
+  <input type="text" id="user-id" placeholder="الأيدي">
+  <button onclick="login()">دخول</button>
+</div><div class="container hidden" id="welcome-box">
+  <h2>أهلاً بك في عصابة A1</h2>
+  <button onclick="showSection('competitions')">المسابقات الشهرية</button>
+  <button onclick="showSection('links')">روابط العصابة</button>
+  <button onclick="showSection('enemies')">أعداء العصابة</button>
+  <button onclick="showSection('members')">الأعضاء</button>
+</div><div class="container hidden" id="competitions">
+  <h2>المسابقات الشهرية</h2>
+  <ul>
+    <li>مسابقة رقم 1: فك الشفرة</li>
+    <li>مسابقة رقم 2: لغز الخريطة</li>
+    <li>مسابقة رقم 3: جمع النقاط</li>
+    <li>مسابقة رقم 4: تحدي السرعة</li>
+    <li>مسابقة رقم 5: حرب القناصين</li>
+    <li>مسابقة رقم 6: سحب الجوائز</li>
+    <li>مسابقة رقم 7: صائد الجوائز</li>
+    <li>مسابقة رقم 8: هجوم الليل</li>
+    <li>مسابقة رقم 9: دفاع القاعدة</li>
+    <li>مسابقة رقم 10: نهاية اللعبة</li>
+    <li><strong>مسابقة كبرى 1:</strong> السيطرة على المدينة</li>
+    <li><strong>مسابقة كبرى 2:</strong> المعركة النهائية</li>
+  </ul>
+</div><div class="container hidden" id="links">
+  <h2>روابط العصابة</h2>
+  <p><a href="https://www.tiktok.com/@_9___00?_t=ZS-8vX2WuN1Psm&_r=1" target="_blank">تيك توك Venom</a></p>
+  <p><a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب العصابة واتساب</a></p>
+</div><div class="container hidden" id="enemies">
+  <h2>أعداء العصابة ❌</h2>
+  <p>BS ❌ JO ❌ WKR ❌ HR ❌ IRQ ❌ MTK ❌ V1 ❌ GNG ❌ VGN ❌ M7 ❌ MF ❌</p>
+</div><div class="container hidden" id="members">
+  <h2>قائمة الأعضاء والرتب</h2>
+  <pre>
+1- القائد KING 👑
+@Ahmed M2- مشير FM1 🎗️ @ahmedadel
 
-  <div class="btn-container">
-    <button class="btn" onclick="playClick(); toggleSection('edit-members')">تعديل الأعضاء</button>
-    <button class="btn" onclick="playClick(); toggleSection('add-section')">إضافة قسم جديد</button>
-  </div>
+3- اللواء BDE 🚀 @Mo3az @omar @Aboud
 
-  <div id="edit-members" class="container section hidden">
-    <h3>تعديل قائمة الأعضاء</h3>
-    <textarea id="members-content" rows="8"></textarea>
-    <button class="btn" onclick="playClick(); saveContent('members')">حفظ</button>
-  </div>
+4- قادة الحرب WL 🛡️ @moaaz @frank @manar
 
-  <div id="add-section" class="container section hidden">
-    <h3>إضافة قسم جديد</h3>
-    <input type="text" id="new-section-title" placeholder="عنوان القسم">
-    <textarea id="new-section-content" rows="6" placeholder="محتوى القسم"></textarea>
-    <button class="btn" onclick="playClick(); addSection()">إضافة</button>
-  </div>
+5- مقاتل اسطوري LM ☠️ @عبدالروؤف @🤍🤍 @Kareem Fares
 
-  <footer>
-    <p>منصة الأعضاء - تصميم بسيط وجميل</p>
-  </footer>
+6- فرقة 999 ⚔️ @~الشيخ عبدالرحمن ...
 
-  <audio id="click-sound" src="https://cdn.pixabay.com/download/audio/2023/03/06/audio_7f87821965.mp3?filename=click-124467.mp3"></audio>
+7- القائد العام GC 👨🏻‍✈️ @VENOM
 
-  <script>
-    function playClick() {
-      const click = document.getElementById("click-sound");
-      if (click) click.play();
-    }
+8- القوات الخاصة SFC ☠️ ...
 
-    function toggleSection(id) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
-    }
+9- TL ⚙️ ...
 
-    function saveContent(type) {
-      const content = document.getElementById(`${type}-content`).value;
-      localStorage.setItem(`${type}-section`, content);
-      alert("تم الحفظ!");
-    }
+10- SGT 🥇 ...
 
-    function addSection() {
-      const title = document.getElementById("new-section-title").value;
-      const content = document.getElementById("new-section-content").value;
-      if (title && content) {
-        localStorage.setItem(`section-${title}`, content);
-        alert("تمت الإضافة!");
-      } else {
-        alert("يرجى ملء كل الحقول");
-      }
-    }
-  </script>
-</body>
+11- CPL 🪖 ...
+
+12- PFC 🪖 @Omar @『عبد الهادي 』 @Kareem Fares @Moaaz @عبدالروؤف @كـئـيـب @~🤍🤍 @SALEH @Brr brr @أوس @الحمد لله @فادي @Deepu @Dyana </pre>
+
+</div><footer>
+  <p>جميع الحقوق محفوظة لعصابة A1</p>
+</footer><script>
+  function login() {
+    const name = document.getElementById('user-name').value;
+    const id = document.getElementById('user-id').value;
+
+    if (!name || !id) return alert('يرجى إدخال الاسم والأيدي');
+
+    document.getElementById('login-box').classList.add('hidden');
+    document.getElementById('welcome-box').classList.remove('hidden');
+
+    // إرسال بريد إلكتروني (يتطلب backend - غير مفعل في HTML فقط)
+    console.log(`تم تسجيل دخول: ${name} - ${id} (يجب إرسال إلى moazxx50@gmail.com)`);
+  }
+
+  function showSection(id) {
+    document.querySelectorAll('.container').forEach(e => e.classList.add('hidden'));
+    document.getElementById('welcome-box').classList.remove('hidden');
+    document.getElementById(id).classList.remove('hidden');
+  }
+</script></body>
 </html>
