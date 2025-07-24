@@ -1,153 +1,1 @@
-<!DOCTYPE html><html lang="ar">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>عصابة A1</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Tajawal', sans-serif;
-      background: linear-gradient(120deg, #000000, #1c1c3c);
-      color: #fff;
-      animation: backgroundShift 20s infinite;
-    }@keyframes backgroundShift {
-  0% { background-position: 0 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0 50%; }
-}
 
-header, footer {
-  text-align: center;
-  padding: 20px;
-  background: #111;
-  border-bottom: 2px solid #333;
-}
-
-.container {
-  max-width: 700px;
-  margin: 30px auto;
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-
-input, button {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-button {
-  background-color: #8e44ad;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background-color: #732d91;
-}
-
-.hidden {
-  display: none;
-}
-
-a {
-  color: #1abc9c;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-  </style>
-</head>
-<body><header>
-  <h1>تسجيل الدخول إلى عصابة A1</h1>
-</header><div class="container" id="login-box">
-  <input type="text" id="user-name" placeholder="الاسم">
-  <input type="text" id="user-id" placeholder="الأيدي">
-  <button onclick="login()">دخول</button>
-</div><div class="container hidden" id="welcome-box">
-  <h2>أهلاً بك في عصابة A1</h2>
-  <button onclick="showSection('competitions')">المسابقات الشهرية</button>
-  <button onclick="showSection('links')">روابط العصابة</button>
-  <button onclick="showSection('enemies')">أعداء العصابة</button>
-  <button onclick="showSection('members')">الأعضاء</button>
-</div><div class="container hidden" id="competitions">
-  <h2>المسابقات الشهرية</h2>
-  <ul>
-    <li>مسابقة رقم 1: فك الشفرة</li>
-    <li>مسابقة رقم 2: لغز الخريطة</li>
-    <li>مسابقة رقم 3: جمع النقاط</li>
-    <li>مسابقة رقم 4: تحدي السرعة</li>
-    <li>مسابقة رقم 5: حرب القناصين</li>
-    <li>مسابقة رقم 6: سحب الجوائز</li>
-    <li>مسابقة رقم 7: صائد الجوائز</li>
-    <li>مسابقة رقم 8: هجوم الليل</li>
-    <li>مسابقة رقم 9: دفاع القاعدة</li>
-    <li>مسابقة رقم 10: نهاية اللعبة</li>
-    <li><strong>مسابقة كبرى 1:</strong> السيطرة على المدينة</li>
-    <li><strong>مسابقة كبرى 2:</strong> المعركة النهائية</li>
-  </ul>
-</div><div class="container hidden" id="links">
-  <h2>روابط العصابة</h2>
-  <p><a href="https://www.tiktok.com/@_9___00?_t=ZS-8vX2WuN1Psm&_r=1" target="_blank">تيك توك Venom</a></p>
-  <p><a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب العصابة واتساب</a></p>
-</div><div class="container hidden" id="enemies">
-  <h2>أعداء العصابة ❌</h2>
-  <p>BS ❌ JO ❌ WKR ❌ HR ❌ IRQ ❌ MTK ❌ V1 ❌ GNG ❌ VGN ❌ M7 ❌ MF ❌</p>
-</div><div class="container hidden" id="members">
-  <h2>قائمة الأعضاء والرتب</h2>
-  <pre>
-1- القائد KING 👑
-@Ahmed M2- مشير FM1 🎗️ @ahmedadel
-
-3- اللواء BDE 🚀 @Mo3az @omar @Aboud
-
-4- قادة الحرب WL 🛡️ @moaaz @frank @manar
-
-5- مقاتل اسطوري LM ☠️ @عبدالروؤف @🤍🤍 @Kareem Fares
-
-6- فرقة 999 ⚔️ @~الشيخ عبدالرحمن ...
-
-7- القائد العام GC 👨🏻‍✈️ @VENOM
-
-8- القوات الخاصة SFC ☠️ ...
-
-9- TL ⚙️ ...
-
-10- SGT 🥇 ...
-
-11- CPL 🪖 ...
-
-12- PFC 🪖 @Omar @『عبد الهادي 』 @Kareem Fares @Moaaz @عبدالروؤف @كـئـيـب @~🤍🤍 @SALEH @Brr brr @أوس @الحمد لله @فادي @Deepu @Dyana </pre>
-
-</div><footer>
-  <p>جميع الحقوق محفوظة لعصابة A1</p>
-</footer><script>
-  function login() {
-    const name = document.getElementById('user-name').value;
-    const id = document.getElementById('user-id').value;
-
-    if (!name || !id) return alert('يرجى إدخال الاسم والأيدي');
-
-    document.getElementById('login-box').classList.add('hidden');
-    document.getElementById('welcome-box').classList.remove('hidden');
-
-    // إرسال بريد إلكتروني (يتطلب backend - غير مفعل في HTML فقط)
-    console.log(`تم تسجيل دخول: ${name} - ${id} (يجب إرسال إلى moazxx50@gmail.com)`);
-  }
-
-  function showSection(id) {
-    document.querySelectorAll('.container').forEach(e => e.classList.add('hidden'));
-    document.getElementById('welcome-box').classList.remove('hidden');
-    document.getElementById(id).classList.remove('hidden');
-  }
-</script></body>
-</html>
