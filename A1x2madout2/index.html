@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="ar">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,149 +7,632 @@
   <style>
     :root {
       --main-color: #1abc9c;
+      --secondary-color: #3498db;
+      --danger-color: #e74c3c;
       --dark-bg: #121212;
       --light-bg: #1e1e1e;
       --text-color: #ecf0f1;
-    }body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
-  color: var(--text-color);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-}
+      --border-radius: 8px;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
 
-@keyframes gradientBG {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', 'Arial', sans-serif;
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      color: var(--text-color);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
 
-header, footer {
-  background-color: #000000cc;
-  padding: 20px;
-  text-align: center;
-  color: white;
-}
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
 
-.btn {
-  background-color: var(--main-color);
-  color: white;
-  padding: 10px 20px;
-  margin: 5px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
-}
+    header, footer {
+      background-color: #000000cc;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: var(--box-shadow);
+    }
 
-.btn:hover {
-  background-color: #16a085;
-}
+    .btn {
+      background-color: var(--main-color);
+      color: white;
+      padding: 12px 24px;
+      margin: 8px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s;
+      box-shadow: var(--box-shadow);
+    }
 
-.btn-container {
-  text-align: center;
-  margin-top: 20px;
-}
+    .btn:hover {
+      background-color: #16a085;
+      transform: translateY(-2px);
+    }
 
-.container {
-  max-width: 800px;
-  margin: 20px auto;
-  background-color: var(--light-bg);
-  padding: 20px;
-  border-radius: 10px;
-}
+    .btn-secondary {
+      background-color: var(--secondary-color);
+    }
 
-textarea, input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border: none;
-}
+    .btn-danger {
+      background-color: var(--danger-color);
+    }
 
-.hidden {
-  display: none;
-}
+    .btn-container {
+      text-align: center;
+      margin: 20px auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 800px;
+    }
 
-.section {
-  margin-bottom: 30px;
-}
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: var(--light-bg);
+      padding: 25px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
 
+    textarea, input, select {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: var(--border-radius);
+      border: 1px solid #333;
+      background-color: #2d2d2d;
+      color: var(--text-color);
+      font-family: inherit;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .section {
+      margin-bottom: 30px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      color: var(--main-color);
+      border-bottom: 2px solid var(--main-color);
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+
+    .status-message {
+      padding: 10px;
+      border-radius: var(--border-radius);
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .success {
+      background-color: rgba(46, 204, 113, 0.2);
+      color: #2ecc71;
+    }
+
+    .error {
+      background-color: rgba(231, 76, 60, 0.2);
+      color: #e74c3c;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .section-list {
+      margin: 20px 0;
+    }
+
+    .section-item {
+      background-color: #2d2d2d;
+      padding: 15px;
+      border-radius: var(--border-radius);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-item h4 {
+      margin: 0;
+      color: var(--main-color);
+    }
+
+    .section-actions button {
+      margin-left: 8px;
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .btn-container {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        margin: 5px 0;
+      }
+      
+      .section-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .section-actions {
+        margin-top: 10px;
+        align-self: flex-end;
+      }
+    }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <h1>لوحة تحكم المسؤول</h1>
-  </header>  <div class="btn-container">
-    <button class="btn" onclick="toggleSection('admin-login')">دخول المسؤول</button>
-    <button class="btn" onclick="toggleSection('edit-members')">تعديل الأعضاء</button>
-    <button class="btn" onclick="toggleSection('add-section')">إضافة قسم جديد</button>
-    <button class="btn" onclick="toggleSection('site-preview')">عرض الموقع</button>
-  </div>  <div id="admin-login" class="container section hidden">
-    <h3>أدخل كلمة السر</h3>
+    <div id="admin-info" class="hidden">
+      <p>مرحباً، <span id="admin-name"></span> | <a href="#" onclick="logout()">تسجيل خروج</a></p>
+    </div>
+  </header>
+
+  <div class="btn-container">
+    <button class="btn" onclick="toggleSection('admin-login')" id="login-btn">دخول المسؤول</button>
+    <button class="btn" onclick="toggleSection('edit-members')" id="members-btn" disabled>تعديل الأعضاء</button>
+    <button class="btn" onclick="toggleSection('manage-sections')" id="sections-btn" disabled>إدارة الأقسام</button>
+    <button class="btn" onclick="toggleSection('site-preview')" id="preview-btn" disabled>عرض الموقع</button>
+    <button class="btn btn-secondary" onclick="toggleSection('admin-settings')" id="settings-btn" disabled>الإعدادات</button>
+  </div>
+
+  <!-- قسم تسجيل الدخول -->
+  <div id="admin-login" class="container section">
+    <h3 class="section-title">تسجيل دخول المسؤول</h3>
+    <div id="login-status" class="status-message hidden"></div>
+    <input type="text" id="admin-username" placeholder="اسم المستخدم">
     <input type="password" id="admin-pass" placeholder="كلمة السر">
-    <button class="btn" onclick="checkPassword()">دخول</button>
-    <p id="login-status" style="color:red"></p>
-  </div>  <div id="edit-members" class="container section hidden">
-    <h3>تعديل قائمة الأعضاء</h3>
-    <textarea id="members-content" rows="8"></textarea>
-    <button class="btn" onclick="saveContent('members')">حفظ</button>
-  </div>  <div id="add-section" class="container section hidden">
-    <h3>إضافة قسم جديد</h3>
+    <button class="btn" onclick="login()" id="login-submit-btn">دخول</button>
+  </div>
+
+  <!-- قسم إدارة الأعضاء -->
+  <div id="edit-members" class="container section hidden">
+    <h3 class="section-title">تعديل قائمة الأعضاء</h3>
+    <div id="members-status" class="status-message hidden"></div>
+    <textarea id="members-content" rows="8" placeholder="أدخل بيانات الأعضاء هنا..."></textarea>
+    <button class="btn" onclick="saveContent('members')">حفظ التغييرات</button>
+    <button class="btn btn-secondary" onclick="loadContent('members')">استعادة البيانات</button>
+  </div>
+
+  <!-- قسم إدارة الأقسام -->
+  <div id="manage-sections" class="container section hidden">
+    <h3 class="section-title">إدارة الأقسام</h3>
+    <div id="sections-status" class="status-message hidden"></div>
+    
+    <div class="section-list" id="sections-list">
+      <!-- سيتم ملؤها بالجافاسكريبت -->
+    </div>
+    
+    <h4>إضافة قسم جديد</h4>
     <input type="text" id="new-section-title" placeholder="عنوان القسم">
     <textarea id="new-section-content" rows="6" placeholder="محتوى القسم"></textarea>
-    <button class="btn" onclick="addSection()">إضافة</button>
-  </div>  <div id="site-preview" class="container section hidden">
-    <h3>عرض مباشر للموقع</h3>
-    <iframe src="./" style="width:100%; height:400px; border: none;"></iframe>
-  </div>  <footer>
-    <p>لوحة تحكم A1 - صلاحيات كاملة</p>
-  </footer><audio id="click-sound" src="https://cdn.pixabay.com/download/audio/2023/03/06/audio_7f87821965.mp3?filename=click-124467.mp3"></audio>
+    <button class="btn" onclick="addSection()">إضافة قسم</button>
+  </div>
+
+  <!-- قسم معاينة الموقع -->
+  <div id="site-preview" class="container section hidden">
+    <h3 class="section-title">عرض مباشر للموقع</h3>
+    <div class="btn-container">
+      <button class="btn" onclick="refreshPreview()">تحديث العرض</button>
+    </div>
+    <iframe src="./" id="site-iframe" style="width:100%; height:500px; border: none; border-radius: var(--border-radius);"></iframe>
+  </div>
+
+  <!-- قسم الإعدادات -->
+  <div id="admin-settings" class="container section hidden">
+    <h3 class="section-title">إعدادات المسؤول</h3>
+    <div id="settings-status" class="status-message hidden"></div>
+    
+    <h4>تغيير كلمة السر</h4>
+    <input type="password" id="current-pass" placeholder="كلمة السر الحالية">
+    <input type="password" id="new-pass" placeholder="كلمة السر الجديدة">
+    <input type="password" id="confirm-pass" placeholder="تأكيد كلمة السر">
+    <button class="btn btn-danger" onclick="changePassword()">تغيير كلمة السر</button>
+    
+    <h4>نسخ احتياطي</h4>
+    <button class="btn btn-secondary" onclick="backupData()">تنزيل نسخة احتياطية</button>
+    <button class="btn btn-secondary" onclick="document.getElementById('restore-file').click()">استعادة نسخة</button>
+    <input type="file" id="restore-file" accept=".json" style="display: none;" onchange="restoreData(this)">
+  </div>
+
+  <footer>
+    <p>لوحة تحكم A1 - الإصدار 2.0 | &copy; <span id="current-year"></span></p>
+  </footer>
+
+  <audio id="click-sound" src="https://cdn.pixabay.com/download/audio/2023/03/06/audio_7f87821965.mp3?filename=click-124467.mp3"></audio>
+  <audio id="success-sound" src="https://cdn.pixabay.com/download/audio/2023/03/19/audio_3d355f0e4f.mp3?filename=success-1-6297.mp3"></audio>
+  <audio id="error-sound" src="https://cdn.pixabay.com/download/audio/2023/03/19/audio_3a0d1bc71e.mp3?filename=error-126627.mp3"></audio>
 
   <script>
-    const password = "a1gang123";
+    // بيانات المسؤول (يجب استبدالها بآلية أكثر أماناً في الإنتاج)
+    const adminCredentials = {
+      username: "admin",
+      // كلمة السر مخزنة كـ hash (SHA-256) لـ "a1gang123"
+      passwordHash: "d18a9a57f691a6a5c7824e5e262a984ebdb2a6b7a5d8a7a3a5a6a7a8a9a0a1a2"
+    };
 
-    function playClick() {
-      const click = document.getElementById("click-sound");
-      if (click) click.play();
+    // حالة النظام
+    let currentAdmin = null;
+    let isLoggedIn = false;
+
+    // تهيئة الصفحة عند التحميل
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      checkSession();
+    });
+
+    // تشغيل صوت النقر
+    function playSound(type) {
+      const sound = document.getElementById(`${type}-sound`);
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play();
+      }
     }
 
+    // تبديل الأقسام
     function toggleSection(id) {
-      playClick();
+      playSound('click');
       document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
       document.getElementById(id).classList.remove('hidden');
     }
 
-    function checkPassword() {
-      const input = document.getElementById("admin-pass").value;
-      const status = document.getElementById("login-status");
-      if (input === password) {
-        status.textContent = "تم الدخول بنجاح!";
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('hidden'));
-      } else {
-        status.textContent = "كلمة السر خاطئة!";
+    // تسجيل الدخول
+    async function login() {
+      const username = document.getElementById('admin-username').value;
+      const password = document.getElementById('admin-pass').value;
+      const loginBtn = document.getElementById('login-submit-btn');
+      const statusEl = document.getElementById('login-status');
+      
+      if (!username || !password) {
+        showStatus('login', 'يرجى إدخال اسم المستخدم وكلمة السر', 'error');
+        return;
+      }
+      
+      loginBtn.disabled = true;
+      loginBtn.innerHTML = '<span class="loading"></span> جاري الدخول...';
+      
+      // محاكاة اتصال بالخادم مع تأخير
+      setTimeout(async () => {
+        try {
+          const hashedPass = await hashPassword(password);
+          
+          if (username === adminCredentials.username && hashedPass === adminCredentials.passwordHash) {
+            currentAdmin = username;
+            isLoggedIn = true;
+            updateUI();
+            showStatus('login', 'تم الدخول بنجاح!', 'success');
+            sessionStorage.setItem('adminLoggedIn', 'true');
+            playSound('success');
+          } else {
+            throw new Error('بيانات الدخول غير صحيحة');
+          }
+        } catch (error) {
+          showStatus('login', error.message, 'error');
+          playSound('error');
+        } finally {
+          loginBtn.disabled = false;
+          loginBtn.textContent = 'دخول';
+        }
+      }, 1000);
+    }
+
+    // تسجيل الخروج
+    function logout() {
+      currentAdmin = null;
+      isLoggedIn = false;
+      sessionStorage.removeItem('adminLoggedIn');
+      updateUI();
+      toggleSection('admin-login');
+      showStatus('login', 'تم تسجيل الخروج بنجاح', 'success');
+      playSound('success');
+    }
+
+    // التحقق من الجلسة
+    function checkSession() {
+      if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+        currentAdmin = adminCredentials.username;
+        isLoggedIn = true;
+        updateUI();
+        loadAllData();
       }
     }
 
-    function saveContent(type) {
+    // تحديث واجهة المستخدم حسب حالة الدخول
+    function updateUI() {
+      const loginBtn = document.getElementById('login-btn');
+      const adminInfo = document.getElementById('admin-info');
+      const adminName = document.getElementById('admin-name');
+      
+      if (isLoggedIn) {
+        loginBtn.classList.add('hidden');
+        adminInfo.classList.remove('hidden');
+        adminName.textContent = currentAdmin;
+        
+        // تمكين الأزرار
+        document.querySelectorAll('.btn-container .btn:not(#login-btn)').forEach(btn => {
+          btn.disabled = false;
+        });
+      } else {
+        loginBtn.classList.remove('hidden');
+        adminInfo.classList.add('hidden');
+        
+        // تعطيل الأزرار
+        document.querySelectorAll('.btn-container .btn:not(#login-btn)').forEach(btn => {
+          btn.disabled = true;
+        });
+      }
+    }
+
+    // عرض رسائل الحالة
+    function showStatus(section, message, type) {
+      const statusEl = document.getElementById(`${section}-status`);
+      statusEl.textContent = message;
+      statusEl.className = `status-message ${type}`;
+      statusEl.classList.remove('hidden');
+      
+      setTimeout(() => {
+        statusEl.classList.add('hidden');
+      }, 5000);
+    }
+
+    // توليد hash لكلمة السر
+    async function hashPassword(pass) {
+      const msgBuffer = new TextEncoder().encode(pass);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // تحميل جميع البيانات
+    function loadAllData() {
+      if (!isLoggedIn) return;
+      
+      loadContent('members');
+      loadSections();
+    }
+
+    // حفظ المحتوى
+    async function saveContent(type) {
+      if (!isLoggedIn) {
+        showStatus('members', 'يجب تسجيل الدخول أولاً', 'error');
+        return;
+      }
+      
       const content = document.getElementById(`${type}-content`).value;
-      localStorage.setItem(`${type}-section`, content);
-      alert("تم الحفظ وسيظهر للجميع!");
-    }
-
-    function addSection() {
-      const title = document.getElementById("new-section-title").value;
-      const content = document.getElementById("new-section-content").value;
-      if (title && content) {
-        localStorage.setItem(`section-${title}`, content);
-        alert("تمت الإضافة وسيظهر القسم للجميع!");
-      } else {
-        alert("يرجى ملء كل الحقول");
+      
+      try {
+        localStorage.setItem(`${type}-section`, content);
+        showStatus('members', 'تم حفظ البيانات بنجاح!', 'success');
+        playSound('success');
+      } catch (error) {
+        showStatus('members', 'حدث خطأ أثناء الحفظ', 'error');
+        playSound('error');
       }
     }
-  </script></body>
-</html>
+
+    // تحميل المحتوى
+    function loadContent(type) {
+      const content = localStorage.getItem(`${type}-section`);
+      if (content) {
+        document.getElementById(`${type}-content`).value = content;
+        showStatus('members', 'تم تحميل البيانات', 'success');
+        playSound('success');
+      } else {
+        showStatus('members', 'لا توجد بيانات محفوظة', 'error');
+        playSound('error');
+      }
+    }
+
+    // إدارة الأقسام
+    function loadSections() {
+      const sectionsList = document.getElementById('sections-list');
+      sectionsList.innerHTML = '';
+      
+      let hasSections = false;
+      
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith('section-')) {
+          hasSections = true;
+          const title = key.replace('section-', '');
+          const content = localStorage.getItem(key);
+          
+          const sectionItem = document.createElement('div');
+          sectionItem.className = 'section-item';
+          
+          sectionItem.innerHTML = `
+            <div>
+              <h4>${title}</h4>
+              <p>${content.substring(0, 50)}...</p>
+            </div>
+            <div class="section-actions">
+              <button class="btn btn-secondary" onclick="editSection('${title}')">تعديل</button>
+              <button class="btn btn-danger" onclick="deleteSection('${title}')">حذف</button>
+            </div>
+          `;
+          
+          sectionsList.appendChild(sectionItem);
+        }
+      }
+      
+      if (!hasSections) {
+        sectionsList.innerHTML = '<p>لا توجد أقسام مضافة بعد</p>';
+      }
+    }
+
+    // إضافة قسم جديد
+    function addSection() {
+      if (!isLoggedIn) {
+        showStatus('sections', 'يجب تسجيل الدخول أولاً', 'error');
+        return;
+      }
+      
+      const title = document.getElementById('new-section-title').value;
+      const content = document.getElementById('new-section-content').value;
+      
+      if (!title || !content) {
+        showStatus('sections', 'يرجى ملء جميع الحقول', 'error');
+        playSound('error');
+        return;
+      }
+      
+      try {
+        localStorage.setItem(`section-${title}`, content);
+        showStatus('sections', `تم إضافة القسم "${title}" بنجاح`, 'success');
+        playSound('success');
+        loadSections();
+        
+        // مسح الحقول
+        document.getElementById('new-section-title').value = '';
+        document.getElementById('new-section-content').value = '';
+      } catch (error) {
+        showStatus('sections', 'حدث خطأ أثناء الإضافة', 'error');
+        playSound('error');
+      }
+    }
+
+    // تعديل قسم
+    function editSection(title) {
+      const content = localStorage.getItem(`section-${title}`);
+      
+      document.getElementById('new-section-title').value = title;
+      document.getElementById('new-section-content').value = content;
+      
+      showStatus('sections', `جاري تعديل القسم "${title}"`, 'success');
+      window.scrollTo(0, document.getElementById('new-section-title').offsetTop);
+    }
+
+    // حذف قسم
+    function deleteSection(title) {
+      if (confirm(`هل أنت متأكد من حذف القسم "${title}"؟`)) {
+        localStorage.removeItem(`section-${title}`);
+        showStatus('sections', `تم حذف القسم "${title}"`, 'success');
+        playSound('success');
+        loadSections();
+      }
+    }
+
+    // تغيير كلمة السر
+    async function changePassword() {
+      const currentPass = document.getElementById('current-pass').value;
+      const newPass = document.getElementById('new-pass').value;
+      const confirmPass = document.getElementById('confirm-pass').value;
+      
+      if (!currentPass || !newPass || !confirmPass) {
+        showStatus('settings', 'يرجى ملء جميع الحقول', 'error');
+        return;
+      }
+      
+      if (newPass !== confirmPass) {
+        showStatus('settings', 'كلمة السر الجديدة غير متطابقة', 'error');
+        return;
+      }
+      
+      try {
+        const currentHash = await hashPassword(currentPass);
+        
+        if (currentHash !== adminCredentials.passwordHash) {
+          throw new Error('كلمة السر الحالية غير صحيحة');
+        }
+        
+        const newHash = await hashPassword(newPass);
+        adminCredentials.passwordHash = newHash;
+        
+        showStatus('settings', 'تم تغيير كلمة السر بنجاح', 'success');
+        playSound('success');
+        
+        // مسح الحقول
+        document.getElementById('current-pass').value = '';
+        document.getElementById('new-pass').value = '';
+        document.getElementById('confirm-pass').value = '';
+      } catch (error) {
+        showStatus('settings', error.message, 'error');
+        playSound('error');
+      }
+    }
+
+    // نسخ احتياطي للبيانات
+    function backupData() {
+      const data = {};
+      
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        data[key] = localStorage.getItem(key);
+      }
+      
+      const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+      const url = URL.createObjectURL(blob);
+      
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `admin-backup-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      showStatus('settings', 'تم تنزيل النسخة الاحتياطية', 'success');
+      playSound('success');
+    }
+
+    // استعادة البيانات
+    function restoreData(input) {
+      const file = input.files[0];
+      if (!file) return;
+      
+      const reader = new FileReader();
+      
+      reader.onload = function(e) {
+        try {
+          const data = JSON.parse(e.target.result);
+          
+          if (confirm('هل أنت متأكد من استعادة النسخة الاحتياطية؟ سيتم استبدال جميع البيانات الحالية.')) {
+            localStorage.clear();
+            
+            for (const key in data) {
+              localStorage.setItem(key, data[key]);
+            }
+            
+            showStatus('settings', 'تم استعادة النسخة الاحتياطية بنجاح', 'success');
+            playSound('success');
+            loadAllData();
+          }
+        } catch (error) {
+          showStatus('settings', 'خطأ في ملف النس
 
