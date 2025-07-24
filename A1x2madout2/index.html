@@ -1,275 +1,142 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>المنصة الإدارية - تعديلات فورية</title>
+  <title>منصة الأعضاء</title>
   <style>
     :root {
-      --لون-رئيسي: #3498db;
-      --لون-ثانوي: #2ecc71;
-      --لون-خط: #ffffff;
-      --خلفية-داكنة: #2c3e50;
-      --ظل: 0 5px 15px rgba(0, 0, 0, 0.3);
+      --main-color: #1abc9c;
+      --dark-bg: #121212;
+      --light-bg: #1e1e1e;
+      --text-color: #ecf0f1;
     }
 
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Tajawal', sans-serif;
-      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      font-family: 'Arial', sans-serif;
+      color: var(--text-color);
+      background: linear-gradient(-45deg, #1e3c72, #2a5298, #1e3c72);
       background-size: 400% 400%;
-      animation: تدرج-خلفية 15s ease infinite;
-      color: var(--لون-خط);
-      min-height: 100vh;
+      animation: gradientBG 20s ease infinite;
     }
 
-    @keyframes تدرج-خلفية {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
 
-    .رأس-موقع, .تذييل {
-      background-color: rgba(0, 0, 0, 0.7);
+    header, footer {
+      background-color: #000000cc;
       padding: 20px;
       text-align: center;
-      box-shadow: var(--ظل);
-    }
-
-    .أزرار-تحكم {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 20px;
-    }
-
-    .زر {
-      background-color: var(--لون-رئيسي);
       color: white;
+    }
+
+    .btn {
+      background-color: var(--main-color);
+      color: white;
+      padding: 10px 20px;
+      margin: 5px;
       border: none;
-      padding: 12px 25px;
-      border-radius: 30px;
+      border-radius: 5px;
       cursor: pointer;
       font-size: 16px;
-      transition: all 0.3s;
-      box-shadow: var(--ظل);
+      transition: background-color 0.3s;
     }
 
-    .زر:hover {
-      background-color: #2980b9;
-      transform: translateY(-3px);
+    .btn:hover {
+      background-color: #16a085;
     }
 
-    .زر-نجاح {
-      background-color: var(--لون-ثانوي);
+    .btn-container {
+      text-align: center;
+      margin-top: 20px;
     }
 
-    .قسم {
-      background-color: rgba(0, 0, 0, 0.7);
-      margin: 20px auto;
-      padding: 25px;
-      border-radius: 10px;
+    .container {
       max-width: 800px;
-      box-shadow: var(--ظل);
+      margin: 20px auto;
+      background-color: var(--light-bg);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    textarea, input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .hidden {
       display: none;
     }
 
-    .قسم-نشط {
-      display: block;
-      animation: ظهور 0.5s ease;
-    }
-
-    @keyframes ظهور {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: none;
-      background-color: rgba(255, 255, 255, 0.9);
-      font-family: 'Tajawal', sans-serif;
-    }
-
-    .قائمة-أقسام {
-      margin: 20px 0;
-    }
-
-    .عنصر-قائمة {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 5px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    @media (max-width: 768px) {
-      .أزرار-تحكم {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .زر {
-        width: 90%;
-      }
+    .section {
+      margin-bottom: 30px;
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="رأس-موقع">
-    <h1>لوحة التحكم الإدارية</h1>
-    <p>أي تعديل يتم حفظه يظهر مباشرة لجميع الزوار</p>
+  <header>
+    <h1>منصة الأعضاء</h1>
   </header>
 
-  <div class="أزرار-تحكم">
-    <button class="زر" onclick="إظهار_القسم('تعديل-أعضاء')">تعديل الأعضاء</button>
-    <button class="زر" onclick="إظهار_القسم('إدارة-أقسام')">إدارة الأقسام</button>
-    <button class="زر" onclick="إظهار_القسم('إضافة-محتوى')">إضافة محتوى جديد</button>
-    <button class="زر زر-نجاح" onclick="إظهار_القسم('عرض-الموقع')">عرض الموقع للزوار</button>
+  <div class="btn-container">
+    <button class="btn" onclick="playClick(); toggleSection('edit-members')">تعديل الأعضاء</button>
+    <button class="btn" onclick="playClick(); toggleSection('add-section')">إضافة قسم جديد</button>
   </div>
 
-  <!-- قسم تعديل الأعضاء -->
-  <div id="تعديل-أعضاء" class="قسم">
-    <h2>تعديل قائمة الأعضاء</h2>
-    <textarea id="قائمة-الأعضاء" rows="10" placeholder="أدخل بيانات الأعضاء هنا..."></textarea>
-    <button class="زر زر-نجاح" onclick="حفظ_المحتوى('أعضاء')">حفظ التغييرات</button>
-    <p id="حالة-الأعضاء" style="color: #2ecc71; display: none;">تم الحفظ بنجاح!</p>
+  <div id="edit-members" class="container section hidden">
+    <h3>تعديل قائمة الأعضاء</h3>
+    <textarea id="members-content" rows="8"></textarea>
+    <button class="btn" onclick="playClick(); saveContent('members')">حفظ</button>
   </div>
 
-  <!-- قسم إدارة الأقسام -->
-  <div id="إدارة-أقسام" class="قسم">
-    <h2>الأقسام الحالية</h2>
-    <div id="عرض-الأقسام" class="قائمة-أقسام">
-      <!-- سيتم ملؤها تلقائياً -->
-    </div>
+  <div id="add-section" class="container section hidden">
+    <h3>إضافة قسم جديد</h3>
+    <input type="text" id="new-section-title" placeholder="عنوان القسم">
+    <textarea id="new-section-content" rows="6" placeholder="محتوى القسم"></textarea>
+    <button class="btn" onclick="playClick(); addSection()">إضافة</button>
   </div>
 
-  <!-- قسم إضافة محتوى جديد -->
-  <div id="إضافة-محتوى" class="قسم">
-    <h2>إضافة محتوى جديد</h2>
-    <input type="text" id="عنوان-جديد" placeholder="عنوان المحتوى">
-    <textarea id="محتوى-جديد" rows="8" placeholder="المحتوى هنا..."></textarea>
-    <button class="زر زر-نجاح" onclick="إضافة_محتوى_جديد()">حفظ المحتوى الجديد</button>
-    <p id="حالة-المحتوى" style="color: #2ecc71; display: none;">تمت الإضافة بنجاح!</p>
-  </div>
-
-  <!-- قسم عرض الموقع -->
-  <div id="عرض-الموقع" class="قسم">
-    <h2>عرض الموقع كما يظهر للزوار</h2>
-    <iframe src="index.html" style="width:100%; height:500px; border:none; border-radius:5px;"></iframe>
-  </div>
-
-  <footer class="تذييل">
-    <p>جميع التعديلات تظهر فوراً للزوار | تم التطوير بواسطة A1</p>
+  <footer>
+    <p>منصة الأعضاء - تصميم بسيط وجميل</p>
   </footer>
 
+  <audio id="click-sound" src="https://cdn.pixabay.com/download/audio/2023/03/06/audio_7f87821965.mp3?filename=click-124467.mp3"></audio>
+
   <script>
-    // دالة لإظهار وإخفاء الأقسام
-    function إظهار_القسم(معرف_القسم) {
-      document.querySelectorAll('.قسم').forEach(ق => ق.classList.remove('قسم-نشط'));
-      document.getElementById(معرف_القسم).classList.add('قسم-نشط');
+    function playClick() {
+      const click = document.getElementById("click-sound");
+      if (click) click.play();
     }
 
-    // دالة لحفظ المحتوى في التخزين المحلي
-    function حفظ_المحتوى(نوع) {
-      const محتوى = document.getElementById(`قائمة-${نوع}`).value;
-      localStorage.setItem(`محتوى_${نوع}`, محتوى);
-      
-      // إظهار رسالة نجاح
-      const رسالة = document.getElementById(`حالة-${نوع}`);
-      رسالة.style.display = 'block';
-      setTimeout(() => رسالة.style.display = 'none', 3000);
-      
-      // عرض التحديث فوراً في قسم العرض
-      if(document.getElementById('عرض-الموقع').classList.contains('قسم-نشط')) {
-        document.querySelector('#عرض-الموقع iframe').contentWindow.location.reload();
+    function toggleSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function saveContent(type) {
+      const content = document.getElementById(`${type}-content`).value;
+      localStorage.setItem(`${type}-section`, content);
+      alert("تم الحفظ!");
+    }
+
+    function addSection() {
+      const title = document.getElementById("new-section-title").value;
+      const content = document.getElementById("new-section-content").value;
+      if (title && content) {
+        localStorage.setItem(`section-${title}`, content);
+        alert("تمت الإضافة!");
+      } else {
+        alert("يرجى ملء كل الحقول");
       }
     }
-
-    // دالة لإضافة محتوى جديد
-    function إضافة_محتوى_جديد() {
-      const عنوان = document.getElementById('عنوان-جديد').value;
-      const محتوى = document.getElementById('محتوى-جديد').value;
-      
-      if(!عنوان || !محتوى) {
-        alert('الرجاء إدخال عنوان ومحتوى');
-        return;
-      }
-      
-      // حفظ المحتوى الجديد
-      localStorage.setItem(`محتوى_${عنوان}`, محتوى);
-      
-      // إظهار رسالة نجاح
-      document.getElementById('حالة-المحتوى').style.display = 'block';
-      setTimeout(() => document.getElementById('حالة-المحتوى').style.display = 'none', 3000);
-      
-      // تحديث قائمة الأقسام
-      عرض_الأقسام();
-      
-      // مسح الحقول
-      document.getElementById('عنوان-جديد').value = '';
-      document.getElementById('محتوى-جديد').value = '';
-    }
-
-    // دالة لعرض الأقسام المحفوظة
-    function عرض_الأقسام() {
-      const قسم_العرض = document.getElementById('عرض-الأقسام');
-      قسم_العرض.innerHTML = '';
-      
-      for(let i = 0; i < localStorage.length; i++) {
-        const مفتاح = localStorage.key(i);
-        if(مفتاح.startsWith('محتوى_') && مفتاح !== 'محتوى_أعضاء') {
-          const عنوان = مفتاح.replace('محتوى_', '');
-          const محتوى = localStorage.getItem(مفتاح);
-          
-          const عنصر = document.createElement('div');
-          عنصر.className = 'عنصر-قائمة';
-          عنصر.innerHTML = `
-            <div>
-              <h3>${عنوان}</h3>
-              <p>${محتوى.substring(0, 50)}...</p>
-            </div>
-            <div>
-              <button class="زر" onclick="تعديل_القسم('${عنوان}')">تعديل</button>
-              <button class="زر" style="background-color:#e74c3c" onclick="حذف_القسم('${عنوان}')">حذف</button>
-            </div>
-          `;
-          
-          قسم_العرض.appendChild(عنصر);
-        }
-      }
-    }
-
-    // دالة لتعديل قسم موجود
-    function تعديل_القسم(عنوان) {
-      إظهار_القسم('إضافة-محتوى');
-      document.getElementById('عنوان-جديد').value = عنوان;
-      document.getElementById('محتوى-جديد').value = localStorage.getItem(`محتوى_${عنوان}`);
-    }
-
-    // دالة لحذف قسم
-    function حذف_القسم(عنوان) {
-      if(confirm(`هل أنت متأكد من حذف "${عنوان}"؟`)) {
-        localStorage.removeItem(`محتوى_${عنوان}`);
-        عرض_الأقسام();
-      }
-    }
-
-    // عند تحميل الصفحة، نعرض الأقسام المحفوظة
-    window.onload = function() {
-      if(localStorage.getItem('محتوى_أعضاء')) {
-        document.getElementById('قائمة-الأعضاء').value = localStorage.getItem('محتوى_أعضاء');
-      }
-      عرض_الأقسام();
-    };
   </script>
 </body>
 </html>
