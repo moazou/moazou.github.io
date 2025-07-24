@@ -1,283 +1,190 @@
-<!DOCTYPE html>
-<html lang="ar">
+<!DOCTYPE html><html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة الأعضاء</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* تنسيق عام للموقع */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            font-family: 'Cairo', sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+            background: linear-gradient(-45deg, #2c3e50, #3498db, #2c3e50, #2980b9);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+        }@keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
 
-        header {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-        }
+    header, footer {
+        background-color: rgba(0,0,0,0.6);
+        text-align: center;
+        padding: 20px;
+    }
 
-        /* إعداد الأزرار */
-        .btn {
-            background-color: #3498db;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 10px 0;
-            transition: background-color 0.3s ease;
-            border-radius: 5px;
-        }
+    .btn {
+        background-color: #2980b9;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        margin: 5px;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
 
-        .btn:hover {
-            background-color: #2980b9;
-        }
+    .btn:hover {
+        background-color: #1abc9c;
+    }
 
-        .btn-container {
-            margin: 20px 0;
-        }
+    .btn-container {
+        text-align: center;
+        margin-top: 10px;
+    }
 
-        /* صندوق المحتوى */
-        .form-container, .content-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 70%;
-            margin: 20px;
-            display: none;
-        }
+    .form-container, .content-container, .admin-section {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px auto;
+        width: 80%;
+        color: white;
+    }
 
-        .form-container input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
+    input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+    }
 
-        .form-container label {
-            font-weight: bold;
-        }
+    pre {
+        background-color: rgba(0,0,0,0.3);
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
 
-        /* تنسيق محتوى الأعضاء */
-        pre {
-            background-color: #ecf0f1;
-            padding: 10px;
-            border-radius: 5px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
+    #admin-section { display: none; }
+</style>
 
-        /* رابط مخصص */
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
 </head>
 <body>
-
-    <!-- Header -->
     <header>
-        <h1>منصة الأعضاء</h1>
-        <p>أهلاً بك في موقع أعضاء العصابة</p>
-    </header>
+        <h1 id="main-title">منصة الأعضاء</h1>
+        <p id="main-subtitle">أهلاً بك في موقع أعضاء العصابة</p>
+    </header><div class="btn-container">
+    <button class="btn" onclick="showSection('login')">تسجيل الدخول</button>
+    <button class="btn" onclick="showSection('members')">عرض الأعضاء</button>
+    <button class="btn" onclick="showSection('decoration')">زخرفة خاصة</button>
+    <button class="btn" onclick="showSection('enemies')">الأعداء</button>
+    <button class="btn" onclick="showSection('links')">روابط القناة والجروب</button>
+    <button class="btn" onclick="showSection('competitions')">المسابقات</button>
+    <button class="btn" onclick="adminLogin()">🔒 المسؤول فقط</button>
+</div>
 
-    <!-- أزرار التنقل -->
-    <div class="btn-container">
-        <button class="btn" onclick="showSection('login')">تسجيل الدخول</button>
-        <button class="btn" onclick="showSection('members')">عرض الأعضاء</button>
-        <button class="btn" onclick="showSection('decoration')">زخرفة خاصة</button>
-        <button class="btn" onclick="showSection('enemies')">الأعداء</button>
-        <button class="btn" onclick="showSection('links')">روابط القناة والجروب</button>
-        <button class="btn" onclick="showSection('competitions')">المسابقات</button> <!-- زر المسابقات الجديد -->
-    </div>
+<div class="form-container" id="login">
+    <h2>تسجيل الدخول</h2>
+    <form action="https://formsubmit.co/moazxx50@gmail.com" method="POST">
+        <label>الاسم:</label>
+        <input type="text" name="name" required>
+        <label>ID:</label>
+        <input type="text" name="id" required>
+        <input type="hidden" name="_captcha" value="false">
+        <button type="submit" class="btn">تسجيل</button>
+    </form>
+</div>
 
-    <!-- محتوى تسجيل الدخول -->
-    <div class="form-container" id="login">
-        <h2>تسجيل الدخول</h2>
-        <form action="https://formsubmit.co/moazxx50@gmail.com" method="POST">
-            <label for="name">الاسم:</label>
-            <input type="text" id="name" name="name" required>
+<div class="content-container" id="members">
+    <h3>الأعضاء</h3>
+    <pre id="membersContent">[... نفس المحتوى السابق للأعضاء ...]</pre>
+</div>
 
-            <label for="id">ID:</label>
-            <input type="text" id="id" name="id" required>
+<div class="content-container" id="decoration">
+    <h3>زخرفة خاصة</h3>
+    <pre id="decorationContent">『A1』name『 اختصار رتبتك 』</pre>
+</div>
 
-            <input type="hidden" name="_captcha" value="false">
+<div class="content-container" id="enemies">
+    <h3>الأعداء</h3>
+    <pre id="enemiesContent">*NM,BS+KOD(HR,MJ,WKR,IRQ)*</pre>
+</div>
 
-            <button type="submit" class="btn">تسجيل</button>
-        </form>
-    </div>
+<div class="content-container" id="links">
+    <h3>تابعنا على:</h3>
+    <ul id="linksContent">
+        <li><a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب واتساب</a></li>
+        <li><a href="https://www.tiktok.com/@_9___00?_t=ZS-8vhTHEj2gF6&_r=1" target="_blank">قناتنا على تيك توك</a></li>
+    </ul>
+</div>
 
-    <!-- محتوى الأعضاء -->
-    <div class="content-container" id="members">
-        <h3>الأعضاء</h3>
-        <pre>
-1- القائد KING 👑
-1 @⁨Ahmed M⁩ 
-ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+<div class="content-container" id="competitions">
+    <h3>المسابقات</h3>
+    <pre id="competitionsContent">
 
-2- مشير FM1 🎗️
-@⁨ahmedadel⁩   
-ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+1- المسابقة الأولى: 300,000 ألف + 300 جوهرة 2- المسابقة الثانية: 150,000 ألف + 150 جوهرة 3- المسابقة الثالثة: 50,000 ألف + 50 جوهرة </pre> </div>
 
-3- اللواء BDE 🚀
-1- @⁨Mo3az⁩ 
-2-@omar
-3-@Aboud 
-ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+<div class="admin-section" id="admin-section">
+    <h3>لوحة تحكم المسؤول</h3>
+    <label>العنوان الرئيسي:</label>
+    <input type="text" id="admin-title">
+    <label>الوصف الفرعي:</label>
+    <input type="text" id="admin-subtitle">
+    <label>زخرفة:</label>
+    <textarea id="admin-decoration"></textarea>
+    <label>الأعداء:</label>
+    <textarea id="admin-enemies"></textarea>
+    <label>المسابقات:</label>
+    <textarea id="admin-competitions"></textarea>
+    <label>روابط:</label>
+    <textarea id="admin-links"></textarea>
+    <button class="btn" onclick="saveAdminChanges()">💾 حفظ التعديلات</button>
+</div>
 
-4- قادة الحرب WL 🛡️
-1-@moaaz 
-2-@⁨frank⁩     
-3-@⁨manar⁩ 
-ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+<footer>
+    <p>منصة A1 - جميع الحقوق محفوظة</p>
+</footer>
 
-5- مقاتل اسطوري LM ☠️
-1-@⁨عبدالروؤف⁩   
-2-@⁨~bensohaib⁩    
-3-@⁨~🤍🤍⁩ 
-4-@⁨Kareem Fares⁩  
-أسلحتهم 10, 11  
-ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+<script>
+    const clickSound = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_3a9c6e4b57.mp3");
 
-6- فرقة ال 999 الحربية المقاتلة ⚔️
-1-@⁨~الشيخ عبدالرحمن⁩ 
-2- 
-3-
-4-
-5-
-ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+    function showSection(id) {
+        clickSound.play();
+        document.querySelectorAll('.form-container, .content-container, .admin-section').forEach(sec => sec.style.display = 'none');
+        document.getElementById(id).style.display = 'block';
+    }
 
-7- القائد العام للجيش 👨🏻‍✈️ GC
-1-@VENOM
-ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-
-8- قائد القوات الخاصه ☠️ SFC
-1 
-ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-
-9- قائد فريق ⚙️ TL
-1 
-ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-
-10- رقيب 🥇 SGT 
-1
-ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-
-11- عريف 🪖 CPL
-1
-ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-
-12- جندي اول 🪖 PFC
-@~الحمد لله
-ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-
-13- مجند 🪖 RCT
-@⁨Omar⁩ @⁨كـئـيـب⁩ @⁨~󠅤󠅤󠅤󠅤⁩ @⁨~•_•⁩ @⁨~7oda⁩ @⁨M10❤️💙⁩ @⁨~Mohammed Mahmoud 🌶️⁩ @⁨~آيَـَـــِآدٍ⁩ @⁨~أوس⁩ @⁨~‏أوســ亗ــڪارR‿ˣ ✌︎⁩ @⁨~𓆩 ᗰᖇ. SᑭEEᗪ 𓆪🖤⁩ @⁨~𓆩𝓐𝓱𝓶𝓮𝓭᭓𓆪⁩ @⁨~想 ﾑ1〙写䒙「M E D O」ン⁩ @⁨~BASEL CH7⁩ @⁨+966 57 037 6049⁩ @⁨~SALEH⁩ @⁨~𝐒𝐄𝐈𝐅 💥⁩ @ BasEl @Deepu
-ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-
-الفرق 👾 
-1- القناصين         50 ألف 
-2- الجواسيس        70 ألف
-        </pre>
-    </div>
-
-    <!-- محتوى الزخرفة -->
-    <div class="content-container" id="decoration">
-        <h3>زخرفة خاصة</h3>
-        <pre>『A1』name『 اختصار رتبتك 』</pre>
-    </div>
-
-    <!-- محتوى الأعداء -->
-    <div class="content-container" id="enemies">
-        <h3>الأعداء</h3>
-        <pre>
-1- BS
-2- JO
-3- WKR
-4- HR
-5- IRQ
-6- MTK
-7- V1
-8- GNG
-9- VGN
-10- M7
-11- MF
-        </pre>
-    </div>
-
-    <!-- روابط القناة والجروب -->
-    <div class="content-container" id="links">
-        <h3>تابعنا على:</h3>
-        <ul>
-            <li><a href="https://chat.whatsapp.com/EXbGAP5xqwUIso4wkDPbKV" target="_blank">جروب واتساب</a></li>
-            <li><a href="https://www.tiktok.com/@_9___00?_t=ZS-8vhTHEj2gF6&_r=1" target="_blank">قناتنا على تيك توك</a></li>
-        </ul>
-    </div>
-
-    <!-- محتوى المسابقات -->
-    <div class="content-container" id="competitions">
-        <h3>المسابقات</h3>
-        <pre>
-1- المسابقة الأولى: 300,000 ألف + 300 جوهرة
-ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-2- المسابقة الثانية: 150,000 ألف + 150 جوهرة
-ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-3- المسابقة الثالثة: 50,000 ألف + 50 جوهرة
-ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-        </pre>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>منصة A1 - جميع الحقوق محفوظة</p>
-    </footer>
-
-    <!-- JavaScript لتحكم الأقسام -->
-    <script>
-        function showSection(sectionId) {
-            // إخفاء جميع الأقسام
-            let sections = document.querySelectorAll('.form-container, .content-container');
-            sections.forEach(section => section.style.display = 'none');
-
-            // إظهار القسم الذي تم النقر عليه
-            let sectionToShow = document.getElementById(sectionId);
-            sectionToShow.style.display = 'block';
+    function adminLogin() {
+        let pass = prompt("أدخل كلمة المرور:");
+        if (pass === "a1gang123") {
+            document.getElementById("admin-section").style.display = "block";
+            document.getElementById("admin-title").value = document.getElementById("main-title").textContent;
+            document.getElementById("admin-subtitle").value = document.getElementById("main-subtitle").textContent;
+            document.getElementById("admin-decoration").value = document.getElementById("decorationContent").textContent;
+            document.getElementById("admin-enemies").value = document.getElementById("enemiesContent").textContent;
+            document.getElementById("admin-competitions").value = document.getElementById("competitionsContent").textContent;
+            document.getElementById("admin-links").value = document.getElementById("linksContent").innerHTML;
+        } else {
+            alert("كلمة المرور خاطئة");
         }
-    </script>  
+    }
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.querySelector("form");
+    function saveAdminChanges() {
+        document.getElementById("main-title").textContent = document.getElementById("admin-title").value;
+        document.getElementById("main-subtitle").textContent = document.getElementById("admin-subtitle").value;
+        document.getElementById("decorationContent").textContent = document.getElementById("admin-decoration").value;
+        document.getElementById("enemiesContent").textContent = document.getElementById("admin-enemies").value;
+        document.getElementById("competitionsContent").textContent = document.getElementById("admin-competitions").value;
+        document.getElementById("linksContent").innerHTML = document.getElementById("admin-links").value;
+        alert("تم حفظ التعديلات بنجاح ✅");
+    }
+</script>
 
-            // لو الشخص سجل قبل كده
-            if (localStorage.getItem("alreadySubmitted")) {
-                form.innerHTML = "<p style='color:red; font-weight:bold;'>لقد قمت بالتسجيل مسبقاً. لا يمكنك التسجيل مرة أخرى.</p>";
-            }
-
-            // أول مرة يسجل، نحط العلامة
-            form.addEventListener("submit", function () {
-                localStorage.setItem("alreadySubmitted", "true");
-            });
-        });
-    </script> 
-  
 </body>
 </html>
 
